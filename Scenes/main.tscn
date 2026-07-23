@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://byxcun2xd52fx"]
+
+[ext_resource type="PackedScene" uid="uid://ds3g6g75tbbyi" path="res://Scenes/UI/hud.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://gnypsog81oc6" path="res://Scenes/building_base.tscn" id="3_jjvhh"]
+[ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scenes/background.tres" id="3_kry3j"]
+
+[sub_resource type="Gradient" id="Gradient_8gbba"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kry3j"]
+gradient = SubResource("Gradient_8gbba")
+width = 320
+height = 180
+
+[sub_resource type="GDScript" id="GDScript_sprlj"]
+script/source = "extends Camera2D
+
+@export var sway_amount:float = 10.
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var target = get_viewport().get_mouse_position() / get_viewport_rect().size
+	target -= Vector2.ONE * 0.5 # above calculates from 0 to 1
+	target *= 2 # renormalize to -1 to 1
+	position = lerp(position, target, delta * 12)
+"
+
+[node name="Main" type="Node2D" unique_id=1071888399]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=317580437]
+
+[node name="hud" parent="CanvasLayer" unique_id=2138066974 instance=ExtResource("2_8gbba")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779705212]
+material = ExtResource("3_kry3j")
+texture = SubResource("GradientTexture2D_kry3j")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1073742744]
+zoom = Vector2(2, 2)
+script = SubResource("GDScript_sprlj")
+
+[node name="Node2D" parent="." unique_id=673539397 instance=ExtResource("3_jjvhh")]
+position = Vector2(-62, -1)
