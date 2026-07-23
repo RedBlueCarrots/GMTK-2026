@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://ds3g6g75tbbyi"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
+bg_color = Color(0, 0, 0, 0.14509805)
+
 [sub_resource type="GDScript" id="GDScript_sprlj"]
 script/source = "extends HBoxContainer
 
@@ -48,6 +51,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.21450618
+theme_override_styles/panel = SubResource("StyleBoxFlat_jjvhh")
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1619108529]
