@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://hlmdvsyp2l0u"]
+
+[sub_resource type="GDScript" id="GDScript_17d78"]
+script/source = "extends Control
+
+var ref: Countdown
+@export var title: Label
+@export var bar: ProgressBar
+
+
+func set_ref(new: Countdown):
+	title.text = new.display_name
+	ref = new
+
+func _process(delta: float) -> void:
+	if !ref: return
+	bar.value = ref.time_left / ref.time_max
+"
+
+[node name="clock" type="Control" unique_id=394019140 node_paths=PackedStringArray("title", "bar")]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_17d78")
+title = NodePath("Label")
+bar = NodePath("ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=708458459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="." unique_id=89571964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "i am a clock"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://ds3g6g75tbbyi"]
+
+[sub_resource type="GDScript" id="GDScript_sprlj"]
+script/source = "extends HBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	Gamestate.new_countdown.connect(new_timer)
+
+
+func new_timer(ref: Countdown):
+	var new_clock = preload(\"res://Scenes/UI/clock.tscn\").instantiate()
+	add_child(new_clock)
+	new_clock.set_ref(ref)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3j6hh"]
+bg_color = Color(0.16565639, 0.16565642, 0.1656563, 1)
+corner_radius_bottom_right = 18
+
+[sub_resource type="GDScript" id="GDScript_vdmpd"]
+script/source = "extends Label
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	text = get_time_string(Gamestate.time)
+
+
+func get_time_string(time: float) -> String:
+	var minutes = floor(time/60)
+	var seconds = floor(time - minutes * 60)
+	return \"%02d:%02d\" % [minutes, seconds]
+"
+
+[node name="Control" type="Control" unique_id=2138066974]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=1349921466]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.21450618
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1619108529]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = SubResource("GDScript_sprlj")
+
+[node name="Panel2" type="Panel" parent="." unique_id=412442575]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.21388888
+anchor_right = 0.0875
+anchor_bottom = 0.30277777
+theme_override_styles/panel = SubResource("StyleBoxFlat_3j6hh")
+metadata/_edit_use_anchors_ = true
+
+[node name="time_display" type="Label" parent="Panel2" unique_id=696368199]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10714286
+anchor_top = 0.0625
+anchor_right = 0.85714287
+anchor_bottom = 0.78125
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_vdmpd")
+metadata/_edit_use_anchors_ = true
