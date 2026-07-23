@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cubych7l1wvho"]
 
-[ext_resource type="Shader" uid="uid://dw21qv30lwo06" path="res://pause_menu.gdshader" id="1_hdmo1"]
-[ext_resource type="Script" uid="uid://dx35cnmu6d3u7" path="res://pause_menu.gd" id="1_nwcfo"]
+[ext_resource type="Script" uid="uid://dx35cnmu6d3u7" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="Shader" uid="uid://dw21qv30lwo06" path="res://Scripts/Shaders/pause_menu.gdshader" id="2_k0w1u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cf7c6"]
-shader = ExtResource("1_hdmo1")
+shader = ExtResource("2_k0w1u")
 shader_parameter/lod = 0.0
 
 [sub_resource type="Animation" id="Animation_05uyy"]
@@ -70,34 +70,37 @@ _data = {
 
 [node name="PauseMenu" type="Control" unique_id=2104115186]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -15.0
-offset_top = -19.0
-offset_right = -15.0
-offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nwcfo")
+script = ExtResource("1_k0w1u")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1520794365]
 material = SubResource("ShaderMaterial_cf7c6")
-layout_mode = 0
-offset_left = 25.999998
-offset_top = 25.999996
-offset_right = 66.0
-offset_bottom = 66.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(19.063519, 10.3699045)
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=53081284]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 181.0
-offset_right = 652.0
-offset_bottom = 282.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.5
+offset_top = -50.5
+offset_right = 237.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1, 1.12)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1416967683]
