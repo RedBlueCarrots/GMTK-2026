@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bpqm6ujgnbmqk"]
+
+[ext_resource type="Script" uid="uid://c5fedekep10xm" path="res://Scripts/power_crank_minigame.gd" id="1_0mslv"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_3yxjv"]
+[ext_resource type="PackedScene" uid="uid://b36i0ukc42x55" path="res://Scenes/crank.tscn" id="3_3yxjv"]
+
+[node name="power crank game" type="Node2D" unique_id=1218630896]
+script = ExtResource("1_0mslv")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_3yxjv")]
+
+[node name="Crank" parent="." unique_id=345946150 instance=ExtResource("3_3yxjv")]
+position = Vector2(76, 102.00001)
+scale = Vector2(0.5288655, 0.5288655)
+
+[node name="Progress bar" type="ProgressBar" parent="." unique_id=564953225]
+offset_left = 152.0
+offset_top = 176.0
+offset_right = 295.9369
+offset_bottom = 203.0
+rotation = 4.712389
+step = 0.1
+show_percentage = false
+
+[node name="Percentage" type="Label" parent="." unique_id=469024556]
+offset_left = 147.0
+offset_top = 8.0
+offset_right = 188.0
+offset_bottom = 31.0
+text = "0.0 %"
+
+[connection signal="value_changed" from="Progress bar" to="." method="_on_progress_bar_value_changed"]
