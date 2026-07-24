@@ -1,0 +1,19 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base Dark Background -->
+  <rect width="640" height="640" fill="#1e1e24"/>
+
+  <!-- Vertical Grid Lines -->
+  <line x1="128" y1="0" x2="128" y2="640" stroke="#33333d" stroke-width="4"/>
+  <line x1="256" y1="0" x2="256" y2="640" stroke="#33333d" stroke-width="4"/>
+  <line x1="384" y1="0" x2="384" y2="640" stroke="#33333d" stroke-width="4"/>
+  <line x1="512" y1="0" x2="512" y2="640" stroke="#33333d" stroke-width="4"/>
+
+  <!-- Horizontal Grid Lines -->
+  <line x1="0" y1="128" x2="640" y2="128" stroke="#33333d" stroke-width="4"/>
+  <line x1="0" y1="256" x2="640" y2="256" stroke="#33333d" stroke-width="4"/>
+  <line x1="0" y1="384" x2="640" y2="384" stroke="#33333d" stroke-width="4"/>
+  <line x1="0" y1="512" x2="640" y2="512" stroke="#33333d" stroke-width="4"/>
+
+  <!-- Outer Frame Border -->
+  <rect x="2" y="2" width="636" height="636" fill="none" stroke="#4a4a5a" stroke-width="4"/>
+</svg>

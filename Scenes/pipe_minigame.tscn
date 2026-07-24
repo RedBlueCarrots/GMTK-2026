@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://b8knkgioqs51c"]
 
 [ext_resource type="Script" uid="uid://ct85fc8fla5d4" path="res://Scripts/pipes_minigame.gd" id="1_l0n6x"]
+[ext_resource type="Texture2D" uid="uid://bc4m78hr78ro6" path="res://Assets/Art/pipe_minigame-bg.svg" id="2_fdmy0"]
 
 [node name="PipeMinigame" type="Node2D" unique_id=501969369]
 script = ExtResource("1_l0n6x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1046249181]
+texture = ExtResource("2_fdmy0")
 
 [node name="Board" type="Node2D" parent="." unique_id=1164436376]
 
