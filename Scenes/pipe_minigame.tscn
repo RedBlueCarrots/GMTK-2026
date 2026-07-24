@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://b8knkgioqs51c"]
 
 [ext_resource type="Script" uid="uid://ct85fc8fla5d4" path="res://Scripts/pipes_minigame.gd" id="1_l0n6x"]
-[ext_resource type="Texture2D" uid="uid://bc4m78hr78ro6" path="res://Assets/Art/pipe_minigame-bg.svg" id="2_fdmy0"]
+[ext_resource type="Texture2D" uid="uid://cpnsfx634vogb" path="res://Assets/Art/pipe_minigame-bg.svg" id="2_fdmy0"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_hkjiq"]
 
 [node name="PipeMinigame" type="Node2D" unique_id=501969369]
 script = ExtResource("1_l0n6x")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1046249181]
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1046249181]
 texture = ExtResource("2_fdmy0")
+centered = false
 
 [node name="Board" type="Node2D" parent="." unique_id=1164436376]
+position = Vector2(96, 96)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=566496952]
-zoom = Vector2(0.5, 0.5)
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_hkjiq")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1992755724]
+offset = Vector2(97.075, 94.17)
+zoom = Vector2(1.64, 1.64)

@@ -1,22 +1,23 @@
 [gd_scene format=3 uid="uid://dnblktufhd4mf"]
 
 [ext_resource type="Script" uid="uid://d241ojbsidwfi" path="res://Scripts/pipe.gd" id="1_hgpvu"]
-[ext_resource type="Texture2D" uid="uid://b4828ycr3hka" path="res://Assets/Art/pipe-highlight.svg" id="2_d8kao"]
-[ext_resource type="Texture2D" uid="uid://c7v27do7vesic" path="res://Assets/Art/pipe-source_badge.svg" id="3_cf7qw"]
+[ext_resource type="Texture2D" uid="uid://plumt7enikry" path="res://Assets/Art/pipe-highlight.svg" id="2_d8kao"]
+[ext_resource type="Texture2D" uid="uid://dt1guypm0qc2n" path="res://Assets/Art/pipe-source_badge.svg" id="3_cf7qw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dj8w"]
-size = Vector2(128, 128)
+size = Vector2(38.4, 38.4)
 
 [node name="PipePiece" type="Area2D" unique_id=1157958654]
 script = ExtResource("1_hgpvu")
-
-[node name="PipeSprite" type="Sprite2D" parent="." unique_id=1074849666]
+type = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336342193]
 shape = SubResource("RectangleShape2D_3dj8w")
 
 [node name="HighlightSprite" type="Sprite2D" parent="." unique_id=1018154924]
 texture = ExtResource("2_d8kao")
+
+[node name="PipeSprite" type="Sprite2D" parent="." unique_id=1074849666]
 
 [node name="SourceBadgeSprite" type="Sprite2D" parent="." unique_id=1529795445]
 texture = ExtResource("3_cf7qw")
