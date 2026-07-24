@@ -1,24 +1,40 @@
 {
-  "grid_size": [4, 4],
-  "source": [0, 1],
-  "sinks": [[3, 2]],
+  "grid_size": [5, 5],
+  "source": [2, 0],
+  "sinks": [
+    [0, 1],
+    [0, 2],
+    [2, 4],
+    [4, 2]
+  ],
   "pieces": [
-    { "x": 0, "y": 1, "type": "source", "shape": "end", "rotation": 270 },
+    { "x": 2, "y": 0, "type": "source", "shape": "end", "rotation": 0 },
+    { "x": 2, "y": 1, "type": "connector", "shape": "t_junction", "rotation": 90 },
     { "x": 1, "y": 1, "type": "connector", "shape": "straight", "rotation": 90 },
-    { "x": 2, "y": 1, "type": "connector", "shape": "bend", "rotation": 90 },
-    { "x": 2, "y": 2, "type": "connector", "shape": "straight", "rotation": 0 },
-    { "x": 3, "y": 2, "type": "sink", "shape": "end", "rotation": 90 },
+    { "x": 0, "y": 1, "type": "sink", "shape": "end", "rotation": 90 },
+
+    { "x": 2, "y": 2, "type": "connector", "shape": "cross", "rotation": 0 },
+    { "x": 1, "y": 2, "type": "connector", "shape": "straight", "rotation": 90 },
+    { "x": 0, "y": 2, "type": "sink", "shape": "end", "rotation": 90 },
+    { "x": 3, "y": 2, "type": "connector", "shape": "straight", "rotation": 90 },
+    { "x": 4, "y": 2, "type": "sink", "shape": "end", "rotation": 270 },
+
+    { "x": 2, "y": 3, "type": "connector", "shape": "straight", "rotation": 0 },
+    { "x": 2, "y": 4, "type": "sink", "shape": "end", "rotation": 180 },
 
     { "x": 0, "y": 0, "type": "connector", "shape": "bend", "rotation": 0 },
     { "x": 1, "y": 0, "type": "connector", "shape": "bend", "rotation": 90 },
-    { "x": 2, "y": 0, "type": "connector", "shape": "bend", "rotation": 180 },
-    { "x": 3, "y": 0, "type": "connector", "shape": "bend", "rotation": 270 },
-    { "x": 0, "y": 2, "type": "connector", "shape": "straight", "rotation": 0 },
-    { "x": 1, "y": 2, "type": "connector", "shape": "bend", "rotation": 270 },
-    { "x": 3, "y": 1, "type": "connector", "shape": "t_junction", "rotation": 90 },
-    { "x": 0, "y": 3, "type": "connector", "shape": "cross", "rotation": 0 },
-    { "x": 1, "y": 3, "type": "connector", "shape": "t_junction", "rotation": 180 },
-    { "x": 2, "y": 3, "type": "connector", "shape": "bend", "rotation": 90 },
-    { "x": 3, "y": 3, "type": "connector", "shape": "straight", "rotation": 0 }
+    { "x": 3, "y": 0, "type": "connector", "shape": "bend", "rotation": 180 },
+    { "x": 4, "y": 0, "type": "connector", "shape": "bend", "rotation": 270 },
+    { "x": 3, "y": 1, "type": "connector", "shape": "bend", "rotation": 0 },
+    { "x": 4, "y": 1, "type": "connector", "shape": "bend", "rotation": 90 },
+    { "x": 0, "y": 3, "type": "connector", "shape": "bend", "rotation": 180 },
+    { "x": 1, "y": 3, "type": "connector", "shape": "bend", "rotation": 270 },
+    { "x": 3, "y": 3, "type": "connector", "shape": "bend", "rotation": 0 },
+    { "x": 4, "y": 3, "type": "connector", "shape": "bend", "rotation": 90 },
+    { "x": 0, "y": 4, "type": "connector", "shape": "bend", "rotation": 180 },
+    { "x": 1, "y": 4, "type": "connector", "shape": "straight", "rotation": 0 },
+    { "x": 3, "y": 4, "type": "connector", "shape": "straight", "rotation": 0 },
+    { "x": 4, "y": 4, "type": "connector", "shape": "bend", "rotation": 270 }
   ]
 }
