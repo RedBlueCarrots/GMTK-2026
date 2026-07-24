@@ -6,8 +6,8 @@ signal piece_rotated
 enum PipeShape {STRAIGHT, BEND, T_JUNCTION, CROSS, END}
 enum PipeType {SOURCE, CONNECTOR, SINK}
 
-@export var current_shape: PipeShape = PipeShape.STRAIGHT
-@export var current_type: PipeType = PipeType.CONNECTOR
+@export var shape: PipeShape = PipeShape.STRAIGHT
+@export var type: PipeType = PipeType.CONNECTOR
 
 @onready var main_sprite: Sprite2D = $PipeSprite
 @onready var highlight_sprite: Sprite2D = $HighlightSprite
@@ -29,12 +29,12 @@ func _ready() -> void:
 	update_connections()
 
 	# Sources are always considered connected and cannot be rotated
-	if current_type == PipeType.SOURCE or current_type == PipeType.SINK:
-		connected = true if current_type == PipeType.SOURCE else false
+	if type == PipeType.SOURCE or type == PipeType.SINK:
+		connected = true if type == PipeType.SOURCE else false
 		rotateable = false
 
 	highlight_sprite.visible = false
-	source_badge.visible = true if current_type == PipeType.SOURCE else false
+	source_badge.visible = true if type == PipeType.SOURCE else false
 
 
 func _on_mouse_entered() -> void:
@@ -49,7 +49,7 @@ func _on_mouse_exited() -> void:
 
 # Pipe initialization
 func setup_pipe() -> void:
-	match current_shape:
+	match shape:
 		PipeShape.STRAIGHT:
 			base_connections = [Vector2.UP, Vector2.DOWN]
 			main_sprite.texture = preload("res://Assets/Art/pipe-straight.svg")
