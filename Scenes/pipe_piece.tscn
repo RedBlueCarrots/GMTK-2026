@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dj8w"]
 size = Vector2(128, 128)
 
-[node name="Area2D" type="Area2D" unique_id=1157958654]
+[node name="PipePiece" type="Area2D" unique_id=1157958654]
 script = ExtResource("1_hgpvu")
 
 [node name="PipeSprite" type="Sprite2D" parent="." unique_id=1074849666]
