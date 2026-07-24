@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d3pfxetjghnu" path="res://Scenes/starvation_minigame.gd" id="1_lh5lg"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_v1qvn"]
 [ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="3_6uhjo"]
+[ext_resource type="Texture2D" uid="uid://ciicex2iixtmv" path="res://Assets/Art/seedbag.png" id="4_v1qvn"]
+[ext_resource type="Texture2D" uid="uid://bae557qoar7xc" path="res://Assets/Art/watering can.png" id="5_6uhjo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6nem"]
 atlas = ExtResource("3_6uhjo")
@@ -27,7 +29,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkdp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uhjo"]
 size = Vector2(48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6uhjo"]
@@ -66,8 +68,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmeow"]
-size = Vector2(24, 24)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkdp"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6nem"]
+size = Vector2(42, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtht1"]
+size = Vector2(48, 22)
 
 [node name="Starvation" type="Node2D" unique_id=1163763382]
 script = ExtResource("1_lh5lg")
@@ -87,11 +95,14 @@ animation = &"Dry"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field1" unique_id=776309512]
 visible = false
-shape = SubResource("RectangleShape2D_bhkdp")
+shape = SubResource("RectangleShape2D_6uhjo")
 
 [node name="Plant" type="AnimatedSprite2D" parent="Fields/Field1" unique_id=1788484333]
 sprite_frames = SubResource("SpriteFrames_rmeow")
 animation = &"Grow"
+
+[node name="Timer" type="Timer" parent="Fields/Field1" unique_id=1464086626]
+wait_time = 5.0
 
 [node name="Field2" type="Area2D" parent="Fields" unique_id=182215685]
 position = Vector2(51, 0)
@@ -110,6 +121,9 @@ shape = SubResource("RectangleShape2D_bhkdp")
 sprite_frames = SubResource("SpriteFrames_rmeow")
 animation = &"Grow"
 
+[node name="Timer" type="Timer" parent="Fields/Field2" unique_id=774562166]
+wait_time = 5.0
+
 [node name="Field3" type="Area2D" parent="Fields" unique_id=1577242957]
 position = Vector2(102, 0)
 
@@ -127,6 +141,9 @@ shape = SubResource("RectangleShape2D_bhkdp")
 sprite_frames = SubResource("SpriteFrames_rmeow")
 animation = &"Grow"
 
+[node name="Timer" type="Timer" parent="Fields/Field3" unique_id=939105783]
+wait_time = 5.0
+
 [node name="Tools" type="Node2D" parent="." unique_id=772869676]
 position = Vector2(0, -84)
 
@@ -134,31 +151,22 @@ position = Vector2(0, -84)
 position = Vector2(45, 140)
 
 [node name="SeedPacket" type="Sprite2D" parent="Tools/Seeds" unique_id=1138949401]
-modulate = Color(0.8469387, 0.34159583, 0, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_6uhjo")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("4_v1qvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Seeds" unique_id=1718295334]
-shape = SubResource("RectangleShape2D_rmeow")
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_v6nem")
 
 [node name="Water" type="Area2D" parent="Tools" unique_id=363043331]
 position = Vector2(96, 140)
 
 [node name="WateringCan" type="Sprite2D" parent="Tools/Water" unique_id=1429187552]
-modulate = Color(0.8469387, 0.34159583, 0, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_6uhjo")
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_6uhjo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Water" unique_id=846033797]
-shape = SubResource("RectangleShape2D_rmeow")
-
-[node name="Time" type="Area2D" parent="Tools" unique_id=586124381]
-position = Vector2(147, 140)
-
-[node name="Clock" type="Sprite2D" parent="Tools/Time" unique_id=1006736209]
-modulate = Color(0.8469387, 0.34159583, 0, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_6uhjo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Time" unique_id=2028545247]
-shape = SubResource("RectangleShape2D_rmeow")
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_rtht1")

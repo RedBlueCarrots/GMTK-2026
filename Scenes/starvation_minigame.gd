@@ -9,12 +9,14 @@ var click_buffer := 0
 func _ready() -> void:
 	for a in $Fields.get_children():
 		a.connect("input_event", field_input_event.bind(a))
+		a.get_node("Timer").connect("timeout", do_time.bind(a))
 	for a in $Tools.get_children():
 		a.connect("input_event", tool_input_event.bind(a))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if held_item:
 		held_item.global_position = get_global_mouse_position()
 	if held_item and Input.is_action_just_pressed("click") and not free_pass:
@@ -35,8 +37,11 @@ func field_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):
 		if held_item:
 			if held_item.name == "Seeds" and nod.get_child(2).frame == 0:
 				nod.get_child(2).frame = 1
-			if held_item.name == "Water":
+			if held_item.name == "Water" and nod.get_child(0).animation == "Dry":
 				nod.get_child(0).animation = "Wet"
+			if nod.get_child(2).frame == 1 and nod.get_child(0).animation == "Wet":
+				if !nod.get_node("Timer").paused:
+					nod.get_node("Timer").start()
 			click_buffer += 1
 	elif !held_item and event is InputEventMouseButton and event.pressed:
 		if nod.get_child(2).frame == 3:
@@ -44,17 +49,13 @@ func field_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):
 
 func tool_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):
 	if event is InputEventMouseButton and event.pressed:
-		if held_item == null and nod.name != "Time":
+		if held_item == null:
 			held_item = nod
 			held_old_pos = nod.position
 			free_pass = true
 			held_item.get_child(1).disabled = true
-		if held_item == null and nod.name == "Time":
-			do_time()
 
-func do_time():
-	for f : Area2D in $Fields.get_children():
-		if f.get_child(0).animation == "Wet" and f.get_child(2).frame > 0:
-			f.get_child(2).frame = clamp(f.get_child(2).frame+1, 0, 3)
-		f.get_child(0).animation = "Dry"
+func do_time(nod:Area2D):
+	if nod.get_child(0).animation == "Wet" and nod.get_child(2).frame > 0:
+		nod.get_child(2).frame = clamp(nod.get_child(2).frame+1, 0, 3)
 		
