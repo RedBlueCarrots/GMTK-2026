@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://cxvig8wmkgknd"]
+
+[ext_resource type="Script" uid="uid://d3pfxetjghnu" path="res://Scenes/starvation_minigame.gd" id="1_lh5lg"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_v1qvn"]
+[ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="3_6uhjo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6nem"]
+atlas = ExtResource("3_6uhjo")
+region = Rect2(14, 14, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rl35k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6nem")
+}],
+"loop": 1,
+"name": &"Dry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_6uhjo")
+}],
+"loop": 1,
+"name": &"Wet",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkdp"]
+size = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uhjo"]
+atlas = ExtResource("3_6uhjo")
+region = Rect2(0, 0, 2, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhkdp"]
+atlas = ExtResource("3_6uhjo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh5lg"]
+atlas = ExtResource("3_6uhjo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1qvn"]
+atlas = ExtResource("3_6uhjo")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmeow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uhjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhkdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh5lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1qvn")
+}],
+"loop": 1,
+"name": &"Grow",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmeow"]
+size = Vector2(24, 24)
+
+[node name="Starvation" type="Node2D" unique_id=1163763382]
+script = ExtResource("1_lh5lg")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_v1qvn")]
+
+[node name="Fields" type="Node2D" parent="." unique_id=908725622]
+position = Vector2(45, 140)
+
+[node name="Field1" type="Area2D" parent="Fields" unique_id=861158839]
+
+[node name="Dirt" type="AnimatedSprite2D" parent="Fields/Field1" unique_id=1296193817]
+modulate = Color(0.3, 0.10000002, 0, 1)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_rl35k")
+animation = &"Dry"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field1" unique_id=776309512]
+visible = false
+shape = SubResource("RectangleShape2D_bhkdp")
+
+[node name="Plant" type="AnimatedSprite2D" parent="Fields/Field1" unique_id=1788484333]
+sprite_frames = SubResource("SpriteFrames_rmeow")
+animation = &"Grow"
+
+[node name="Field2" type="Area2D" parent="Fields" unique_id=182215685]
+position = Vector2(51, 0)
+
+[node name="Dirt" type="AnimatedSprite2D" parent="Fields/Field2" unique_id=2083917281]
+modulate = Color(0.3, 0.10000002, 0, 1)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_rl35k")
+animation = &"Dry"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field2" unique_id=1683065773]
+visible = false
+shape = SubResource("RectangleShape2D_bhkdp")
+
+[node name="Plant" type="AnimatedSprite2D" parent="Fields/Field2" unique_id=751246977]
+sprite_frames = SubResource("SpriteFrames_rmeow")
+animation = &"Grow"
+
+[node name="Field3" type="Area2D" parent="Fields" unique_id=1577242957]
+position = Vector2(102, 0)
+
+[node name="Dirt" type="AnimatedSprite2D" parent="Fields/Field3" unique_id=496744798]
+modulate = Color(0.3, 0.10000002, 0, 1)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_rl35k")
+animation = &"Dry"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field3" unique_id=64315981]
+visible = false
+shape = SubResource("RectangleShape2D_bhkdp")
+
+[node name="Plant" type="AnimatedSprite2D" parent="Fields/Field3" unique_id=151380560]
+sprite_frames = SubResource("SpriteFrames_rmeow")
+animation = &"Grow"
+
+[node name="Tools" type="Node2D" parent="." unique_id=772869676]
+position = Vector2(0, -84)
+
+[node name="Seeds" type="Area2D" parent="Tools" unique_id=899654929]
+position = Vector2(45, 140)
+
+[node name="SeedPacket" type="Sprite2D" parent="Tools/Seeds" unique_id=1138949401]
+modulate = Color(0.8469387, 0.34159583, 0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_6uhjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Seeds" unique_id=1718295334]
+shape = SubResource("RectangleShape2D_rmeow")
+
+[node name="Water" type="Area2D" parent="Tools" unique_id=363043331]
+position = Vector2(96, 140)
+
+[node name="WateringCan" type="Sprite2D" parent="Tools/Water" unique_id=1429187552]
+modulate = Color(0.8469387, 0.34159583, 0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_6uhjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Water" unique_id=846033797]
+shape = SubResource("RectangleShape2D_rmeow")
+
+[node name="Time" type="Area2D" parent="Tools" unique_id=586124381]
+position = Vector2(147, 140)
+
+[node name="Clock" type="Sprite2D" parent="Tools/Time" unique_id=1006736209]
+modulate = Color(0.8469387, 0.34159583, 0, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_6uhjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Time" unique_id=2028545247]
+shape = SubResource("RectangleShape2D_rmeow")
