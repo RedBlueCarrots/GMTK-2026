@@ -1,7 +1,5 @@
 extends Minigame
 
-signal minigame_completed
-
 @export var grid_size: Vector2i = Vector2i(5, 5)
 @export var sink_count: int = 5
 @export_file("*.json") var level_data: String = ""
@@ -555,7 +553,6 @@ func _update_flow() -> void:
 	if all_sinks_connected and not _game_won:
 		_game_won = true
 		_lock_all_pieces()
-		minigame_completed.emit()
 		finish()
 
 
