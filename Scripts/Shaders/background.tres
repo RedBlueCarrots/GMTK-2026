@@ -15,9 +15,9 @@ seamless = true
 
 [resource]
 shader = ExtResource("1_t06cq")
-shader_parameter/GDT_MOUSE_POS = Vector2(0, 0)
 shader_parameter/EUROPA = ExtResource("2_v000f")
 shader_parameter/MASK = ExtResource("3_ayi13")
 shader_parameter/NOISE = SubResource("NoiseTexture2D_6bp64")
 shader_parameter/windSpeed = 1.0
+shader_parameter/rpm = 1.0
 shader_parameter/resolution = Vector2(320, 180)

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cymd00pl6hvlw" path="res://Scripts/event.gd" id="1_pn77i"]
 [ext_resource type="Shader" uid="uid://mf7y06ytbp50" path="res://Scripts/Shaders/circle.gdshader" id="1_u37vb"]
 [ext_resource type="Shader" uid="uid://bexdjsvjpm5bu" path="res://Scripts/Shaders/event.gdshader" id="2_27o3k"]
-[ext_resource type="PackedScene" uid="uid://b7jmjajbegxja" path="res://Scenes/test_minigame.tscn" id="4_efmpf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("1_u37vb")
@@ -278,8 +277,6 @@ render_target_update_mode = 4
 
 [node name="SceneSlot" type="Node2D" parent="Panel/SubViewportContainer/SubViewport" unique_id=900952312]
 z_index = 100
-
-[node name="Test_Minigame" parent="Panel/SubViewportContainer/SubViewport/SceneSlot" unique_id=1163763382 instance=ExtResource("4_efmpf")]
 
 [node name="Border" type="TextureRect" parent="Panel" unique_id=233669783]
 material = SubResource("ShaderMaterial_v000f")
