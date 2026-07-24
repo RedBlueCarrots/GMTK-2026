@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var crank: Node2D = $"."
+@onready var crank: Node2D = $Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var area_2d: Area2D = $Area2D
 
@@ -14,6 +14,7 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				is_dragging = true
+				print('yes1')
 			else:
 				is_dragging = false
 				mouse_clicking = false
@@ -22,6 +23,7 @@ func _input(event: InputEvent) -> void:
 	if is_dragging and mouse_clicking:
 		area_2d.look_at(get_global_mouse_position())
 		sprite_2d.reparent(area_2d)
+		print("yes final")
 		turning = true
 	else:
 		turning = false
@@ -31,3 +33,4 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				mouse_clicking = true
+				print("yes2")

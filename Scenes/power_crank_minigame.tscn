@@ -19,7 +19,7 @@ offset_top = 176.0
 offset_right = 295.9369
 offset_bottom = 203.0
 rotation = 4.712389
-step = 0.1
+step = 0.4
 show_percentage = false
 
 [node name="Percentage" type="Label" parent="." unique_id=469024556]
@@ -29,4 +29,10 @@ offset_right = 188.0
 offset_bottom = 31.0
 text = "0.0 %"
 
+[node name="Timer" type="Timer" parent="." unique_id=2092748897]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [connection signal="value_changed" from="Progress bar" to="." method="_on_progress_bar_value_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
