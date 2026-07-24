@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 signal minigame_completed
 
@@ -8,7 +8,7 @@ signal minigame_completed
 
 @onready var board: Node2D = $Board
 
-var cell_size: int = 128
+var cell_size: int = 38
 var grid: Array = []
 var source_position: Vector2i = Vector2i(-1, -1)
 var sink_positions: Array[Vector2i] = []
