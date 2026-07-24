@@ -75,7 +75,7 @@ size = Vector2(48, 48)
 size = Vector2(42, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtht1"]
-size = Vector2(48, 22)
+size = Vector2(48, 46)
 
 [node name="Starvation" type="Node2D" unique_id=1163763382]
 script = ExtResource("1_lh5lg")
@@ -160,7 +160,7 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_v6nem")
 
 [node name="Water" type="Area2D" parent="Tools" unique_id=363043331]
-position = Vector2(96, 140)
+position = Vector2(141, 140)
 
 [node name="WateringCan" type="Sprite2D" parent="Tools/Water" unique_id=1429187552]
 texture_filter = 1
@@ -168,5 +168,4 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_6uhjo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Water" unique_id=846033797]
-position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_rtht1")
