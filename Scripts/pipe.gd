@@ -11,10 +11,10 @@ enum PipeType {SOURCE, CONNECTOR, SINK}
 	set(new_value):
 		type = new_value
 		if source_badge:
-			source_badge.visible = true if type == PipeType.SOURCE else false
+			source_badge.visible = (type == PipeType.SOURCE)
+		rotateable = (type == PipeType.CONNECTOR)
 		if type == PipeType.SOURCE or type == PipeType.SINK:
-			connected = true if type == PipeType.SOURCE else false
-			rotateable = false
+			connected = (type == PipeType.SOURCE)
 
 @onready var main_sprite: Sprite2D = $PipeSprite
 @onready var highlight_sprite: Sprite2D = $HighlightSprite
