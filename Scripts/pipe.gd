@@ -7,7 +7,13 @@ enum PipeShape {STRAIGHT, BEND, T_JUNCTION, CROSS, END}
 enum PipeType {SOURCE, CONNECTOR, SINK}
 
 @export var shape: PipeShape = PipeShape.STRAIGHT
-@export var type: PipeType = PipeType.CONNECTOR
+@export var type: PipeType = PipeType.CONNECTOR:
+	set(new_value):
+		type = new_value
+		source_badge.visible = true if type == PipeType.SOURCE else false
+		if type == PipeType.SOURCE or type == PipeType.SINK:
+			connected = true if type == PipeType.SOURCE else false
+			rotateable = false
 
 @onready var main_sprite: Sprite2D = $PipeSprite
 @onready var highlight_sprite: Sprite2D = $HighlightSprite
