@@ -275,18 +275,18 @@ func _build_board_from_config(config: Dictionary) -> void:
 		var cell: Vector2i = Vector2i(int(p["x"]), int(p["y"]))
 		var piece: PipePiece = PIPE_PIECE_SCENE.instantiate()
 		piece.position = _cell_to_pixel(cell)
-		piece.piece_rotated.connect(_on_piece_rotated)
 
-		piece.type = _parse_type(p["type"])
-		piece.shape = _parse_shape(p["shape"])
-		piece.rotation_degrees = float(p.get("rotation", 0))
-
-		piece.setup_pipe()
-		piece.update_connections()
-
+		# Add to tree BEFORE configuring so @onready nodes are available.
 		grid[cell.x][cell.y] = piece
 		board.add_child(piece)
 		pieces_by_cell[cell] = piece
+
+		piece.piece_rotated.connect(_on_piece_rotated)
+		piece.type = _parse_type(p["type"])
+		piece.shape = _parse_shape(p["shape"])
+		piece.rotation_degrees = float(p.get("rotation", 0))
+		piece.setup_pipe()
+		piece.update_connections()
 
 	# For random mode, scramble connector pieces
 	if level_data.is_empty():
