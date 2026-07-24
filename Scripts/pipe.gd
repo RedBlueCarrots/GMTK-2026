@@ -10,8 +10,7 @@ enum PipeType {SOURCE, CONNECTOR, SINK}
 @export var type: PipeType = PipeType.CONNECTOR:
 	set(new_value):
 		type = new_value
-		if source_badge:
-			source_badge.visible = true if type == PipeType.SOURCE else false
+		source_badge.visible = true if type == PipeType.SOURCE else false
 		if type == PipeType.SOURCE or type == PipeType.SINK:
 			connected = true if type == PipeType.SOURCE else false
 			rotateable = false
@@ -41,8 +40,7 @@ func _ready() -> void:
 		rotateable = false
 
 	highlight_sprite.visible = false
-	if source_badge:
-		source_badge.visible = true if type == PipeType.SOURCE else false
+	source_badge.visible = true if type == PipeType.SOURCE else false
 
 
 func _on_mouse_entered() -> void:
