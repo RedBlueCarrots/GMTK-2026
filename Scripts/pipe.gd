@@ -1,6 +1,8 @@
 extends Area2D
 class_name PipePiece
 
+signal piece_rotated
+
 enum PipeShape {STRAIGHT, BEND, T_JUNCTION, CROSS, END}
 enum PipeType {SOURCE, CONNECTOR, SINK}
 
@@ -86,8 +88,7 @@ func rotate_piece() -> void:
 		rotation_degrees -= 360
 
 	update_connections()
-
-	# will emit a custom signal for the board to check the board state
+	piece_rotated.emit()
 
 
 func update_connections() -> void:
