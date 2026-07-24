@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://ds3g6g75tbbyi"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
+bg_color = Color(0, 0, 0, 0.14509805)
+
 [sub_resource type="GDScript" id="GDScript_sprlj"]
 script/source = "extends HBoxContainer
 
@@ -41,13 +44,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="." unique_id=1349921466]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.21450618
+
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1619108529]
@@ -66,6 +70,7 @@ anchors_preset = -1
 anchor_top = 0.21388888
 anchor_right = 0.0875
 anchor_bottom = 0.30277777
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_3j6hh")
 metadata/_edit_use_anchors_ = true
 

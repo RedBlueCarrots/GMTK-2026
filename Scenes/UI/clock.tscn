@@ -4,20 +4,97 @@
 script/source = "extends Control
 
 var ref: Countdown
-@export var title: Label
-@export var bar: ProgressBar
+@export var title: RichTextLabel
+@export var description: RichTextLabel
 
+var progress: = 0. # ranges from 0 to 1
 
 func set_ref(new: Countdown):
-	title.text = new.display_name
 	ref = new
+	title.clear()
+	title.append_text(\"[wave]%s\" % ref.display_name)
+	progress = clampf(ref.time_left / ref.time_max, 0, 1)
+	
 
 func _process(delta: float) -> void:
 	if !ref: return
-	bar.value = ref.time_left / ref.time_max
+	progress = lerpf(progress, clampf(ref.time_left / ref.time_max, 0, 1), delta * 7)
 "
 
-[node name="clock" type="Control" unique_id=394019140 node_paths=PackedStringArray("title", "bar")]
+[sub_resource type="GDScript" id="GDScript_vdmpd"]
+script/source = "extends Panel
+
+var tween: Tween
+
+func _ready():
+	modulate = Color.TRANSPARENT
+
+func _on_clock_mouse_entered() -> void:
+	set_show(true)
+
+func _on_clock_mouse_exited() -> void:
+	set_show(false)
+
+func set_show(val: bool):
+	if tween: tween.kill()
+	tween = create_tween().set_ease(Tween.EASE_OUT)
+	if val:
+		tween.set_trans(Tween.TRANS_ELASTIC)
+	else:
+		tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, \"offset_transform_position_ratio:y\", 1 if val else 0, 0.5)
+	tween.parallel().tween_property(self, \"modulate\", Color.WHITE if val else Color.TRANSPARENT, 1.)
+"
+
+[sub_resource type="GDScript" id="GDScript_ue72h"]
+script/source = "@tool
+extends Control
+
+@export var parent: Control
+
+const OUTER_CIRCLE_WIDTH: float = 3 ## Outer circle stroke width
+const CIRCLE_INSET: float = 8 ## Outer circle offset from boundary
+const ARM_THICKNESS: float = 4 ## Arm stroke width
+const ARM_INSET: float = 12 ## Arm offset from boundary
+const CLOCK_COLOR: Color = Color(\"424242\") ## Clock colour
+const CLOCK_BG: Color = Color.WHITE ## Clock backing colour
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+		return
+	if parent.ref:
+		queue_redraw()
+
+func _draw() -> void:
+	var arm_rot = -0.25
+	if !Engine.is_editor_hint():
+		if parent.ref:
+			arm_rot = -parent.progress - 0.25
+	var width = min(size.y, size.x)
+	var center = size/2.
+	draw_set_transform(center)
+	# Outer Circle
+	draw_circle(Vector2.ZERO, width/2 - OUTER_CIRCLE_WIDTH, CLOCK_BG)
+	draw_circle(
+		Vector2.ZERO,
+		width/2 - OUTER_CIRCLE_WIDTH,
+		CLOCK_COLOR,
+		false,
+		OUTER_CIRCLE_WIDTH)
+	# Dots
+	for i in range(12):
+		var circle_center = Vector2.RIGHT.rotated(PI * i / 6) * (width/2 - CIRCLE_INSET)
+		draw_circle(circle_center,
+			2,
+			CLOCK_COLOR)
+	# Arm
+	draw_set_transform(center, 2 * PI * arm_rot)
+	var rect = Rect2(0, -ARM_THICKNESS/2, width/2 - ARM_INSET, ARM_THICKNESS)
+	draw_rect(rect, CLOCK_COLOR)
+"
+
+[node name="clock" type="Control" unique_id=394019140 node_paths=PackedStringArray("title", "description")]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -26,26 +103,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_17d78")
-title = NodePath("Label")
-bar = NodePath("ProgressBar")
+title = NodePath("VBoxContainer/title")
+description = NodePath("text/Description")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=708458459]
+[node name="text" type="Panel" parent="." unique_id=1240635283]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.303125
+anchor_top = 0.76111114
+anchor_right = 0.696875
+anchor_bottom = 1.0000001
+offset_bottom = 3.0517578e-05
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+mouse_filter = 1
+script = SubResource("GDScript_vdmpd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="RichTextLabel" parent="text" unique_id=1239479307]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-max_value = 1.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="." unique_id=89571964]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_transform_enabled = true
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
 text = "i am a clock"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1591894112]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="clock display" type="Control" parent="VBoxContainer" unique_id=1842183297 node_paths=PackedStringArray("parent")]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+script = SubResource("GDScript_ue72h")
+parent = NodePath("../..")
+
+[node name="title" type="RichTextLabel" parent="VBoxContainer" unique_id=59758592]
+layout_mode = 2
+bbcode_enabled = true
+text = "default text"
+fit_content = true
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="text" method="_on_clock_mouse_entered"]
+[connection signal="mouse_exited" from="." to="text" method="_on_clock_mouse_exited"]

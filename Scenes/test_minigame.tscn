@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b7jmjajbegxja"]
+
+[ext_resource type="Script" uid="uid://cduyh2pugj0so" path="res://Scripts/test_minigame.gd" id="1_l22nt"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="1_ykikp"]
+
+[node name="Test_Minigame" type="Node2D" unique_id=1163763382]
+script = ExtResource("1_l22nt")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("1_ykikp")]
+
+[node name="Win" type="Button" parent="." unique_id=942640841]
+offset_right = 73.0
+offset_bottom = 53.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(96, 96)
+offset_transform_position_ratio = Vector2(-0.5, -0.5)
+offset_transform_visual_only = false
+theme_override_font_sizes/font_size = 32
+text = "WIN"
+
+[connection signal="pressed" from="Win" to="." method="_on_win_pressed"]

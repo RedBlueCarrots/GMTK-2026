@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cbkyray7c10o"]
+
+[ext_resource type="Script" uid="uid://bneshft44r73a" path="res://Scripts/minigame_outline.gd" id="1_rl17t"]
+
+[sub_resource type="Gradient" id="Gradient_gojtc"]
+colors = PackedColorArray(1, 0, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dq4g0"]
+gradient = SubResource("Gradient_gojtc")
+width = 192
+height = 192
+
+[node name="MinigameOutline" type="Sprite2D" unique_id=959946983]
+texture = SubResource("GradientTexture2D_dq4g0")
+offset = Vector2(96, 96)
+script = ExtResource("1_rl17t")

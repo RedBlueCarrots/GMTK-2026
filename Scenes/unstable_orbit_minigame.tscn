@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://dmocsibu551w4"]
+
+[ext_resource type="Script" uid="uid://c560vtwfyfep6" path="res://Scripts/unstable_orbit_minigame.gd" id="1_hvy3o"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_hvy3o"]
+[ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="2_xsh7v"]
+
+[sub_resource type="Gradient" id="Gradient_hvy3o"]
+offsets = PackedFloat32Array(0.006024096, 0.4698795, 0.5, 0.5301205, 1)
+colors = PackedColorArray(0.16, 0.078933336, 0.031999998, 1, 0.37, 0.18253334, 0.07399999, 1, 0.37, 0.18253334, 0.07399999, 1, 0.37, 0.18253334, 0.07399999, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rl35k"]
+gradient = SubResource("Gradient_hvy3o")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_m676f"]
+offsets = PackedFloat32Array(0, 0.75301206)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hvy3o"]
+gradient = SubResource("Gradient_m676f")
+width = 96
+height = 96
+fill = 1
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_khoo7"]
+offsets = PackedFloat32Array(0.57228917, 0.61445785, 0.6686747)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_voyxl"]
+gradient = SubResource("Gradient_khoo7")
+width = 30
+height = 30
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_hvy3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meteor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(103.00002, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meteor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [34.906586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meteor:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_khoo7"]
+resource_name = "start"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meteor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(204.99998, 54.999996), Vector2(103.00002, 54)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meteor:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 34.906586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meteor:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m676f"]
+_data = {
+&"RESET": SubResource("Animation_hvy3o"),
+&"start": SubResource("Animation_khoo7")
+}
+
+[node name="Unstable_Orbit" type="Node2D" unique_id=1163763382]
+script = ExtResource("1_hvy3o")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_hvy3o")]
+
+[node name="Planet" type="Sprite2D" parent="." unique_id=518461867]
+texture_filter = 1
+position = Vector2(96, 206)
+scale = Vector2(12, 12)
+texture = SubResource("GradientTexture2D_rl35k")
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=2125254964]
+z_index = -3
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_hvy3o")
+centered = false
+
+[node name="Orbit" type="Sprite2D" parent="." unique_id=2093435258]
+texture_filter = 1
+position = Vector2(96, 206)
+scale = Vector2(12, 12)
+texture = SubResource("GradientTexture2D_voyxl")
+
+[node name="Satellite" type="Sprite2D" parent="." unique_id=713642756]
+position = Vector2(95, 54)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_xsh7v")
+
+[node name="Timer" type="Timer" parent="." unique_id=719088056]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="HSlider" type="HSlider" parent="." unique_id=848199702]
+custom_minimum_size = Vector2(192, 24)
+custom_maximum_size = Vector2(192, 24)
+anchors_preset = -1
+offset_top = 168.0
+offset_right = 192.0
+offset_bottom = 192.0
+min_value = -0.2
+max_value = 0.2
+step = 0.005
+
+[node name="Meteor" type="Sprite2D" parent="." unique_id=1408903891]
+visible = false
+modulate = Color(1, 0, 0, 1)
+position = Vector2(103.00002, 54)
+rotation = 34.906586
+scale = Vector2(0.1, 0.1)
+skew = 0.34906584
+texture = ExtResource("2_xsh7v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=608359489]
+libraries/ = SubResource("AnimationLibrary_m676f")
+autoplay = &"start"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
