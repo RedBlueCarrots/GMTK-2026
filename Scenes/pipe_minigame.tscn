@@ -12,10 +12,6 @@ texture = ExtResource("2_fdmy0")
 centered = false
 
 [node name="Board" type="Node2D" parent="." unique_id=1164436376]
-position = Vector2(96, 96)
+position = Vector2(20, 20)
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_hkjiq")]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1992755724]
-offset = Vector2(97.075, 94.17)
-zoom = Vector2(1.64, 1.64)

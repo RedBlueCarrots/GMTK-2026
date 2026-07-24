@@ -337,10 +337,7 @@ func _shuffle_cells() -> Array[Vector2i]:
 
 
 func _cell_to_pixel(cell: Vector2i) -> Vector2:
-	var board_width: int = (grid_size.x - 1) * cell_size
-	var board_height: int = (grid_size.y - 1) * cell_size
-	var offset: Vector2 = Vector2(-board_width / 2.0, -board_height / 2.0)
-	return offset + Vector2(cell.x * cell_size, cell.y * cell_size)
+	return Vector2(cell.x * cell_size, cell.y * cell_size)
 
 
 func _pick_shared_source_direction(from_source: Vector2i, sinks: Array[Vector2i]) -> Vector2i:
@@ -559,6 +556,7 @@ func _update_flow() -> void:
 		_game_won = true
 		_lock_all_pieces()
 		minigame_completed.emit()
+		finish()
 
 
 func _lock_all_pieces() -> void:
@@ -570,8 +568,4 @@ func _lock_all_pieces() -> void:
 
 
 func _pixel_to_cell(pixel: Vector2) -> Vector2i:
-	var board_width: int = (grid_size.x - 1) * cell_size
-	var board_height: int = (grid_size.y - 1) * cell_size
-	var offset: Vector2 = Vector2(-board_width / 2.0, -board_height / 2.0)
-	var relative: Vector2 = pixel - offset
-	return Vector2i(round(relative.x / cell_size), round(relative.y / cell_size))
+	return Vector2i(round(pixel.x / cell_size), round(pixel.y / cell_size))
