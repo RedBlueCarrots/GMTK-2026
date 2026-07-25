@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ciijuesdpn0ng" path="res://Scripts/launch_codes_minigame.gd" id="1_lpcee"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_yamr6"]
+[ext_resource type="Texture2D" uid="uid://6t33pernhdew" path="res://Assets/Art/background.png" id="3_yamr6"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_c4dyq"]
-specular_color = Color(0, 0.23529412, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yamr6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ut0s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="launch_codes_minigame" type="Node2D" unique_id=298174657]
 script = ExtResource("1_lpcee")
@@ -12,9 +16,9 @@ script = ExtResource("1_lpcee")
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yamr6")]
 
 [node name="TVScreen" type="Sprite2D" parent="." unique_id=1270445814]
-position = Vector2(96, 71.75)
-scale = Vector2(141.683, 116.5)
-texture = SubResource("CanvasTexture_c4dyq")
+position = Vector2(95, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("3_yamr6")
 
 [node name="input" type="LineEdit" parent="." unique_id=649147995]
 unique_name_in_owner = true
@@ -23,22 +27,26 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 61.75
-offset_top = 90.0
-offset_right = 130.25
-offset_bottom = 121.00008
+offset_left = 69.0
+offset_top = 86.0
+offset_right = 137.5
+offset_bottom = 117.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_yamr6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2ut0s")
+text = "11111"
 
 [node name="code" type="RichTextLabel" parent="." unique_id=1424762241]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 66.5
-offset_top = 50.0
-offset_right = 125.5
-offset_bottom = 73.0
+offset_left = 69.0
+offset_top = 60.0
+offset_right = 128.0
+offset_bottom = 83.0
 grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "11111"
@@ -48,10 +56,10 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 25.0
-offset_top = 14.0
-offset_right = 79.0
-offset_bottom = 32.0
+offset_left = 38.0
+offset_top = 31.0
+offset_right = 92.0
+offset_bottom = 49.0
 grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 12

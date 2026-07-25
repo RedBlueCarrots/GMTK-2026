@@ -12,6 +12,7 @@ const characters = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()[]|\\></?`~\'\
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%input.max_length = code_length
+	%input.call_deferred("grab_focus")
 	update_remaining()
 	reset_code()
 
