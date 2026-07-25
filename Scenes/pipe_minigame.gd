@@ -13,9 +13,9 @@ var board_range: Array = range(1, board_size.x-1)
 
 # configs
 var cell_size: float = 38.4
-var source_position: Vector2i = Vector2i(ceil((board_size.x as float)/2), 0)
+var source_position: Vector2i = Vector2i(0, ceil((board_size.y as float)/2))
 var source_direction: Vector2i = Vector2i.RIGHT
-var sink_position: Vector2i = Vector2i(ceil((board_size.x as float)/2), board_size.y-1)
+var sink_position: Vector2i = Vector2i(board_size.x-1, ceil((board_size.y as float)/2))
 var sink_direction: Vector2i = Vector2i.LEFT
 
 # states
