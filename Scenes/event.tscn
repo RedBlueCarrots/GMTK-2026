@@ -1,18 +1,17 @@
 [gd_scene format=3 uid="uid://b1wi3i45d66tc"]
 
-[ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="1_dww88"]
 [ext_resource type="Script" uid="uid://cymd00pl6hvlw" path="res://Scripts/event.gd" id="1_pn77i"]
 [ext_resource type="Shader" uid="uid://mf7y06ytbp50" path="res://Scripts/Shaders/circle.gdshader" id="1_u37vb"]
+[ext_resource type="Texture2D" uid="uid://yotc5uueyat4" path="res://Assets/Art/Icons/starvation.png" id="3_sg3nx"]
 [ext_resource type="Shader" uid="uid://bvetwepbd13i6" path="res://Scripts/Shaders/eventborder.gdshader" id="4_efmpf"]
 [ext_resource type="Texture2D" uid="uid://ctbyfv4h8filk" path="res://Assets/Art/popup_outline.png" id="4_pn77i"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_sg3nx"]
-[ext_resource type="PackedScene" uid="uid://cxvig8wmkgknd" path="res://Scenes/starvation_minigame.tscn" id="6_txmnl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("1_u37vb")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmeow"]
-radius = 14.035668
+radius = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgb6v"]
 shader = ExtResource("4_efmpf")
@@ -239,6 +238,7 @@ _data = {
 }
 
 [node name="Event" type="Node2D" unique_id=150192178]
+texture_filter = 1
 script = ExtResource("1_pn77i")
 icon = "icon.svg"
 minigame_scene = "test_minigame"
@@ -247,8 +247,8 @@ minigame_scene = "test_minigame"
 
 [node name="Sprite2D" type="Sprite2D" parent="Icon" unique_id=1625414745]
 material = SubResource("ShaderMaterial_27o3k")
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_dww88")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_sg3nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon" unique_id=1462742081]
 shape = SubResource("CircleShape2D_rmeow")
@@ -288,9 +288,8 @@ render_target_update_mode = 4
 z_index = 100
 material = SubResource("ShaderMaterial_efmpf")
 
-[node name="Starvation" parent="Panel/SubViewportContainer/SubViewport/SceneSlot" unique_id=1163763382 instance=ExtResource("6_txmnl")]
-
 [node name="Border" type="TextureRect" parent="Panel" unique_id=233669783]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15

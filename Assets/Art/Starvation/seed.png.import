@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciicex2iixtmv"
-path="res://.godot/imported/seedbag.png-d37aa6a8ec2186e480e95efb6713e7e1.ctex"
+uid="uid://dp5gtc0eoieol"
+path="res://.godot/imported/seed.png-ae198a88dbe9c0aa024fdcd0d4de4b13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/seedbag.png"
-dest_files=["res://.godot/imported/seedbag.png-d37aa6a8ec2186e480e95efb6713e7e1.ctex"]
+source_file="res://Assets/Art/Starvation/seed.png"
+dest_files=["res://.godot/imported/seed.png-ae198a88dbe9c0aa024fdcd0d4de4b13.ctex"]
 
 [params]
 
