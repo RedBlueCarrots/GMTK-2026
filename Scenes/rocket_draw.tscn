@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cbhoovmh8px8c" path="res://Scenes/rocket_draw.gd" id="1_8f0ts"]
 [ext_resource type="Texture2D" uid="uid://q1soj5ej5v3g" path="res://Assets/Art/mask.png" id="1_t4abc"]
 [ext_resource type="PackedScene" uid="uid://b4jq2i4rsmtns" path="res://Scenes/rocket_draw_pixel.tscn" id="2_pob6b"]
+[ext_resource type="Texture2D" uid="uid://dubgcpxe16fla" path="res://Assets/Art/Rocket/rocket.png" id="4_ncd1k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pob6b"]
 texture = ExtResource("1_t4abc")
@@ -491,6 +492,7 @@ fill_from = Vector2(1, 0)
 size = Vector2(8, 8)
 
 [node name="Rocket_Draw" type="Node2D" unique_id=1874181638]
+texture_filter = 1
 script = ExtResource("1_8f0ts")
 
 [node name="Target" type="TileMapLayer" parent="." unique_id=1890199769]
@@ -508,3 +510,7 @@ texture = SubResource("GradientTexture2D_rmeow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mouse" unique_id=1535396907]
 shape = SubResource("RectangleShape2D_rmeow")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1428163675]
+scale = Vector2(2, 2)
+texture = ExtResource("4_ncd1k")
