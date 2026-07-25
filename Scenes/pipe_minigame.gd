@@ -58,7 +58,7 @@ func generate_board() -> void:
 				piece.shape = _generate_shape(true, _is_straight(cell, path))
 			else:
 				piece.shape = _generate_shape()
-			piece.rotation_degrees = [0, 90, 180, 240].pick_random()
+			piece.rotation_degrees = [0, 90, 180, 270].pick_random()
 			piece.setup_pipe()
 			grid[x][y] = piece
 
