@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://ds3g6g75tbbyi"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjvhh"]
-bg_color = Color(0, 0, 0, 0.14509805)
-
 [sub_resource type="GDScript" id="GDScript_sprlj"]
 script/source = "extends HBoxContainer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Gamestate.new_countdown.connect(new_timer)
+	#Gamestate.new_countdown.connect(new_timer)
+	pass
 
 
 func new_timer(ref: Countdown):
@@ -28,7 +26,8 @@ script/source = "extends Label
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = get_time_string(Gamestate.time)
+	#text = get_time_string(Gamestate.time)
+	pass
 
 
 func get_time_string(time: float) -> String:
@@ -51,7 +50,6 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.21450618
-
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1619108529]

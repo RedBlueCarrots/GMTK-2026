@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2k2utigdsije"]
 
-[ext_resource type="Script" path="res://water_filling_mini_game.gd" id="1_14k16"]
+[ext_resource type="Script" uid="uid://5sqv5jtytk53" path="res://Scripts/water_filling_mini_game.gd" id="1_14k16"]
 
 [node name="WaterFillingMiniGame" type="Node2D" unique_id=1739296236]
 script = ExtResource("1_14k16")
@@ -73,3 +73,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 121
 text = "_"
 horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1420404914]
+zoom = Vector2(0.2, 0.2)

@@ -10,7 +10,7 @@ var hovered:bool = false:
 var tween: Tween
 
 func on_click():
-	Gamestate.change_countdown(Countdown.Type.ALIENS, 1)
+	#Gamestate.change_countdown(Countdown.Type.ALIENS, 1)
 	pass
 
 ## sets the building to be highlighted or not dependent on current hovered state

@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 # Nodes to call in the script
 @onready var water_node = get_node("Game/Water")
@@ -34,9 +34,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	water_fill.text = str(snapped(seconds_left, 1)) + " Seconds"
 	
-	seconds_left -= delta
+	seconds_left = get_parent().get_parent().get_node("Timer").time_left
 	
-	water_node.size.y = seconds_left * 6
+	water_node.size.y = lerp(water_node.size.y, seconds_left * 6, pow(0.1, delta))
 	
 	if Input.is_action_just_pressed(keys_to_press[press_key]): # Function restarts when key is pressed
 		random_key_press()
@@ -49,4 +49,4 @@ func _process(delta: float) -> void:
 	if seconds_left >= 60:
 		finish()
 	elif seconds_left <= 0:
-		failed()
+		fail()
