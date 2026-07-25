@@ -1,78 +1,128 @@
 [gd_scene format=3 uid="uid://d2k2utigdsije"]
 
 [ext_resource type="Script" uid="uid://5sqv5jtytk53" path="res://Scripts/water_filling_mini_game.gd" id="1_14k16"]
+[ext_resource type="Texture2D" uid="uid://dhxwsubnn4x2f" path="res://Assets/Art/Dehydration/tank.png" id="2_p5hib"]
+[ext_resource type="Texture2D" uid="uid://bc1ghu1yfk645" path="res://Assets/Art/Dehydration/keycap.png" id="3_oe1hj"]
+[ext_resource type="Texture2D" uid="uid://bh1vd8dpdtvkd" path="res://Assets/Art/Dehydration/background.png" id="3_q71v0"]
+[ext_resource type="Texture2D" uid="uid://d15t186rduf4q" path="res://Assets/Art/Dehydration/display.png" id="4_2wdws"]
 
-[node name="WaterFillingMiniGame" type="Node2D" unique_id=1739296236]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgu4j"]
+atlas = ExtResource("2_p5hib")
+region = Rect2(0, 216, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe1hj"]
+atlas = ExtResource("2_p5hib")
+region = Rect2(0, 0, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wdws"]
+atlas = ExtResource("2_p5hib")
+region = Rect2(0, 72, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q71v0"]
+atlas = ExtResource("2_p5hib")
+region = Rect2(0, 144, 48, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cq0k"]
+atlas = ExtResource("3_oe1hj")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jowxw"]
+atlas = ExtResource("3_oe1hj")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xskp"]
+atlas = ExtResource("3_oe1hj")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdw32"]
+atlas = ExtResource("4_2wdws")
+region = Rect2(0, 0, 40, 34)
+
+[sub_resource type="GDScript" id="GDScript_2wdws"]
+script/source = "extends Sprite2D
+
+@export var water_filling_mini_game: Minigame
+@export var number_1: Sprite2D
+@export var number_2: Sprite2D
+
+@onready var spritesheet_size:Vector2 = $\".\".texture.region.size
+
+func set_digit(num: Sprite2D, val: int):
+	num.texture.region = Rect2(spritesheet_size * Vector2(val, 1), spritesheet_size)
+
+func _process(_delta: float) -> void:
+	if water_filling_mini_game.seconds_left > 99:
+		set_digit(number_1, 9)
+		set_digit(number_2, 9)
+	var stringed_form = \"%3d\" % water_filling_mini_game.seconds_left
+	set_digit(number_1, int(stringed_form[1]))
+	set_digit(number_2, int(stringed_form[2]))
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw77b"]
+atlas = ExtResource("4_2wdws")
+region = Rect2(0, 34, 40, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vpt4"]
+atlas = ExtResource("4_2wdws")
+region = Rect2(0, 34, 40, 34)
+
+[node name="WaterFillingMiniGame" type="Node2D" unique_id=1739296236 node_paths=PackedStringArray("z_key", "x_key", "waterlevel")]
 script = ExtResource("1_14k16")
+z_key = NodePath("Game/Z key")
+x_key = NodePath("Game/x key")
+waterlevel = NodePath("Game/tank/tank_bg/waterlevel")
 
 [node name="Game" type="Node2D" parent="." unique_id=1759602012]
+position = Vector2(48, 48)
 
-[node name="BG" type="ColorRect" parent="Game" unique_id=404139819]
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="tank" type="Sprite2D" parent="Game" unique_id=2065388118]
+position = Vector2(-23, 0)
+texture = SubResource("AtlasTexture_pgu4j")
 
-[node name="WaterFill" type="Label" parent="Game" unique_id=1766310269]
-offset_top = -1.0
-offset_right = 1154.0
-offset_bottom = 60.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 44
-text = "__ Seconds"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="tank_bg" type="Sprite2D" parent="Game/tank" unique_id=1627981109]
+show_behind_parent = true
+clip_children = 2
+texture = SubResource("AtlasTexture_oe1hj")
 
-[node name="Water" type="ColorRect" parent="Game" unique_id=37401569]
-offset_left = 484.0
-offset_top = 630.0
-offset_right = 844.0
-offset_bottom = 1001.0
-rotation = 3.1415927
-color = Color(0.39215687, 0.5882353, 1, 1)
+[node name="waterlevel" type="Sprite2D" parent="Game/tank/tank_bg" unique_id=1588019544]
+texture = SubResource("AtlasTexture_2wdws")
 
-[node name="Container" type="Node2D" parent="Game" unique_id=1040507941]
-position = Vector2(-278, 73)
+[node name="waterlevel2" type="Sprite2D" parent="Game/tank/tank_bg/waterlevel" unique_id=2003459825]
+texture = SubResource("AtlasTexture_q71v0")
 
-[node name="WaterMain" type="Node2D" parent="Game/Container" unique_id=1867846135]
+[node name="size" type="Sprite2D" parent="Game" unique_id=650526633]
+z_index = -2
+texture = ExtResource("3_q71v0")
 
-[node name="ContainerLayer1" type="ColorRect" parent="Game/Container/WaterMain" unique_id=603115297]
-offset_left = 395.0
-offset_top = 36.0
-offset_right = 406.0
-offset_bottom = 422.0
-scale = Vector2(1, 1.36)
-color = Color(0, 0, 0, 1)
+[node name="Z key" type="Sprite2D" parent="Game" unique_id=1575247502]
+position = Vector2(16, 19)
+texture = SubResource("AtlasTexture_0cq0k")
 
-[node name="ContainerLayer2" type="ColorRect" parent="Game/Container/WaterMain" unique_id=99777816]
-offset_left = 755.0
-offset_top = 36.0
-offset_right = 766.0
-offset_bottom = 422.0
-scale = Vector2(1, 1.36)
-color = Color(0, 0, 0, 1)
+[node name="letter" type="Sprite2D" parent="Game/Z key" unique_id=1026509193]
+texture = SubResource("AtlasTexture_jowxw")
 
-[node name="ContainerLayer3" type="ColorRect" parent="Game/Container/WaterMain" unique_id=1441265437]
-offset_left = 404.0
-offset_top = 549.0
-offset_right = 759.0
-offset_bottom = 561.0
-color = Color(0, 0, 0, 1)
+[node name="x key" type="Sprite2D" parent="Game" unique_id=1327585109]
+position = Vector2(37, 19)
+texture = SubResource("AtlasTexture_0cq0k")
 
-[node name="ContainerLayer4" type="ColorRect" parent="Game/Container/WaterMain" unique_id=721979420]
-offset_left = 405.0
-offset_top = 36.0
-offset_right = 760.0
-offset_bottom = 48.0
-color = Color(0, 0, 0, 1)
+[node name="letter" type="Sprite2D" parent="Game/x key" unique_id=899667676]
+texture = SubResource("AtlasTexture_6xskp")
 
-[node name="Key To Press" type="Label" parent="Game" unique_id=232370096]
-offset_left = 517.0
-offset_top = 437.0
-offset_right = 838.0
-offset_bottom = 683.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 121
-text = "_"
-horizontal_alignment = 1
+[node name="display" type="Sprite2D" parent="Game" unique_id=1334730509 node_paths=PackedStringArray("water_filling_mini_game", "number_1", "number_2")]
+position = Vector2(27, -22)
+texture = SubResource("AtlasTexture_mdw32")
+script = SubResource("GDScript_2wdws")
+water_filling_mini_game = NodePath("../..")
+number_1 = NodePath("number1")
+number_2 = NodePath("number2")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1420404914]
-zoom = Vector2(0.2, 0.2)
+[node name="number1" type="Sprite2D" parent="Game/display" unique_id=1684896886]
+z_index = 1
+position = Vector2(-6, 0)
+texture = SubResource("AtlasTexture_bw77b")
+
+[node name="number2" type="Sprite2D" parent="Game/display" unique_id=931085230]
+z_index = 1
+position = Vector2(9, 0)
+texture = SubResource("AtlasTexture_2vpt4")
