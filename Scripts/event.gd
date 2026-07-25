@@ -2,23 +2,30 @@ extends Node2D
 
 var old_pos : Vector2
 @export var icon := ""
-@export var minigame_scene := ""
+@export var new_scene : PackedScene
 @export var persistent := false
 var is_open = false
-@onready var new_scene : PackedScene = load("res://Scenes/"+minigame_scene+".tscn")
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	old_pos = position
-	$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
-	
+	#old_pos = position
+	#$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
+	pass
 
 func create_minigame():
 	var minigame : Minigame = new_scene.instantiate()
 	$Panel/SubViewportContainer/SubViewport/SceneSlot.add_child(minigame)
-	minigame.connect("finished", close_remove)
+	minigame.connect("finished", finish_success)
 	minigame.connect("failed", close_remove)
 	minigame.connect("closed", close)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	persistent = true
+	$Icon/Label.text = str(int(ceil($Panel/SubViewportContainer/SubViewport/Timer.time_left)))
 
 
 func _on_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -38,7 +45,6 @@ func open():
 	tw.play()
 
 func close():
-	print("close")
 	is_open = false
 	$AnimationPlayer.play("FadeOut")
 	var tw = get_tree().create_tween()
@@ -47,8 +53,15 @@ func close():
 	if !persistent:
 		reset()
 
+func finish_success():
+	if is_open:
+		close()
+	reset()
+	$Panel/SubViewportContainer/SubViewport/Timer.start(0)
+
 func close_remove():
-	close()
+	if is_open:
+		close()
 	reset()
 func reset():
 	$Panel/SubViewportContainer/SubViewport/SceneSlot.get_child(0).queue_free()

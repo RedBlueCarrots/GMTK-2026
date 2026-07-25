@@ -15,10 +15,6 @@ run/main_scene="uid://byxcun2xd52fx"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Gamestate="*uid://bcgx6km506n22"
-
 [display]
 
 window/size/viewport_width=640

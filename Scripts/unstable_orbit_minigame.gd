@@ -8,6 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	angle += $HSlider.value * delta
 	$Orbit.rotation += delta /3
 	$Planet.rotation += delta  /3
