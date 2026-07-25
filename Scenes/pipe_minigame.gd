@@ -13,9 +13,9 @@ var board_range: Array = range(1, board_size.x-1)
 
 # configs
 var cell_size: float = 38.4
-var source_position: Vector2i = Vector2i(0, ceil((board_size.y as float)/2))
+var source_position: Vector2i = Vector2i(0, floor((board_size.y as float)/2))
 var source_direction: Vector2i = Vector2i.RIGHT
-var sink_position: Vector2i = Vector2i(board_size.x-1, ceil((board_size.y as float)/2))
+var sink_position: Vector2i = Vector2i(board_size.x-1, floor((board_size.y as float)/2))
 var sink_direction: Vector2i = Vector2i.LEFT
 
 # states
@@ -195,13 +195,10 @@ func _update_flow() -> void:
 				continue
 			
 			var next_cell: Vector2i = cell + dir_int
-			if not _in_bounds(next_cell) or next_cell != sink_position:
+			if (not _in_bounds(next_cell) and next_cell != sink_position) or next_cell in visited:
 				continue
 			
 			var next: PipePiece = grid[next_cell.x][next_cell.y]
-			if next in visited:
-				continue
-			
 			var reciprocal: Vector2 = Vector2(-dir_int.x, -dir_int.y)
 			if next.has_connection(reciprocal):
 				stack.append(next)
@@ -213,7 +210,8 @@ func _update_flow() -> void:
 
 	var sink = grid[sink_position.x][sink_position.y]
 
-	if sink.connected == true:
+	if sink_position in visited:
+		sink.connected = true
 		_lock_all_pipes()
 		finish()
 
