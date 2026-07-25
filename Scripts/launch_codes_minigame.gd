@@ -2,7 +2,7 @@ extends Minigame
 
 @export var code_length = 5
 @export var codes_remaining = 3
-@export var max_tries = 3
+@export var max_tries = 1
 
 var tries = 0
 var code = ""
