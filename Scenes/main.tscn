@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://byxcun2xd52fx"]
 
-[ext_resource type="Script" uid="uid://boaj3m5nanps8" path="res://Scenes/main.gd" id="1_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://ds3g6g75tbbyi" path="res://Scenes/UI/hud.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dmocsibu551w4" path="res://Scenes/unstable_orbit_minigame.tscn" id="2_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cxvig8wmkgknd" path="res://Scenes/starvation_minigame.tscn" id="3_6bp64"]
+[ext_resource type="PackedScene" uid="uid://gnypsog81oc6" path="res://Scenes/building_base.tscn" id="3_jjvhh"]
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b1wi3i45d66tc" path="res://Scenes/event.tscn" id="4_jjvhh"]
 
@@ -33,15 +31,10 @@ func _process(delta: float) -> void:
 "
 
 [node name="Main" type="Node2D" unique_id=1071888399]
-script = ExtResource("1_jjvhh")
-events = Dictionary[String, PackedScene]({
-"food shortage": ExtResource("3_6bp64"),
-"satellite orbit unstable": ExtResource("2_21xkr")
-})
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=317580437]
 
-[node name="Control" parent="CanvasLayer" unique_id=2138066974 instance=ExtResource("2_8gbba")]
+[node name="hud" parent="CanvasLayer" unique_id=2138066974 instance=ExtResource("2_8gbba")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779705212]
 material = ExtResource("3_kry3j")
@@ -51,8 +44,10 @@ texture = SubResource("GradientTexture2D_kry3j")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1073742744]
 script = SubResource("GDScript_sprlj")
 
+[node name="Node2D" parent="." unique_id=673539397 instance=ExtResource("3_jjvhh")]
+position = Vector2(-62, -1)
+
 [node name="Event" parent="." unique_id=150192178 instance=ExtResource("4_jjvhh")]
 position = Vector2(292, 20)
-minigame_scene = "unstable_orbit_minigame"
-
-[node name="Event Timer" type="Timer" parent="." unique_id=1429411742]
+icon = "starvation.png"
+minigame_scene = "power_crank_minigame"
