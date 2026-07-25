@@ -11,6 +11,7 @@ width = 192
 height = 192
 
 [node name="MinigameOutline" type="Sprite2D" unique_id=959946983]
+z_index = -447
 texture = SubResource("GradientTexture2D_dq4g0")
 offset = Vector2(96, 96)
 script = ExtResource("1_rl17t")

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bpqm6ujgnbmqk"]
+
+[ext_resource type="Script" uid="uid://c5fedekep10xm" path="res://Scripts/power_crank_minigame.gd" id="1_0mslv"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_3yxjv"]
+[ext_resource type="PackedScene" uid="uid://b36i0ukc42x55" path="res://Scenes/crank.tscn" id="3_3yxjv"]
+[ext_resource type="Texture2D" uid="uid://5nenknd7l5j" path="res://Assets/Art/Crank/background.png" id="4_b7tm5"]
+[ext_resource type="Texture2D" uid="uid://ds7f0l3b6x34l" path="res://Assets/Art/Crank/progress_bar.png" id="4_eobqy"]
+
+[node name="power crank game" type="Node2D" unique_id=1218630896]
+texture_filter = 1
+script = ExtResource("1_0mslv")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_3yxjv")]
+
+[node name="Crank" parent="." unique_id=345946150 instance=ExtResource("3_3yxjv")]
+position = Vector2(96, 96)
+
+[node name="Progress bar" type="TextureProgressBar" parent="." unique_id=1158315641]
+offset_left = 169.0
+offset_top = 20.0
+offset_right = 312.937
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+max_value = 60.0
+step = 0.01
+value = 60.0
+fill_mode = 3
+texture_progress = ExtResource("4_eobqy")
+
+[node name="Percentage" type="Label" parent="." unique_id=469024556]
+visible = false
+offset_left = 147.0
+offset_top = 8.0
+offset_right = 188.0
+offset_bottom = 31.0
+text = "0.0 %"
+
+[node name="Background" type="Sprite2D" parent="." unique_id=415666324]
+z_index = -1
+scale = Vector2(2, 2)
+texture = ExtResource("4_b7tm5")
+centered = false
+
+[connection signal="turned" from="Crank" to="." method="turn"]
+[connection signal="value_changed" from="Progress bar" to="." method="_on_progress_bar_value_changed"]

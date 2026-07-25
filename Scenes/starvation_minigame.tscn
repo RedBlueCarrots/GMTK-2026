@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://cxvig8wmkgknd"]
+
+[ext_resource type="Script" uid="uid://d3pfxetjghnu" path="res://Scenes/starvation_minigame.gd" id="1_lh5lg"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_v1qvn"]
+[ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="3_6uhjo"]
+[ext_resource type="Texture2D" uid="uid://cw1c1js0hhffl" path="res://Assets/Art/Starvation/starvation_border.png" id="3_vnrf3"]
+[ext_resource type="Texture2D" uid="uid://cjgkrk0ib1a1n" path="res://Assets/Art/Starvation/seedbag new.png" id="5_rtht1"]
+[ext_resource type="Texture2D" uid="uid://dp5gtc0eoieol" path="res://Assets/Art/Starvation/seed.png" id="5_vnrf3"]
+[ext_resource type="Texture2D" uid="uid://c6f1808wcyfv7" path="res://Assets/Art/Starvation/planted.png" id="6_bbf6v"]
+[ext_resource type="Texture2D" uid="uid://cy3uiur5vu1tq" path="res://Assets/Art/Starvation/watering can new.png" id="6_l8m08"]
+[ext_resource type="Texture2D" uid="uid://rtaqpgnsaj6d" path="res://Assets/Art/Starvation/grown.png" id="7_nddca"]
+
+[sub_resource type="Gradient" id="Gradient_vnrf3"]
+offsets = PackedFloat32Array(0, 0.06542056)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rmeow"]
+gradient = SubResource("Gradient_vnrf3")
+width = 120
+height = 74
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6uhjo"]
+size = Vector2(48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uhjo"]
+atlas = ExtResource("3_6uhjo")
+region = Rect2(0, 0, 2, 2)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmeow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uhjo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vnrf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bbf6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nddca")
+}],
+"loop": 1,
+"name": &"Grow",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhkdp"]
+size = Vector2(48, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6nem"]
+size = Vector2(42, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtht1"]
+size = Vector2(48, 46)
+
+[node name="Starvation" type="Node2D" unique_id=1163763382]
+texture_filter = 1
+script = ExtResource("1_lh5lg")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_v1qvn")]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=330409783]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_vnrf3")
+centered = false
+
+[node name="Fields" type="Node2D" parent="." unique_id=908725622]
+position = Vector2(45, 125)
+
+[node name="Field1" type="Area2D" parent="Fields" unique_id=861158839]
+
+[node name="Dirt" type="Sprite2D" parent="Fields/Field1" unique_id=1413293445]
+modulate = Color(0.028599998, 0.074726656, 0.11, 0)
+z_index = 1
+position = Vector2(0.99999994, -2.4000013)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("GradientTexture2D_rmeow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field1" unique_id=776309512]
+visible = false
+shape = SubResource("RectangleShape2D_6uhjo")
+
+[node name="Plant" type="AnimatedSprite2D" parent="Fields/Field1" unique_id=1788484333]
+position = Vector2(1, -13)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rmeow")
+animation = &"Grow"
+
+[node name="Timer" type="Timer" parent="Fields/Field1" unique_id=1464086626]
+wait_time = 5.0
+
+[node name="Field2" type="Area2D" parent="Fields" unique_id=182215685]
+position = Vector2(51, 0)
+
+[node name="Dirt" type="Sprite2D" parent="Fields/Field2" unique_id=1514037917]
+modulate = Color(0.028599998, 0.074726656, 0.11, 0)
+z_index = 1
+position = Vector2(0, -1.9999998)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("GradientTexture2D_rmeow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field2" unique_id=1683065773]
+visible = false
+shape = SubResource("RectangleShape2D_bhkdp")
+
+[node name="Plant" type="AnimatedSprite2D" parent="Fields/Field2" unique_id=751246977]
+position = Vector2(0, -13)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rmeow")
+animation = &"Grow"
+
+[node name="Timer" type="Timer" parent="Fields/Field2" unique_id=774562166]
+wait_time = 5.0
+
+[node name="Field3" type="Area2D" parent="Fields" unique_id=1577242957]
+position = Vector2(102, 0)
+
+[node name="Dirt" type="Sprite2D" parent="Fields/Field3" unique_id=1126567276]
+modulate = Color(0.028599998, 0.074726656, 0.11, 0)
+z_index = 1
+position = Vector2(-0.99999994, -1.9999998)
+scale = Vector2(0.4, 0.4)
+texture = SubResource("GradientTexture2D_rmeow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fields/Field3" unique_id=64315981]
+visible = false
+shape = SubResource("RectangleShape2D_bhkdp")
+
+[node name="Plant" type="AnimatedSprite2D" parent="Fields/Field3" unique_id=151380560]
+position = Vector2(-1, -13)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rmeow")
+animation = &"Grow"
+
+[node name="Timer" type="Timer" parent="Fields/Field3" unique_id=939105783]
+wait_time = 5.0
+
+[node name="Tools" type="Node2D" parent="." unique_id=772869676]
+z_index = 2
+position = Vector2(0, -84)
+
+[node name="Seeds" type="Area2D" parent="Tools" unique_id=899654929]
+position = Vector2(63, 140)
+
+[node name="SeedPacket" type="Sprite2D" parent="Tools/Seeds" unique_id=1138949401]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("5_rtht1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Seeds" unique_id=1718295334]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_v6nem")
+
+[node name="Water" type="Area2D" parent="Tools" unique_id=363043331]
+position = Vector2(127, 140)
+
+[node name="WateringCan" type="Sprite2D" parent="Tools/Water" unique_id=1429187552]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("6_l8m08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Water" unique_id=846033797]
+shape = SubResource("RectangleShape2D_rtht1")
