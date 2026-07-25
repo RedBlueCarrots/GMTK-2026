@@ -21,11 +21,6 @@ func create_minigame():
 	minigame.connect("closed", close)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	#On click
 	if event is InputEventMouseButton and event.pressed and not is_open:

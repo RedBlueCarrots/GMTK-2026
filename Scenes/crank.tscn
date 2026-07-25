@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b36i0ukc42x55"]
+
+[ext_resource type="Script" uid="uid://cjvt5heh4wcd8" path="res://Scripts/crank.gd" id="2_pghw1"]
+[ext_resource type="Texture2D" uid="uid://cpngfofu61066" path="res://Assets/Art/Crank/crank.png" id="2_wditd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bx8n8"]
+radius = 92.0
+
+[node name="Node2D" type="Node2D" unique_id=349316333]
+script = ExtResource("2_pghw1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1638987171]
+rotation = 2.3561945
+scale = Vector2(2, 2)
+texture = ExtResource("2_wditd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=676746326]
+
+[node name="Collision2D" type="CollisionShape2D" parent="Area2D" unique_id=1381537734]
+shape = SubResource("CircleShape2D_bx8n8")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

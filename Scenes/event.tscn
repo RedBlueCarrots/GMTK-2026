@@ -289,7 +289,6 @@ z_index = 100
 material = SubResource("ShaderMaterial_efmpf")
 
 [node name="Border" type="TextureRect" parent="Panel" unique_id=233669783]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
