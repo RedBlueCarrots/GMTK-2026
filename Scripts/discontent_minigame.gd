@@ -33,11 +33,11 @@ func _process(delta: float) -> void:
 
 
 func _on_input_text_changed(new_text: String) -> void:
-	written = %input.text
-
+	written = %input.text.to_lower().replace(' ', '')
+	new_text = new_text.replace(' ', '')
+	printt(written, comp_sentence)
 	for i in range(pos, len(new_text)):
 		if written[i] == comp_sentence[i]:
-			print(sentence[i])
 			if sentence[i + space] == " ":
 				print("space detected")
 				space += 1
@@ -71,5 +71,5 @@ func _generate_sentence():
 	else:
 		last_index = index
 	sentence = sentence_list[index]
-	comp_sentence = sentence.replace(" ", "").to_lower()
+	comp_sentence = sentence.to_lower().replace(" ", "")
 	%words.text = sentence
