@@ -23,7 +23,7 @@ func create_minigame():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$Icon/Label.text = str(int(ceil($Timer.time_left)))
 
 
 func _on_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://yotc5uueyat4" path="res://Assets/Art/Icons/starvation.png" id="3_sg3nx"]
 [ext_resource type="Shader" uid="uid://bvetwepbd13i6" path="res://Scripts/Shaders/eventborder.gdshader" id="4_efmpf"]
 [ext_resource type="Texture2D" uid="uid://ctbyfv4h8filk" path="res://Assets/Art/popup_outline.png" id="4_pn77i"]
+[ext_resource type="FontFile" uid="uid://bjbrkkto2bvnk" path="res://Assets/DSEG7Modern-Bold.ttf" id="4_txmnl"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_sg3nx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
@@ -12,6 +13,21 @@ shader = ExtResource("1_u37vb")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmeow"]
 radius = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rmeow"]
+font = ExtResource("4_txmnl")
+font_color = Color(0.82191056, 2.623126e-06, 7.70092e-07, 1)
+
+[sub_resource type="Gradient" id="Gradient_txmnl"]
+offsets = PackedFloat32Array(0, 0.60186917)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rmeow"]
+gradient = SubResource("Gradient_txmnl")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgb6v"]
 shader = ExtResource("4_efmpf")
@@ -253,6 +269,23 @@ texture = ExtResource("3_sg3nx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon" unique_id=1462742081]
 shape = SubResource("CircleShape2D_rmeow")
 
+[node name="Label" type="Label" parent="Icon" unique_id=136311998]
+offset_left = -19.0
+offset_top = -40.0
+offset_right = 21.0
+offset_bottom = -17.0
+text = "60"
+label_settings = SubResource("LabelSettings_rmeow")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Icon" unique_id=1820584393]
+position = Vector2(0, -29)
+color = Color(1, 0, 0, 1)
+energy = 5.0
+texture = SubResource("GradientTexture2D_rmeow")
+texture_scale = 2.0
+
 [node name="Panel" type="Panel" parent="." unique_id=65183625]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
@@ -302,5 +335,10 @@ texture = ExtResource("4_pn77i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=898213863]
 libraries/ = SubResource("AnimationLibrary_pn77i")
+
+[node name="Timer" type="Timer" parent="." unique_id=1996250429]
+wait_time = 60.0
+one_shot = true
+autostart = true
 
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]
