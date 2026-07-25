@@ -49,8 +49,4 @@ position = Vector2(-62, -1)
 
 [node name="Event" parent="." unique_id=150192178 instance=ExtResource("4_jjvhh")]
 position = Vector2(292, 20)
-minigame_scene = "unstable_orbit_minigame"
 
-[node name="Event2" parent="." unique_id=974147497 instance=ExtResource("4_jjvhh")]
-position = Vector2(261, 108)
-minigame_scene = "launch_codes_minigame"

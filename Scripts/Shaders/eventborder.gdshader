@@ -1,15 +1,17 @@
 shader_type canvas_item;
 
+uniform sampler2D MASK;
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	if ((UV.x-0.5)*(UV.x-0.5)+(UV.y-0.5)*(UV.y-0.5) > 0.2 ){
+	vec4 mask = texture(MASK, UV);
+	if (mask == vec4(0., 0., 0., 1.)) {
 		COLOR.a = 0.0;
-	} else if (COLOR.a == 0.0){
-		COLOR = vec4(0.0, 0.0, 0.0, 0.5);
 	}
+	
 }
 
 //void light() {
