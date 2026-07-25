@@ -46,12 +46,12 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
-	if highlight_sprite:
+	if highlight_sprite and type == PipeType.CONNECTOR:
 		highlight_sprite.visible = true
 
 
 func _on_mouse_exited() -> void:
-	if highlight_sprite:
+	if highlight_sprite and type == PipeType.CONNECTOR:
 		highlight_sprite.visible = false
 
 
@@ -80,6 +80,8 @@ func setup_pipe() -> void:
 		PipeShape.END:
 			base_connections = [Vector2.DOWN]
 			main_sprite.texture = preload("res://Assets/Art/pipe-end.svg")
+
+	update_connections()
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
