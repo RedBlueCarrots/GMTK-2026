@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d241ojbsidwfi" path="res://Scripts/pipe.gd" id="1_hgpvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dj8w"]
-size = Vector2(16, 16)
+size = Vector2(17.45, 17.45)
 
 [node name="PipePiece" type="Area2D" unique_id=1157958654]
 script = ExtResource("1_hgpvu")
@@ -13,10 +13,10 @@ type = 0
 shape = SubResource("RectangleShape2D_3dj8w")
 
 [node name="PipeSprite" type="Sprite2D" parent="." unique_id=1074849666]
-scale = Vector2(2, 2)
+scale = Vector2(2.183, 2.183)
 
 [node name="FillSprite" type="Sprite2D" parent="." unique_id=1323890503]
-scale = Vector2(2, 2)
+scale = Vector2(2.183, 2.183)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

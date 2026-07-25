@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://b8knkgioqs51c"]
 
 [ext_resource type="Script" uid="uid://bxae58n5pthad" path="res://Scripts/pipe_minigame.gd" id="1_hkjiq"]
-[ext_resource type="Texture2D" uid="uid://cpnsfx634vogb" path="res://Assets/Art/pipe_minigame-bg.svg" id="2_fdmy0"]
+[ext_resource type="Texture2D" uid="uid://cg8cch7aw5pqg" path="res://Assets/Art/Suffocation/pipes background.png" id="2_6ab3l"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_hkjiq"]
 
 [node name="PipeMinigame" type="Node2D" unique_id=501969369]
 script = ExtResource("1_hkjiq")
 
 [node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1046249181]
-texture = ExtResource("2_fdmy0")
+scale = Vector2(2, 2)
+texture = ExtResource("2_6ab3l")
 centered = false
 
 [node name="Board" type="Node2D" parent="." unique_id=1164436376]
-position = Vector2(20, 20)
+position = Vector2(8, 8)
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_hkjiq")]

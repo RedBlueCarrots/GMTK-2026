@@ -12,7 +12,7 @@ var board_range: Array = range(1, board_size.x-1)
 @onready var board: Node2D = $Board
 
 # configs
-var cell_size: float = 38.4
+var cell_size: float = 17.45
 var source_position: Vector2i = Vector2i(0, floor((board_size.y as float)/2))
 var source_direction: Vector2i = Vector2i.RIGHT
 var sink_position: Vector2i = Vector2i(board_size.x-1, floor((board_size.y as float)/2))
