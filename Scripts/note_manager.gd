@@ -5,6 +5,8 @@ var active_notes = []
 var bar_count = 0
 var note_scene = preload("res://Scenes/rhythm_circle.tscn")
 @export var score = 0
+signal Success()
+signal Miss()
 
 const pattern1: Array[Array] = [
 	[0,0, 0,0, 0,0, 0,0],
@@ -71,10 +73,9 @@ func hit_detect():
 		note.hit()
 		print("hit")
 		$"../Hit".play()
-		score += 1
-		print(score)
+		emit_signal("Success")
 	else:
-		print("miss")
+		print("Miss")
 		score -= 1
 	
 func spawn_note(beat):
@@ -83,7 +84,8 @@ func spawn_note(beat):
 	note.conductor = %Conductor
 	note.beat = beat
 	active_notes.append(note)
-	get_parent().add_child.call_deferred(note)
+	add_child(note)
+	print(note.get_parent())
 		
 func _on_conductor_beat(Pos: Variant) -> void:
 	if %Conductor.get_beat_int() % 8 == 0: #add next sequence to chart

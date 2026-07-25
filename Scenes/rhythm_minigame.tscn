@@ -83,6 +83,8 @@ volume_db = 1.31
 [connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
 [connection signal="Beat" from="Conductor" to="aliens" method="_on_conductor_beat"]
 [connection signal="Beat" from="Conductor" to="NoteManager" method="_on_conductor_beat"]
+[connection signal="Miss" from="NoteManager" to="." method="_on_note_manager_miss"]
+[connection signal="Success" from="NoteManager" to="." method="_on_note_manager_success"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="fellas" method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="NoteManager" method="_on_button_pressed"]
