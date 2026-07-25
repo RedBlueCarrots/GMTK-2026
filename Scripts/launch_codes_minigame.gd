@@ -21,6 +21,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_input_text_changed(new_text: String) -> void:
+	$code.visible = new_text==""
 	if len(%input.text) >= code_length:
 		if %input.text == code:
 			codes_remaining -= 1
@@ -42,7 +43,6 @@ func reset_code():
 	code = _generate_code()
 	%code.text = code
 	%code.show()
-	%Timer.start()
 
 func update_remaining():
 	%remaining.text = "Codes: " + str(codes_remaining)
@@ -61,4 +61,5 @@ func _generate_code():
 
 
 func _on_timer_timeout() -> void:
-	%code.hide()
+	#%code.hide()
+	pass
