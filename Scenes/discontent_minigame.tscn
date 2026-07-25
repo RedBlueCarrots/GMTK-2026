@@ -2,26 +2,54 @@
 
 [ext_resource type="Script" uid="uid://br2k1aouo2x8f" path="res://Scripts/discontent_minigame.gd" id="1_ddr54"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_mjwm3"]
+[ext_resource type="Texture2D" uid="uid://da6n3gnm6ra4p" path="res://Assets/Art/discontent_bg.png" id="3_mjwm3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgb6v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyujy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ui3s2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahg1b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0, 0, 0, 0.48235294)
+shadow_size = 1
 
 [node name="discontent_minigame" type="Node2D" unique_id=201426748]
 script = ExtResource("1_ddr54")
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_mjwm3")]
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1486052953]
+position = Vector2(96.024994, 96.5)
+scale = Vector2(2, 2)
+texture = ExtResource("3_mjwm3")
+
 [node name="input" type="LineEdit" parent="." unique_id=1938632175]
 unique_name_in_owner = true
-offset_left = 56.0
-offset_top = 73.0
-offset_right = 124.5
-offset_bottom = 104.0
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 61.0
+offset_top = 122.0
+offset_right = 129.5
+offset_bottom = 153.0
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_styles/normal = SubResource("StyleBoxFlat_lgb6v")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_wyujy")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ui3s2")
 
 [node name="words" type="RichTextLabel" parent="." unique_id=828778753]
 unique_name_in_owner = true
-offset_left = 78.0
-offset_top = 39.0
-offset_right = 102.0
-offset_bottom = 65.0
-text = "0"
+offset_left = 10.0
+offset_top = 143.0
+offset_right = 181.0
+offset_bottom = 190.0
+theme_override_font_sizes/normal_font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ahg1b")
+bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
