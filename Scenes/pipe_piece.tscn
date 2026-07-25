@@ -9,7 +9,6 @@ size = Vector2(38.4, 38.4)
 
 [node name="PipePiece" type="Area2D" unique_id=1157958654]
 script = ExtResource("1_hgpvu")
-type = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336342193]
 shape = SubResource("RectangleShape2D_3dj8w")
