@@ -1,8 +1,10 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://de5eaaaicogyf"]
 
 [ext_resource type="Shader" uid="uid://cauera5g72p76" path="res://Scripts/background.gdshader" id="1_t06cq"]
-[ext_resource type="Texture2D" uid="uid://bfjyag38y0rdu" path="res://Assets/Art/europa.png" id="2_v000f"]
+[ext_resource type="Texture2D" uid="uid://cvrn5wbd8nq7x" path="res://Assets/Art/map.png" id="2_wyujy"]
 [ext_resource type="Texture2D" uid="uid://q1soj5ej5v3g" path="res://Assets/Art/mask.png" id="3_ayi13"]
+[ext_resource type="Texture2D" uid="uid://r1lbqr12l201" path="res://Assets/Art/lights.png" id="3_ui3s2"]
+[ext_resource type="Texture2D" uid="uid://bmxya4ets8t2o" path="res://Assets/Art/stars.png" id="4_lgb6v"]
 
 [sub_resource type="Gradient" id="Gradient_ynf5e"]
 
@@ -15,9 +17,11 @@ seamless = true
 
 [resource]
 shader = ExtResource("1_t06cq")
-shader_parameter/EUROPA = ExtResource("2_v000f")
+shader_parameter/EUROPA = ExtResource("2_wyujy")
 shader_parameter/MASK = ExtResource("3_ayi13")
 shader_parameter/NOISE = SubResource("NoiseTexture2D_6bp64")
-shader_parameter/windSpeed = 1.0
-shader_parameter/rpm = 1.0
+shader_parameter/STARS = ExtResource("4_lgb6v")
+shader_parameter/LIGHTS = ExtResource("3_ui3s2")
+shader_parameter/windSpeed = 0.2
+shader_parameter/rpm = 5.0
 shader_parameter/resolution = Vector2(320, 180)

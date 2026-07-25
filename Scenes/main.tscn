@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779705212]
 material = ExtResource("3_kry3j")
+position = Vector2(640, -360)
 scale = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_kry3j")
 
