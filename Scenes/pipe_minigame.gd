@@ -67,7 +67,7 @@ func generate_board() -> void:
 	source_piece.position = _cell_to_pixel(source_position)
 	source_piece.type = PipePiece.PipeType.SOURCE
 	source_piece.shape = PipePiece.PipeShape.END
-	source_piece.rotation = _end_direction_to_degrees(source_direction)
+	source_piece.rotation_degrees = _end_direction_to_degrees(source_direction)
 	source_piece.setup_pipe()
 	grid[source_position.x][source_position.y] = source_piece
 
@@ -76,7 +76,7 @@ func generate_board() -> void:
 	sink_piece.position = _cell_to_pixel(sink_position)
 	sink_piece.type = PipePiece.PipeType.SINK
 	sink_piece.shape = PipePiece.PipeShape.END
-	sink_piece.rotation = _end_direction_to_degrees(source_direction)
+	sink_piece.rotation_degrees = _end_direction_to_degrees(source_direction)
 	sink_piece.setup_pipe()
 	grid[sink_position.x][sink_position.y] = sink_piece
 
