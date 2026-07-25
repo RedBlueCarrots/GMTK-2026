@@ -10,15 +10,12 @@ enum PipeType {SOURCE, CONNECTOR, SINK}
 @export var type: PipeType = PipeType.CONNECTOR:
 	set(new_value):
 		type = new_value
-		if source_badge:
-			source_badge.visible = (type == PipeType.SOURCE)
 		rotateable = (type == PipeType.CONNECTOR)
 		if type == PipeType.SOURCE or type == PipeType.SINK:
 			connected = (type == PipeType.SOURCE)
 
 @onready var main_sprite: Sprite2D = $PipeSprite
-@onready var highlight_sprite: Sprite2D = $HighlightSprite
-@onready var source_badge: Sprite2D = $SourceBadgeSprite
+@onready var fill_sprite: Sprite2D = $FillSprite
 
 # states
 var base_connections: Array[Vector2] = []
@@ -40,20 +37,7 @@ func _ready() -> void:
 		connected = true if type == PipeType.SOURCE else false
 		rotateable = false
 
-	highlight_sprite.visible = false
-	if source_badge:
-		source_badge.visible = true if type == PipeType.SOURCE else false
-
-
-func _on_mouse_entered() -> void:
-	if highlight_sprite and type == PipeType.CONNECTOR:
-		highlight_sprite.visible = true
-
-
-func _on_mouse_exited() -> void:
-	if highlight_sprite and type == PipeType.CONNECTOR:
-		highlight_sprite.visible = false
-
+	fill_sprite.visible = type == PipeType.SOURCE
 
 # Pipe initialization
 func setup_pipe() -> void:
@@ -63,23 +47,26 @@ func setup_pipe() -> void:
 	match shape:
 		PipeShape.STRAIGHT:
 			base_connections = [Vector2.UP, Vector2.DOWN]
-			main_sprite.texture = preload("res://Assets/Art/pipe-straight.svg")
+			main_sprite.texture = preload("res://Assets/Art/Suffocation/pipe-straight.png")
+			fill_sprite.texture = preload("res://Assets/Art/Suffocation/pipe_fill-straight.png")
 
 		PipeShape.BEND:
 			base_connections = [Vector2.UP, Vector2.RIGHT]
-			main_sprite.texture = preload("res://Assets/Art/pipe-bend.svg")
+			main_sprite.texture = preload("res://Assets/Art/Suffocation/pipe-bend.png")
+			fill_sprite.texture = preload("res://Assets/Art/Suffocation/pipe_fill-bend.png")
 			
 		PipeShape.T_JUNCTION:
 			base_connections = [Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
-			main_sprite.texture = preload("res://Assets/Art/pipe-t_junction.svg")
+			main_sprite.texture = preload("res://Assets/Art/Suffocation/pipe-t_junction.png")
+			fill_sprite.texture = preload("res://Assets/Art/Suffocation/pipe_fill-t_junction.png")
 
 		PipeShape.CROSS:
 			base_connections = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT]
-			main_sprite.texture = preload("res://Assets/Art/pipe-cross.svg")
 		
 		PipeShape.END:
 			base_connections = [Vector2.DOWN]
-			main_sprite.texture = preload("res://Assets/Art/pipe-end.svg")
+			main_sprite.texture = preload("res://Assets/Art/Suffocation/pipe-end.png")
+			fill_sprite.texture = preload("res://Assets/Art/Suffocation/pipe_fill-end.png")
 
 	update_connections()
 
@@ -122,10 +109,10 @@ func has_connection(direction: Vector2) -> bool:
 
 
 func _update_sprite() -> void:
-	if not main_sprite:
+	if not fill_sprite:
 		return
 
 	if connected:
-		main_sprite.modulate = Color.LIGHT_BLUE
+		fill_sprite.visible=true
 	else:
-		main_sprite.modulate = Color.WHITE
+		fill_sprite.visible=false
