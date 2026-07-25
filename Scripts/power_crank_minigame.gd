@@ -9,9 +9,10 @@ func _ready() -> void:
 	label.text = "0.0 %"
 
 func _process(delta: float) -> void:
-	progress_bar.value = crank.turned_amount
+	super(delta)
+	progress_bar.value = get_parent().get_parent().get_node("Timer").time_left
 	
-	if progress_bar.value == 100.0:
+	if progress_bar.value == 60.0:
 		finish()
 
 func _on_progress_bar_value_changed(value: float) -> void:
@@ -19,3 +20,7 @@ func _on_progress_bar_value_changed(value: float) -> void:
 
 func _on_timer_timeout() -> void:
 	fail()
+
+func turn(amount):
+	get_parent().get_parent().get_node("Timer").wait_time = clamp(get_parent().get_parent().get_node("Timer").time_left + amount/2, 0.0, 60.0)
+	get_parent().get_parent().get_node("Timer").start()

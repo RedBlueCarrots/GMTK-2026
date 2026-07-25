@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://byxcun2xd52fx"]
 
+[ext_resource type="Script" uid="uid://boaj3m5nanps8" path="res://Scenes/main.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ds3g6g75tbbyi" path="res://Scenes/UI/hud.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://gnypsog81oc6" path="res://Scenes/building_base.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://dmocsibu551w4" path="res://Scenes/unstable_orbit_minigame.tscn" id="2_344ge"]
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="3_kry3j"]
-[ext_resource type="PackedScene" uid="uid://b1wi3i45d66tc" path="res://Scenes/event.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cxvig8wmkgknd" path="res://Scenes/starvation_minigame.tscn" id="3_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://bpqm6ujgnbmqk" path="res://Scenes/power_crank_minigame.tscn" id="4_hptm8"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -31,6 +33,18 @@ func _process(delta: float) -> void:
 "
 
 [node name="Main" type="Node2D" unique_id=1071888399]
+script = ExtResource("1_kry3j")
+events = Dictionary[String, PackedScene]({
+"food supply low": ExtResource("3_ynf5e"),
+"power supply exhausted": ExtResource("4_hptm8"),
+"satellite orbit unstable": ExtResource("2_344ge")
+})
+event_positions = Dictionary[String, Vector2]({
+"food supply low": Vector2(-136, 74),
+"power supply exhausted": Vector2(117, 118),
+"satellite orbit unstable": Vector2(273, -68)
+})
+event_peristence = Array[String](["food supply low"])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=317580437]
 
@@ -44,10 +58,10 @@ texture = SubResource("GradientTexture2D_kry3j")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1073742744]
 script = SubResource("GDScript_sprlj")
 
-[node name="Node2D" parent="." unique_id=673539397 instance=ExtResource("3_jjvhh")]
-position = Vector2(-62, -1)
+[node name="EventTimer" type="Timer" parent="." unique_id=973480058]
+wait_time = 25.0
+autostart = true
 
-[node name="Event" parent="." unique_id=150192178 instance=ExtResource("4_jjvhh")]
-position = Vector2(292, 20)
-icon = "starvation.png"
-minigame_scene = "power_crank_minigame"
+[node name="Events" type="Node2D" parent="." unique_id=404849960]
+
+[connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
