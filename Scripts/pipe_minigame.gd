@@ -146,8 +146,7 @@ func _generate_shape(connection: bool = false, straight: bool = true) -> PipePie
 		else:
 			return [PipePiece.PipeShape.BEND, PipePiece.PipeShape.T_JUNCTION][rolled_index]
 	else:
-		var rolled_index: int = rng.rand_weighted(PackedFloat32Array([1-t_juction_spawn_rate/2, 1-t_juction_spawn_rate/2, t_juction_spawn_rate]))
-		return [PipePiece.PipeShape.STRAIGHT, PipePiece.PipeShape.BEND, PipePiece.PipeShape.T_JUNCTION][rolled_index]
+		return [PipePiece.PipeShape.STRAIGHT, PipePiece.PipeShape.BEND, PipePiece.PipeShape.T_JUNCTION].pick_random()
 
 
 func _is_straight(cell: Vector2i, path: Array) -> bool:
