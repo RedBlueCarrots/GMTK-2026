@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://jydvqol52tc1"]
+
+[ext_resource type="Script" uid="uid://1tyrlx1q4m0u" path="res://Scripts/rhythm_minigame.gd" id="1_ptmy4"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_udv50"]
+[ext_resource type="AudioStream" uid="uid://dsfmmatj64vs1" path="res://Assets/Sound/Music/rave_temporary.mp3" id="3_jdapn"]
+[ext_resource type="AudioStream" uid="uid://rmcbitl6r5en" path="res://Assets/Sound/Music/85897__sandyrb__huh-01.wav" id="3_pvfjl"]
+[ext_resource type="Script" uid="uid://c2e2aulu316m5" path="res://Scripts/conductor.gd" id="3_udv50"]
+[ext_resource type="Script" uid="uid://ddgq2cbybosg" path="res://Scripts/note_manager.gd" id="6_8d7gx"]
+[ext_resource type="Texture2D" uid="uid://b77hknyes03i5" path="res://Assets/Art/Disco/disco_background.png" id="7_8d7gx"]
+[ext_resource type="Texture2D" uid="uid://bmqgcqfs5flev" path="res://Assets/Art/Disco/disco_floor.png" id="8_kbojh"]
+[ext_resource type="Script" uid="uid://bbckck65w5axi" path="res://Scripts/fellas.gd" id="9_2na3y"]
+[ext_resource type="Texture2D" uid="uid://d4nlsamehvrmn" path="res://Assets/Art/Disco/disco_astronauts.png" id="9_qkhl4"]
+[ext_resource type="Texture2D" uid="uid://uox6h017tmfj" path="res://Assets/Art/Disco/disco_aliens.png" id="10_bhvn3"]
+[ext_resource type="Script" uid="uid://dqsh0qmkn8lxo" path="res://Scripts/bounce.gd" id="10_dppwh"]
+[ext_resource type="Texture2D" uid="uid://bmtnaq7igqq7p" path="res://Assets/Art/Disco/disco_aliens_foreground.png" id="11_dppwh"]
+[ext_resource type="Texture2D" uid="uid://m74llvx07whu" path="res://Assets/Art/Disco/disco_ball.png" id="12_bhvn3"]
+[ext_resource type="AudioStream" uid="uid://bnoo76op48rcf" path="res://Assets/Sound/Music/PercSynth.wav" id="12_qkhl4"]
+
+[node name="rhythm_minigame" type="Node2D" unique_id=1488141885]
+script = ExtResource("1_ptmy4")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_udv50")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=683588739]
+stream = ExtResource("3_pvfjl")
+
+[node name="Conductor" type="AudioStreamPlayer" parent="." unique_id=1249316023]
+unique_name_in_owner = true
+stream = ExtResource("3_jdapn")
+parameters/looping = true
+script = ExtResource("3_udv50")
+bpm = 137
+
+[node name="Background" type="Sprite2D" parent="." unique_id=408592547]
+position = Vector2(95.50001, 96.50001)
+scale = Vector2(1.9895835, 1.9895835)
+texture = ExtResource("7_8d7gx")
+
+[node name="Floor" type="Sprite2D" parent="Background" unique_id=1614639161]
+position = Vector2(0.251305, 0.251305)
+texture = ExtResource("8_kbojh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Floor" unique_id=662334321]
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=60703845]
+position = Vector2(95.5, 95.50001)
+scale = Vector2(1.9895833, 1.9895833)
+texture = ExtResource("12_bhvn3")
+
+[node name="fellas" type="Sprite2D" parent="." unique_id=779403026]
+position = Vector2(96, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("9_qkhl4")
+script = ExtResource("9_2na3y")
+
+[node name="aliens" type="Sprite2D" parent="." unique_id=1630063717]
+position = Vector2(96, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("10_bhvn3")
+script = ExtResource("10_dppwh")
+
+[node name="foreground aliens" type="Sprite2D" parent="aliens" unique_id=1161213836]
+texture = ExtResource("11_dppwh")
+
+[node name="NoteManager" type="Node" parent="." unique_id=1995397805]
+script = ExtResource("6_8d7gx")
+
+[node name="Button" type="Button" parent="." unique_id=168726107]
+offset_left = 65.0
+offset_top = 52.000004
+offset_right = 123.0
+offset_bottom = 110.0
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2120354096]
+offset_right = 191.0
+offset_bottom = 27.0
+show_percentage = false
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=2070658442]
+stream = ExtResource("12_qkhl4")
+volume_db = 1.31
+
+[connection signal="Beat" from="Conductor" to="." method="_on_conductor_beat"]
+[connection signal="Beat" from="Conductor" to="aliens" method="_on_conductor_beat"]
+[connection signal="Beat" from="Conductor" to="NoteManager" method="_on_conductor_beat"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="fellas" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="NoteManager" method="_on_button_pressed"]
