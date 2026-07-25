@@ -41,6 +41,8 @@ func reset_code():
 	%input.text = ""
 	code = _generate_code()
 	%code.text = code
+	%code.show()
+	%Timer.start()
 
 func update_remaining():
 	%remaining.text = "Codes: " + str(codes_remaining)
@@ -56,3 +58,7 @@ func _generate_code():
 		new_code += characters[randi() % characters.length()]
 	
 	return new_code
+
+
+func _on_timer_timeout() -> void:
+	%code.hide()
