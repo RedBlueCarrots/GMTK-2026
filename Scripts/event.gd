@@ -10,7 +10,7 @@ var is_open = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	old_pos = position
-	#$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
+	$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
 	
 
 func create_minigame():
@@ -43,6 +43,7 @@ func open():
 	tw.play()
 
 func close():
+	print("close")
 	is_open = false
 	$AnimationPlayer.play("FadeOut")
 	var tw = get_tree().create_tween()

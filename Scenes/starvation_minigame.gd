@@ -37,9 +37,9 @@ func field_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):
 		if held_item:
 			if held_item.name == "Seeds" and nod.get_child(2).frame == 0:
 				nod.get_child(2).frame = 1
-			if held_item.name == "Water" and nod.get_child(0).animation == "Dry":
-				nod.get_child(0).animation = "Wet"
-			if nod.get_child(2).frame == 1 and nod.get_child(0).animation == "Wet":
+			if held_item.name == "Water" and nod.get_child(0).modulate.a == 0.0:
+				nod.get_child(0).modulate.a = 0.2
+			if nod.get_child(2).frame == 1 and nod.get_child(0).modulate.a != 0.0:
 				if !nod.get_node("Timer").paused:
 					nod.get_node("Timer").start()
 			click_buffer += 1
@@ -56,6 +56,6 @@ func tool_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):
 			held_item.get_child(1).disabled = true
 
 func do_time(nod:Area2D):
-	if nod.get_child(0).animation == "Wet" and nod.get_child(2).frame > 0:
+	if nod.get_child(0).modulate.a != 0.0 and nod.get_child(2).frame > 0:
 		nod.get_child(2).frame = clamp(nod.get_child(2).frame+1, 0, 3)
 		

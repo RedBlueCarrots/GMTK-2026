@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bae557qoar7xc"
-path="res://.godot/imported/watering can.png-38de3c7cde63ebf88fa5dffa6b4b35db.ctex"
+uid="uid://c6f1808wcyfv7"
+path="res://.godot/imported/planted.png-0ba6511c862d94a123292d5d32dc05a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/watering can.png"
-dest_files=["res://.godot/imported/watering can.png-38de3c7cde63ebf88fa5dffa6b4b35db.ctex"]
+source_file="res://Assets/Art/Starvation/planted.png"
+dest_files=["res://.godot/imported/planted.png-0ba6511c862d94a123292d5d32dc05a7.ctex"]
 
 [params]
 
