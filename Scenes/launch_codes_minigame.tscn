@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://dw5a10m8fcp52"]
+
+[ext_resource type="Script" uid="uid://ciijuesdpn0ng" path="res://Scripts/launch_codes_minigame.gd" id="1_lpcee"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_yamr6"]
+[ext_resource type="Texture2D" uid="uid://6t33pernhdew" path="res://Assets/Art/background.png" id="3_yamr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yamr6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ut0s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="launch_codes_minigame" type="Node2D" unique_id=298174657]
+script = ExtResource("1_lpcee")
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yamr6")]
+
+[node name="TVScreen" type="Sprite2D" parent="." unique_id=1270445814]
+position = Vector2(95, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("3_yamr6")
+
+[node name="input" type="LineEdit" parent="." unique_id=649147995]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = 86.0
+offset_right = 137.5
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_yamr6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2ut0s")
+text = "11111"
+
+[node name="code" type="RichTextLabel" parent="." unique_id=1424762241]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 69.0
+offset_top = 60.0
+offset_right = 128.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "11111"
+
+[node name="remaining" type="RichTextLabel" parent="." unique_id=227785317]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 38.0
+offset_top = 31.0
+offset_right = 92.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+text = " Codes: 3"
+
+[node name="errors" type="RichTextLabel" parent="." unique_id=1945331028]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 142.0
+offset_top = 13.0
+offset_right = 167.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="Timer" type="Timer" parent="." unique_id=177635369]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[connection signal="text_changed" from="input" to="." method="_on_input_text_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

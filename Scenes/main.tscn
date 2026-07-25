@@ -49,6 +49,4 @@ position = Vector2(-62, -1)
 
 [node name="Event" parent="." unique_id=150192178 instance=ExtResource("4_jjvhh")]
 position = Vector2(292, 20)
-icon = "starvation.png"
-minigame_scene = "starvation_minigame"
-persistent = true
+
