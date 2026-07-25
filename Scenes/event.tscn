@@ -18,17 +18,6 @@ radius = 16.0
 font = ExtResource("4_txmnl")
 font_color = Color(0.82191056, 2.623126e-06, 7.70092e-07, 1)
 
-[sub_resource type="Gradient" id="Gradient_txmnl"]
-offsets = PackedFloat32Array(0, 0.60186917)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rmeow"]
-gradient = SubResource("Gradient_txmnl")
-width = 16
-height = 16
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgb6v"]
 shader = ExtResource("4_efmpf")
 
@@ -257,7 +246,6 @@ _data = {
 texture_filter = 1
 script = ExtResource("1_pn77i")
 icon = "icon.svg"
-minigame_scene = "test_minigame"
 
 [node name="Icon" type="Area2D" parent="." unique_id=432649802]
 
@@ -278,13 +266,6 @@ text = "60"
 label_settings = SubResource("LabelSettings_rmeow")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PointLight2D" type="PointLight2D" parent="Icon" unique_id=1820584393]
-position = Vector2(0, -29)
-color = Color(1, 0, 0, 1)
-energy = 5.0
-texture = SubResource("GradientTexture2D_rmeow")
-texture_scale = 2.0
 
 [node name="Panel" type="Panel" parent="." unique_id=65183625]
 modulate = Color(1, 1, 1, 0)
@@ -317,6 +298,11 @@ physics_object_picking = true
 size = Vector2i(196, 196)
 render_target_update_mode = 4
 
+[node name="Timer" type="Timer" parent="Panel/SubViewportContainer/SubViewport" unique_id=1996250429]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
 [node name="SceneSlot" type="Node2D" parent="Panel/SubViewportContainer/SubViewport" unique_id=900952312]
 z_index = 100
 material = SubResource("ShaderMaterial_efmpf")
@@ -334,10 +320,5 @@ texture = ExtResource("4_pn77i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=898213863]
 libraries/ = SubResource("AnimationLibrary_pn77i")
-
-[node name="Timer" type="Timer" parent="." unique_id=1996250429]
-wait_time = 60.0
-one_shot = true
-autostart = true
 
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]
