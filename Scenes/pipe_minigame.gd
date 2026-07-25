@@ -60,6 +60,7 @@ func generate_board() -> void:
 				piece.shape = _generate_shape()
 			piece.rotation_degrees = [0, 90, 180, 240].pick_random()
 			piece.setup_pipe()
+			grid[x][y] = piece
 
 	var source_piece: PipePiece = PIPE_PIECE_SCENE.instantiate()
 	board.add_child(source_piece)
@@ -67,6 +68,7 @@ func generate_board() -> void:
 	source_piece.type = PipePiece.PipeType.SOURCE
 	source_piece.shape = PipePiece.PipeShape.END
 	source_piece.rotation = _end_direction_to_degrees(source_direction)
+	grid[source_position.x][source_position.y] = source_piece
 
 	var sink_piece: PipePiece = PIPE_PIECE_SCENE.instantiate()
 	board.add_child(sink_piece)
@@ -74,6 +76,7 @@ func generate_board() -> void:
 	sink_piece.type = PipePiece.PipeType.SINK
 	sink_piece.shape = PipePiece.PipeShape.END
 	sink_piece.rotation = _end_direction_to_degrees(source_direction)
+	grid[sink_position.x][sink_position.y] = sink_piece
 
 	for dir: Vector2i in DIRECTIONS:
 		if source_piece.has_connection(Vector2(dir.x, dir.y)):
