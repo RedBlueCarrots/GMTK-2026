@@ -8,16 +8,17 @@ var conductor
 @export var beat: float
 var buffer = 3.0
 var start_scale = 3.0
-var end_scale = 1.7
+var end_scale = 0.85
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position = Vector2(87,70)
+	position = Vector2(95,81)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if conductor.get_beat() > beat + 0.3:
 		get_parent().active_notes.pop_front()
+		get_parent().play_miss_sound()
 		queue_free()
 		
 	var current_beat = conductor.get_beat()

@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	scale = Vector2(2, 1.3)
+
+
+func _on_texture_button_pressed() -> void:
+	scale = Vector2(2, 1.3)

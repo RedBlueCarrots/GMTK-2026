@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlc17tdd8m4dv"]
 
 [ext_resource type="Script" uid="uid://j7pigvubpnp" path="res://Scripts/circle_note.gd" id="1_6rixg"]
-[ext_resource type="Texture2D" uid="uid://bawaer0rl5qyf" path="res://Assets/Art/Disco/disco_circle.png" id="2_6qh42"]
+[ext_resource type="Texture2D" uid="uid://wrqrsg0ry8ya" path="res://Assets/Art/Disco/circleOSU2.png" id="2_6qh42"]
 
 [node name="rhythm_circle" type="Node2D" unique_id=307518478]
 script = ExtResource("1_6rixg")

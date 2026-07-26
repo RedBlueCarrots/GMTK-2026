@@ -7,6 +7,8 @@ var note_scene = preload("res://Scenes/rhythm_circle.tscn")
 @export var score = 0
 signal Success()
 signal Miss()
+var count = 0
+
 
 const pattern1: Array[Array] = [
 	[0,0, 0,0, 0,0, 0,0],
@@ -39,7 +41,6 @@ func extend_chart(chart_data, start_bar):
 		var subdivision := 1.0 / bar.size() * 4
 		for noteIndex: int in range(bar.size()):
 			if bar[noteIndex] != 0:
-				#var note = note_scene.instantiate()
 				var beat = start_bar * 4 + barIndex * 4 + noteIndex * subdivision
 				NOTE_QUEUE.append(beat)
 
@@ -48,12 +49,15 @@ var note_index = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(NOTE_QUEUE)
+	#print(NOTE_QUEUE)
+	#print(active_notes)
 	var current_beat = %Conductor.get_beat_int()
 	while note_index < NOTE_QUEUE.size():
 		var note_beat = NOTE_QUEUE[note_index]
 		if %Conductor.get_beat() >= note_beat - SPAWN_BUFFER:
 			spawn_note(NOTE_QUEUE[note_index])
+			count += 1
+			print(count)
 			note_index += 1
 		else:
 			break
@@ -64,7 +68,7 @@ func hit_detect():
 	
 	if active_notes.is_empty():
 		return
-	
+		
 	var note = active_notes[0]
 	var offset = current_beat - note.beat
 	
@@ -76,6 +80,7 @@ func hit_detect():
 		emit_signal("Success")
 	else:
 		print("Miss")
+		$"../Miss".play()
 		score -= 1
 	
 func spawn_note(beat):
@@ -85,11 +90,10 @@ func spawn_note(beat):
 	note.beat = beat
 	active_notes.append(note)
 	add_child(note)
-	print(note.get_parent())
 		
 func _on_conductor_beat(Pos: Variant) -> void:
-	if %Conductor.get_beat_int() % 8 == 0: #add next sequence to chart
-		var rand = randi_range(1,2)
+	if %Conductor.get_beat_int() % 4 == 0: #add next sequence to chart
+		var rand = randi_range(1,3)
 		if rand == 1:
 			extend_chart(pattern1, bar_count)
 		elif rand == 2:	
@@ -98,5 +102,8 @@ func _on_conductor_beat(Pos: Variant) -> void:
 			extend_chart(pattern3, bar_count)
 		bar_count += pattern1.size()
 
-func _on_button_pressed() -> void:
+func play_miss_sound():
+	$"../Miss".play()
+
+func _on_texture_button_pressed() -> void:
 	hit_detect()

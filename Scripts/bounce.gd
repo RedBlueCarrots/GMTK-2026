@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 
 
 func _on_conductor_beat(Pos: Variant) -> void:
-	scale = Vector2(1.9, 1.5)
+	scale = Vector2(2.2, 1.5)
