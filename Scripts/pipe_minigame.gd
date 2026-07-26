@@ -3,7 +3,7 @@ extends Minigame
 # Constants
 const DIRECTIONS: Array[Vector2i] = [Vector2i.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 const PIPE_PIECE_SCENE: PackedScene = preload("res://Scenes/pipe_piece.tscn")
-const board_size: Vector2i = Vector2i(11, 11) # also includes cell for source and sink
+const board_size: Vector2i = Vector2i(9, 9) # also includes cell for source and sink
 var board_range: Array = range(1, board_size.x-1)
 
 # exports and onready
@@ -12,7 +12,7 @@ var board_range: Array = range(1, board_size.x-1)
 @onready var board: Node2D = $Board
 
 # configs
-var cell_size: float = 17.45
+var cell_size: float = 21.33
 var source_position: Vector2i = Vector2i(0, floor((board_size.y as float)/2))
 var source_direction: Vector2i = Vector2i.RIGHT
 var sink_position: Vector2i = Vector2i(board_size.x-1, floor((board_size.y as float)/2))
