@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://r1lbqr12l201" path="res://Assets/Art/lights.png" id="3_ui3s2"]
 [ext_resource type="Texture2D" uid="uid://cwiss47tjkhhk" path="res://Assets/Art/lighting.png" id="3_x3kt7"]
 [ext_resource type="Texture2D" uid="uid://bmxya4ets8t2o" path="res://Assets/Art/stars.png" id="4_lgb6v"]
+[ext_resource type="Texture2D" uid="uid://tu4p3m4yk5p2" path="res://Assets/Art/rocket1.png" id="6_5kiok"]
+[ext_resource type="Texture2D" uid="uid://dfoxb44qjrmh6" path="res://Assets/Art/rocket2.png" id="7_s2ucq"]
+[ext_resource type="Texture2D" uid="uid://djt2kcdt201hc" path="res://Assets/Art/rocket3.png" id="8_5vt7e"]
+[ext_resource type="Texture2D" uid="uid://cow3v34qudlhx" path="res://Assets/Art/rocket4.png" id="9_xfaxc"]
 
 [sub_resource type="Gradient" id="Gradient_ynf5e"]
 
@@ -24,6 +28,11 @@ shader_parameter/NOISE = SubResource("NoiseTexture2D_6bp64")
 shader_parameter/STARS = ExtResource("4_lgb6v")
 shader_parameter/LIGHTS = ExtResource("3_ui3s2")
 shader_parameter/LIGHTING = ExtResource("3_x3kt7")
+shader_parameter/ROCKET1 = ExtResource("6_5kiok")
+shader_parameter/ROCKET2 = ExtResource("7_s2ucq")
+shader_parameter/ROCKET3 = ExtResource("8_5vt7e")
+shader_parameter/ROCKET4 = ExtResource("9_xfaxc")
 shader_parameter/windSpeed = 0.2
 shader_parameter/rpm = 1.0
+shader_parameter/rocketStage = 4
 shader_parameter/resolution = Vector2(320, 180)
