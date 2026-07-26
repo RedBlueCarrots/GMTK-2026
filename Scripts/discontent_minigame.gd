@@ -50,13 +50,11 @@ func _on_input_text_changed(new_text: String) -> void:
 			pos += 1
 		else:
 			# wrong lol
-			print("lose")
-			finish()
+			fail()
 			break
 		
 	if pos >= len(comp_sentence):
 		if sentences <= 0:
-			print("win")
 			finish()
 		else:
 			_generate_sentence()
