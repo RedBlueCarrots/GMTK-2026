@@ -84,7 +84,7 @@ visible = false
 shape = SubResource("RectangleShape2D_6uhjo")
 
 [node name="Plant" type="AnimatedSprite2D" parent="Fields/Field1" unique_id=1788484333]
-position = Vector2(1, -11)
+position = Vector2(1, -13)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rmeow")
 animation = &"Grow"
@@ -107,7 +107,7 @@ visible = false
 shape = SubResource("RectangleShape2D_bhkdp")
 
 [node name="Plant" type="AnimatedSprite2D" parent="Fields/Field2" unique_id=751246977]
-position = Vector2(0, -11)
+position = Vector2(0, -13)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rmeow")
 animation = &"Grow"
@@ -130,7 +130,7 @@ visible = false
 shape = SubResource("RectangleShape2D_bhkdp")
 
 [node name="Plant" type="AnimatedSprite2D" parent="Fields/Field3" unique_id=151380560]
-position = Vector2(-1, -11)
+position = Vector2(-1, -13)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_rmeow")
 animation = &"Grow"
