@@ -7,8 +7,8 @@ void vertex() {
 void fragment() {
 	if ((UV.x-0.5)*(UV.x-0.5)+(UV.y-0.5)*(UV.y-0.5) > 0.2 ){
 		COLOR.a = 0.0;
-	} else {
-		COLOR.a = 1.0;
+	} else if (COLOR.a == 0.0){
+		COLOR = vec4(0.0, 0.0, 0.0, 0.2);
 	}
 }
 
