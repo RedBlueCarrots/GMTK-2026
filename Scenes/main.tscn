@@ -70,4 +70,5 @@ autostart = true
 position = Vector2(-47, 27)
 new_scene = ExtResource("8_ynf5e")
 
+[connection signal="selected" from="CanvasLayer/hud" to="." method="_on_hud_selected"]
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
