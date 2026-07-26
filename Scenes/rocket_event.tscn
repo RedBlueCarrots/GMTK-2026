@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cdvlyu4ukgx5q" path="res://Assets/Art/big_outline_mask.png" id="4_4lfr1"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_g2o0y"]
 [ext_resource type="Texture2D" uid="uid://bv6yqf4biseea" path="res://Assets/Art/big_outline.png" id="6_0sb3g"]
-[ext_resource type="PackedScene" uid="uid://7g4mxd0p6tcs" path="res://Scenes/rocket_draw.tscn" id="7_8xxx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("2_4lfr1")
@@ -367,8 +366,6 @@ render_target_update_mode = 4
 [node name="SceneSlot" type="Node2D" parent="Panel/SubViewportContainer/SubViewport" unique_id=900952312]
 z_index = 100
 material = SubResource("ShaderMaterial_efmpf")
-
-[node name="Rocket_Draw" parent="Panel/SubViewportContainer/SubViewport/SceneSlot" unique_id=1874181638 instance=ExtResource("7_8xxx4")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1476544407]
 z_index = 5

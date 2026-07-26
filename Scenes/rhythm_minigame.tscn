@@ -101,7 +101,7 @@ unique_name_in_owner = true
 offset_top = 5.0
 offset_right = 191.0
 offset_bottom = 32.0
-max_value = 4.0
+max_value = 5.0
 show_percentage = false
 script = ExtResource("16_dm6s5")
 

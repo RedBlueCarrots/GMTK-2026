@@ -1,6 +1,16 @@
 extends Node2D
 
-@export var events : Dictionary[String, PackedScene]
+@export var events : Dictionary[String, PackedScene] = {
+	"food supply low": preload("res://Scenes/starvation_minigame.tscn"),
+	"power supply exhausted": preload("res://Scenes/power_crank_minigame.tscn"),
+	"satellite orbit unstable": preload("res://Scenes/power_crank_minigame.tscn"),
+	"oxygen low": preload("res://Scenes/power_crank_minigame.tscn"),
+	"discontent high": preload("res://Scenes/power_crank_minigame.tscn"),
+	"nefarious cult activity detected": preload("res://Scenes/rhythm_minigame.tscn"),
+	"water low": preload("res://Scenes/WaterFillingMiniGame.tscn"),
+	"next rocket stage imminent": preload("res://Scenes/rocket_draw.tscn") #need to add other 3 lol
+}
+
 @export var event_positions : Dictionary[String, Vector2]
 @export var event_peristence : Array[String]
 
