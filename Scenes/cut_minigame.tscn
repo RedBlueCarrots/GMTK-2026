@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://olecodk0vn22"]
+
+[ext_resource type="Script" uid="uid://c4kii64isenjy" path="res://Scripts/cut_minigame.gd" id="1_gr65p"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_yal4m"]
+[ext_resource type="Texture2D" uid="uid://45r2xx48vbpi" path="res://Assets/Art/Cut/background.png" id="3_ea4qv"]
+[ext_resource type="Texture2D" uid="uid://qndw7y51sdwx" path="res://Assets/Art/Cut/cut_zone.png" id="4_wklnc"]
+[ext_resource type="Texture2D" uid="uid://fqv61h1sa8en" path="res://Assets/Art/Cut/cutter-miss.png" id="5_ig6o0"]
+[ext_resource type="Texture2D" uid="uid://cblo7xy4ds3aj" path="res://Assets/Art/Cut/cutter-slash.png" id="6_fbyt1"]
+[ext_resource type="Texture2D" uid="uid://ctkhxiyqquxhs" path="res://Assets/Art/Cut/cutter-crosshair.png" id="7_d5te4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dj8w"]
+size = Vector2(5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byvyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14cm1"]
+atlas = ExtResource("6_fbyt1")
+region = Rect2(0, 0, 196, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv7br"]
+atlas = ExtResource("6_fbyt1")
+region = Rect2(196, 0, 196, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bayor"]
+atlas = ExtResource("6_fbyt1")
+region = Rect2(0, 196, 196, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmajo"]
+atlas = ExtResource("6_fbyt1")
+region = Rect2(196, 196, 196, 196)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6r38"]
+atlas = ExtResource("6_fbyt1")
+region = Rect2(0, 392, 196, 196)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3dj8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14cm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv7br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bayor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmajo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6r38")
+}],
+"loop": 0,
+"name": &"slash",
+"speed": 15.0
+}]
+
+[node name="CutMinigame" type="Node2D" unique_id=578192638]
+script = ExtResource("1_gr65p")
+speed = 200.0
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yal4m")]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1879380471]
+position = Vector2(128, 0)
+scale = Vector2(0.188, 0.188)
+texture = ExtResource("3_ea4qv")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=673282950]
+position = Vector2(511.00003, 0)
+scale = Vector2(0.188, 0.188)
+texture = ExtResource("3_ea4qv")
+centered = false
+
+[node name="Background3" type="Sprite2D" parent="." unique_id=179064024]
+position = Vector2(-257.00015, 0)
+scale = Vector2(0.188, 0.188)
+texture = ExtResource("3_ea4qv")
+centered = false
+
+[node name="CutZone" type="Area2D" parent="." unique_id=1346018250]
+position = Vector2(320, 192)
+scale = Vector2(2, 2)
+
+[node name="CutZoneSprite" type="Sprite2D" parent="CutZone" unique_id=1861165832]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("4_wklnc")
+
+[node name="CutZoneHurtbox" type="CollisionShape2D" parent="CutZone" unique_id=1974487756]
+shape = SubResource("RectangleShape2D_3dj8w")
+
+[node name="Cutter" type="Area2D" parent="." unique_id=1146846971]
+position = Vector2(215, 192)
+scale = Vector2(2, 2)
+
+[node name="CutterHitbox" type="CollisionShape2D" parent="Cutter" unique_id=477147316]
+shape = SubResource("RectangleShape2D_byvyp")
+
+[node name="CutterMissSprite" type="Sprite2D" parent="Cutter" unique_id=2121749876]
+position = Vector2(-21.445, -14.865)
+rotation = 4.712389
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("5_ig6o0")
+
+[node name="CutterSlashAnimation" type="AnimatedSprite2D" parent="Cutter" unique_id=483713279]
+sprite_frames = SubResource("SpriteFrames_3dj8w")
+animation = &"slash"
+frame = 3
+frame_progress = 0.36353695
+
+[node name="CutterTarget" type="Sprite2D" parent="Cutter" unique_id=1347799743]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("7_d5te4")
+
+[connection signal="animation_finished" from="Cutter/CutterSlashAnimation" to="." method="_on_cutter_slash_animation_animation_finished"]

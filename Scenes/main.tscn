@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://boaj3m5nanps8" path="res://Scenes/main.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://ds3g6g75tbbyi" path="res://Scenes/UI/hud.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://dmocsibu551w4" path="res://Scenes/unstable_orbit_minigame.tscn" id="2_344ge"]
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cxvig8wmkgknd" path="res://Scenes/starvation_minigame.tscn" id="3_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://dmocsibu551w4" path="res://Scenes/unstable_orbit_minigame.tscn" id="4_344ge"]
 [ext_resource type="PackedScene" uid="uid://bpqm6ujgnbmqk" path="res://Scenes/power_crank_minigame.tscn" id="4_hptm8"]
 [ext_resource type="PackedScene" uid="uid://rcwuh037ojd6" path="res://Scenes/rocket_event.tscn" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://7g4mxd0p6tcs" path="res://Scenes/rocket_draw.tscn" id="8_ynf5e"]
@@ -39,7 +39,7 @@ script = ExtResource("1_kry3j")
 events = Dictionary[String, PackedScene]({
 "food supply low": ExtResource("3_ynf5e"),
 "power supply exhausted": ExtResource("4_hptm8"),
-"satellite orbit unstable": ExtResource("2_344ge")
+"satellite orbit unstable": ExtResource("4_344ge")
 })
 event_positions = Dictionary[String, Vector2]({
 "food supply low": Vector2(-136, 74),
@@ -66,8 +66,15 @@ autostart = true
 
 [node name="Events" type="Node2D" parent="." unique_id=404849960]
 
+[node name="RocketTimer" type="Timer" parent="." unique_id=2093610037]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
 [node name="RocketEvent" parent="." unique_id=150192178 instance=ExtResource("7_344ge")]
 position = Vector2(-47, 27)
 new_scene = ExtResource("8_ynf5e")
 
+[connection signal="selected" from="CanvasLayer/hud" to="." method="_on_hud_selected"]
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
+[connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]

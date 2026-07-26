@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_input_text_changed(new_text: String) -> void:
-	$code.visible = new_text==""
+	%code.visible = new_text==""
 	if len(%input.text) >= code_length:
 		if %input.text == code:
 			codes_remaining -= 1

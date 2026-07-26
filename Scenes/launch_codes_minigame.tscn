@@ -13,14 +13,28 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [node name="launch_codes_minigame" type="Node2D" unique_id=298174657]
 script = ExtResource("1_lpcee")
 
-[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yamr6")]
+[node name="Offset" type="Node2D" parent="." unique_id=1543610723]
+position = Vector2(128, -13)
+scale = Vector2(2, 2)
 
-[node name="TVScreen" type="Sprite2D" parent="." unique_id=1270445814]
+[node name="MinigameOutline" parent="Offset" unique_id=959946983 instance=ExtResource("2_yamr6")]
+
+[node name="TVScreen" type="Sprite2D" parent="Offset" unique_id=1270445814]
 position = Vector2(95, 96)
 scale = Vector2(2, 2)
 texture = ExtResource("3_yamr6")
 
-[node name="input" type="LineEdit" parent="." unique_id=649147995]
+[node name="TVScreen2" type="Sprite2D" parent="Offset" unique_id=536765745]
+position = Vector2(283.64, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("3_yamr6")
+
+[node name="TVScreen3" type="Sprite2D" parent="Offset" unique_id=1190057383]
+position = Vector2(-91.5, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("3_yamr6")
+
+[node name="input" type="LineEdit" parent="Offset" unique_id=649147995]
 unique_name_in_owner = true
 anchors_preset = 7
 anchor_left = 0.5
@@ -38,7 +52,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yamr6")
 theme_override_styles/focus = SubResource("StyleBoxFlat_2ut0s")
 text = "11111"
 
-[node name="code" type="RichTextLabel" parent="." unique_id=1424762241]
+[node name="code" type="RichTextLabel" parent="Offset" unique_id=1424762241]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -51,7 +65,7 @@ grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "11111"
 
-[node name="remaining" type="RichTextLabel" parent="." unique_id=227785317]
+[node name="remaining" type="RichTextLabel" parent="Offset" unique_id=227785317]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -65,7 +79,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 12
 text = " Codes: 3"
 
-[node name="errors" type="RichTextLabel" parent="." unique_id=1945331028]
+[node name="errors" type="RichTextLabel" parent="Offset" unique_id=1945331028]
 unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
@@ -78,10 +92,10 @@ grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 12
 
-[node name="Timer" type="Timer" parent="." unique_id=177635369]
+[node name="Timer" type="Timer" parent="Offset" unique_id=177635369]
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[connection signal="text_changed" from="input" to="." method="_on_input_text_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="text_changed" from="Offset/input" to="." method="_on_input_text_changed"]
+[connection signal="timeout" from="Offset/Timer" to="." method="_on_timer_timeout"]
