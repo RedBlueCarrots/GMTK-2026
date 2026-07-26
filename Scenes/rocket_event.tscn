@@ -4,7 +4,9 @@
 [ext_resource type="Shader" uid="uid://mf7y06ytbp50" path="res://Scripts/Shaders/circle.gdshader" id="2_4lfr1"]
 [ext_resource type="Texture2D" uid="uid://yotc5uueyat4" path="res://Assets/Art/Icons/starvation.png" id="3_8xxx4"]
 [ext_resource type="Shader" uid="uid://bvetwepbd13i6" path="res://Scripts/Shaders/eventborder.gdshader" id="4_3m00q"]
+[ext_resource type="Texture2D" uid="uid://cdvlyu4ukgx5q" path="res://Assets/Art/big_outline_mask.png" id="4_4lfr1"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_g2o0y"]
+[ext_resource type="Texture2D" uid="uid://bv6yqf4biseea" path="res://Assets/Art/big_outline.png" id="6_0sb3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("2_4lfr1")
@@ -12,8 +14,59 @@ shader = ExtResource("2_4lfr1")
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmeow"]
 radius = 16.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgb6v"]
-shader = ExtResource("4_3m00q")
+[sub_resource type="Shader" id="Shader_8xxx4"]
+code = "shader_type canvas_item;
+
+uniform sampler2D MASK;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 mask = texture(MASK, UV);
+	if (mask == vec4(0., 0., 0., 1.)) {
+		COLOR.a = 0.0;
+	}
+	
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3m00q"]
+shader = SubResource("Shader_8xxx4")
+shader_parameter/MASK = ExtResource("4_4lfr1")
+
+[sub_resource type="Shader" id="Shader_3m00q"]
+code = "shader_type canvas_item;
+
+uniform sampler2D MASK;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 mask = texture(MASK, UV);
+	if (mask == vec4(0., 0., 0., 1.)) {
+		COLOR.a = 0.0;
+	}
+	
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2o0y"]
+shader = SubResource("Shader_3m00q")
+shader_parameter/MASK = ExtResource("4_4lfr1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_efmpf"]
 shader = ExtResource("4_3m00q")
@@ -228,12 +281,41 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Icon/Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_78kjg"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pn77i"]
 _data = {
 &"FadeIn": SubResource("Animation_27o3k"),
 &"FadeOut": SubResource("Animation_pn77i"),
-&"RESET": SubResource("Animation_u37vb")
+&"RESET": SubResource("Animation_u37vb"),
+&"flash": SubResource("Animation_78kjg")
 }
 
 [node name="RocketEvent" type="Node2D" unique_id=150192178]
@@ -253,7 +335,7 @@ shape = SubResource("CircleShape2D_rmeow")
 [node name="Panel" type="Panel" parent="." unique_id=65183625]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_lgb6v")
+material = SubResource("ShaderMaterial_3m00q")
 custom_minimum_size = Vector2(640, 360)
 custom_maximum_size = Vector2(640, 360)
 offset_right = 40.0
@@ -264,7 +346,7 @@ offset_transform_scale = Vector2(0.001, 0.001)
 offset_transform_visual_only = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Panel" unique_id=306134140]
-material = SubResource("ShaderMaterial_efmpf")
+material = SubResource("ShaderMaterial_g2o0y")
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -285,7 +367,20 @@ render_target_update_mode = 4
 z_index = 100
 material = SubResource("ShaderMaterial_efmpf")
 
+[node name="TextureRect" type="TextureRect" parent="Panel" unique_id=780088725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0sb3g")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=898213863]
 libraries/ = SubResource("AnimationLibrary_pn77i")
+
+[node name="Flash" type="AnimationPlayer" parent="." unique_id=2091384321]
+libraries/ = SubResource("AnimationLibrary_pn77i")
+autoplay = &"flash"
 
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]
