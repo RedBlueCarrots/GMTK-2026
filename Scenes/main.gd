@@ -5,10 +5,10 @@ extends Node2D
 @export var event_peristence : Array[String]
 
 const new_event = preload("res://Scenes/event.tscn")
-const new_rocket_event = preload("res://Scenes/event.tscn")
+const new_rocket_event = preload("res://Scenes/rocket_event.tscn")
 var all_events = []
 
-const rocket_events = [preload("res://Scenes/rocket_draw.gd"), preload("res://Scenes/cut_minigame.tscn"), preload("res://Scenes/connect_the_wires.tscn"), preload("res://Scenes/launch_codes_minigame.tscn")]
+const rocket_events = [preload("res://Scenes/rocket_draw.tscn"), preload("res://Scenes/cut_minigame.tscn"), preload("res://Scenes/connect_the_wires.tscn"), preload("res://Scenes/launch_codes_minigame.tscn")]
 var rocket_events_completed := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +39,7 @@ func _on_event_timer_timeout() -> void:
 
 
 func _on_rocket_timer_timeout() -> void:
-	var new_event_scene = new_event.instantiate()
+	var new_event_scene = new_rocket_event.instantiate()
 	new_event_scene.new_scene = rocket_events[rocket_events_completed]
 	add_child(new_event_scene)
 	new_event_scene.position = Vector2(-140, 140)

@@ -8,8 +8,8 @@ extends Minigame
 @onready var minigame_outline: Sprite2D = $MinigameOutline
 
 @export var speed: float = 80.0
-@export var min_x: float = 26
-@export var max_x: float = 170
+@export var min_x: float = 180
+@export var max_x: float = 430
 
 var direction: float = 1.0
 var is_slashing: bool = false
@@ -18,8 +18,9 @@ var game_won: bool = false
 
 func _ready() -> void:
 	if cutter and minigame_outline:
-		min_x = cutter.position.x
-		max_x = minigame_outline.texture.get_size().x - min_x
+		#min_x = cutter.position.x
+		#max_x = minigame_outline.texture.get_size().x - min_x
+		pass
 
 	cutter_slash_animation.visible = false
 	cutter_miss_sprite.visible = false

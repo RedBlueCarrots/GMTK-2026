@@ -61,14 +61,29 @@ script = ExtResource("1_gr65p")
 speed = 200.0
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yal4m")]
+visible = false
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1879380471]
-scale = Vector2(0.09375001, 0.09375)
+position = Vector2(128, 0)
+scale = Vector2(0.188, 0.188)
+texture = ExtResource("3_ea4qv")
+centered = false
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=673282950]
+position = Vector2(511.00003, 0)
+scale = Vector2(0.188, 0.188)
+texture = ExtResource("3_ea4qv")
+centered = false
+
+[node name="Background3" type="Sprite2D" parent="." unique_id=179064024]
+position = Vector2(-257.00015, 0)
+scale = Vector2(0.188, 0.188)
 texture = ExtResource("3_ea4qv")
 centered = false
 
 [node name="CutZone" type="Area2D" parent="." unique_id=1346018250]
-position = Vector2(96, 96)
+position = Vector2(320, 192)
+scale = Vector2(2, 2)
 
 [node name="CutZoneSprite" type="Sprite2D" parent="CutZone" unique_id=1861165832]
 scale = Vector2(0.24, 0.24)
@@ -78,7 +93,8 @@ texture = ExtResource("4_wklnc")
 shape = SubResource("RectangleShape2D_3dj8w")
 
 [node name="Cutter" type="Area2D" parent="." unique_id=1146846971]
-position = Vector2(26, 96)
+position = Vector2(215, 192)
+scale = Vector2(2, 2)
 
 [node name="CutterHitbox" type="CollisionShape2D" parent="Cutter" unique_id=477147316]
 shape = SubResource("RectangleShape2D_byvyp")

@@ -18,52 +18,52 @@ var yellow_connected := false
 
 func _process(_delta: float) -> void:
 	if dragging_red:
-		$WireLines/RedLine.clear_points()
+		$Offset/WireLines/RedLine.clear_points()
 
-		$WireLines/RedLine.add_point(
-			$WireLines/RedLine.to_local(
-				$WireStarts/RedStart/Wiretip.global_position
+		$Offset/WireLines/RedLine.add_point(
+			$Offset/WireLines/RedLine.to_local(
+				$Offset/WireStarts/RedStart/Wiretip.global_position
 			)
 		)
 
-		$WireLines/RedLine.add_point(
-			$WireLines/RedLine.get_local_mouse_position()
+		$Offset/WireLines/RedLine.add_point(
+			$Offset/WireLines/RedLine.get_local_mouse_position()
 		)
 	if dragging_blue:
-		$WireLines/BlueLine.clear_points()
+		$Offset/WireLines/BlueLine.clear_points()
 
-		$WireLines/BlueLine.add_point(
-			$WireLines/BlueLine.to_local(
-				$WireStarts/BlueStart/Wiretip.global_position
+		$Offset/WireLines/BlueLine.add_point(
+			$Offset/WireLines/BlueLine.to_local(
+				$Offset/WireStarts/BlueStart/Wiretip.global_position
 			)
 		)
 
-		$WireLines/BlueLine.add_point(
-			$WireLines/BlueLine.get_local_mouse_position()
+		$Offset/WireLines/BlueLine.add_point(
+			$Offset/WireLines/BlueLine.get_local_mouse_position()
 		)
 	if dragging_green:
-		$WireLines/GreenLine.clear_points()
+		$Offset/WireLines/GreenLine.clear_points()
 
-		$WireLines/GreenLine.add_point(
-			$WireLines/GreenLine.to_local(
-				$WireStarts/GreenStart/Wiretip.global_position
+		$Offset/WireLines/GreenLine.add_point(
+			$Offset/WireLines/GreenLine.to_local(
+				$Offset/WireStarts/GreenStart/Wiretip.global_position
 			)
 		)
 
-		$WireLines/GreenLine.add_point(
-			$WireLines/GreenLine.get_local_mouse_position()
+		$Offset/WireLines/GreenLine.add_point(
+			$Offset/WireLines/GreenLine.get_local_mouse_position()
 		)
 	if dragging_yellow:
-		$WireLines/YellowLine.clear_points()
+		$Offset/WireLines/YellowLine.clear_points()
 
-		$WireLines/YellowLine.add_point(
-			$WireLines/YellowLine.to_local(
-				$WireStarts/YellowStart/Wiretip.global_position
+		$Offset/WireLines/YellowLine.add_point(
+			$Offset/WireLines/YellowLine.to_local(
+				$Offset/WireStarts/YellowStart/Wiretip.global_position
 			)
 		)
 
-		$WireLines/YellowLine.add_point(
-			$WireLines/YellowLine.get_local_mouse_position()
+		$Offset/WireLines/YellowLine.add_point(
+			$Offset/WireLines/YellowLine.get_local_mouse_position()
 		)
 
 func _input(event: InputEvent) -> void:
@@ -77,24 +77,24 @@ func _input(event: InputEvent) -> void:
 
 			if red_over_target:
 				red_connected = true
-				$WireLines/RedLine.clear_points()
+				$Offset/WireLines/RedLine.clear_points()
 
-				$WireLines/RedLine.add_point(
-					$WireLines/RedLine.to_local(
-						$WireStarts/RedStart/Wiretip.global_position
+				$Offset/WireLines/RedLine.add_point(
+					$Offset/WireLines/RedLine.to_local(
+						$Offset/WireStarts/RedStart/Wiretip.global_position
 					)
 				)
 
-				$WireLines/RedLine.add_point(
-					$WireLines/RedLine.to_local(
-						$WireEnds/RedEnd/Wiretip.global_position
+				$Offset/WireLines/RedLine.add_point(
+					$Offset/WireLines/RedLine.to_local(
+						$Offset/WireEnds/RedEnd/Wiretip.global_position
 					)
 				)
 				
 				check_completion()
 			else:
-				$WireLines/RedLine.visible = false
-				$WireLines/RedLine.clear_points()
+				$Offset/WireLines/RedLine.visible = false
+				$Offset/WireLines/RedLine.clear_points()
 
 
 		elif dragging_blue:
@@ -102,70 +102,70 @@ func _input(event: InputEvent) -> void:
 
 			if blue_over_target:
 				blue_connected = true
-				$WireLines/BlueLine.clear_points()
+				$Offset/WireLines/BlueLine.clear_points()
 
-				$WireLines/BlueLine.add_point(
-					$WireLines/BlueLine.to_local(
-						$WireStarts/BlueStart/Wiretip.global_position
+				$Offset/WireLines/BlueLine.add_point(
+					$Offset/WireLines/BlueLine.to_local(
+						$Offset/WireStarts/BlueStart/Wiretip.global_position
 					)
 				)
 
-				$WireLines/BlueLine.add_point(
-					$WireLines/BlueLine.to_local(
-						$WireEnds/BlueEnd/Wiretip.global_position
+				$Offset/WireLines/BlueLine.add_point(
+					$Offset/WireLines/BlueLine.to_local(
+						$Offset/WireEnds/BlueEnd/Wiretip.global_position
 					)
 				)
 				
 				check_completion()
 			else:
-				$WireLines/BlueLine.visible = false
-				$WireLines/BlueLine.clear_points()
+				$Offset/WireLines/BlueLine.visible = false
+				$Offset/WireLines/BlueLine.clear_points()
 		elif dragging_green:
 			dragging_green = false
 
 			if green_over_target:
 				green_connected = true
-				$WireLines/GreenLine.clear_points()
+				$Offset/WireLines/GreenLine.clear_points()
 
-				$WireLines/GreenLine.add_point(
-					$WireLines/GreenLine.to_local(
-						$WireStarts/GreenStart/Wiretip.global_position
+				$Offset/WireLines/GreenLine.add_point(
+					$Offset/WireLines/GreenLine.to_local(
+						$Offset/WireStarts/GreenStart/Wiretip.global_position
 					)
 				)
 
-				$WireLines/GreenLine.add_point(
-					$WireLines/GreenLine.to_local(
-						$WireEnds/GreenEnd/Wiretip.global_position
+				$Offset/WireLines/GreenLine.add_point(
+					$Offset/WireLines/GreenLine.to_local(
+						$Offset/WireEnds/GreenEnd/Wiretip.global_position
 					)
 				)
 				
 				check_completion()
 			else:
-				$WireLines/GreenLine.visible = false
-				$WireLines/GreenLine.clear_points()
+				$Offset/WireLines/GreenLine.visible = false
+				$Offset/WireLines/GreenLine.clear_points()
 		elif dragging_yellow:
 			dragging_yellow = false
 
 			if yellow_over_target:
 				yellow_connected = true
-				$WireLines/YellowLine.clear_points()
+				$Offset/WireLines/YellowLine.clear_points()
 
-				$WireLines/YellowLine.add_point(
-					$WireLines/YellowLine.to_local(
-						$WireStarts/YellowStart/Wiretip.global_position
+				$Offset/WireLines/YellowLine.add_point(
+					$Offset/WireLines/YellowLine.to_local(
+						$Offset/WireStarts/YellowStart/Wiretip.global_position
 					)
 				)
 
-				$WireLines/YellowLine.add_point(
-					$WireLines/YellowLine.to_local(
-						$WireEnds/YellowEnd/Wiretip.global_position
+				$Offset/WireLines/YellowLine.add_point(
+					$Offset/WireLines/YellowLine.to_local(
+						$Offset/WireEnds/YellowEnd/Wiretip.global_position
 					)
 				)
 				
 				check_completion()
 			else:
-				$WireLines/YellowLine.visible = false
-				$WireLines/YellowLine.clear_points()
+				$Offset/WireLines/YellowLine.visible = false
+				$Offset/WireLines/YellowLine.clear_points()
 
 func _on_red_start_input_event(
 	_viewport: Node,
@@ -179,7 +179,7 @@ func _on_red_start_input_event(
 			and not red_connected
 		):
 			dragging_red = true
-			$WireLines/RedLine.visible = true
+			$Offset/WireLines/RedLine.visible = true
 
 
 func _on_red_end_mouse_entered() -> void:
@@ -202,7 +202,7 @@ func _on_blue_start_input_event(
 			and not blue_connected
 		):
 			dragging_blue = true
-			$WireLines/BlueLine.visible = true
+			$Offset/WireLines/BlueLine.visible = true
 
 
 func _on_blue_end_mouse_entered() -> void:
@@ -225,7 +225,7 @@ func _on_green_start_input_event(
 			and not green_connected
 		):
 			dragging_green = true
-			$WireLines/GreenLine.visible = true
+			$Offset/WireLines/GreenLine.visible = true
 
 
 func _on_green_end_mouse_entered() -> void:
@@ -248,7 +248,7 @@ func _on_yellow_start_input_event(
 			and not yellow_connected
 		):
 			dragging_yellow = true
-			$WireLines/YellowLine.visible = true
+			$Offset/WireLines/YellowLine.visible = true
 
 
 func _on_yellow_end_mouse_entered() -> void:
