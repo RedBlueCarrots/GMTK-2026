@@ -13,6 +13,6 @@ texture = ExtResource("2_6ab3l")
 centered = false
 
 [node name="Board" type="Node2D" parent="." unique_id=1164436376]
-position = Vector2(8, 8)
+position = Vector2(10.8, 10.8)
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_hkjiq")]
