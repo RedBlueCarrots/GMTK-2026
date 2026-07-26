@@ -13,7 +13,7 @@ func _ready() -> void:
 	#old_pos = position
 	#$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
 	pass
-	$Panel/SubViewportContainer/SubViewport/Timer.start(30)
+	$Panel/SubViewportContainer/SubViewport/Timer.start(60)
 
 func create_minigame():
 	var minigame : Minigame = new_scene.instantiate()
@@ -58,7 +58,7 @@ func finish_success():
 	if is_open:
 		close()
 	reset()
-	$Panel/SubViewportContainer/SubViewport/Timer.start(0)
+	turn(99)
 
 func close_remove():
 	if is_open:
@@ -72,7 +72,11 @@ func fail_close():
 
 # Mutator methods to be called by random events.
 func increase_time():
-	%Timer.wait_time += 10
+	turn(10)
 
 func decrease_time():
-	%Timer.wait_time -= 10
+	turn(-10)
+
+func turn(amount):
+	%Timer.wait_time = clamp(%Timer.time_left + amount/2, 0.1, 99.0)
+	%Timer.start()

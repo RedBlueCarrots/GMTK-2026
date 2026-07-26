@@ -17,6 +17,8 @@ radius = 16.0
 [sub_resource type="LabelSettings" id="LabelSettings_rmeow"]
 font = ExtResource("4_txmnl")
 font_color = Color(0.82191056, 2.623126e-06, 7.70092e-07, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lgb6v"]
 shader = ExtResource("4_efmpf")
@@ -270,6 +272,7 @@ vertical_alignment = 1
 [node name="Panel" type="Panel" parent="." unique_id=65183625]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
+z_index = 4
 material = SubResource("ShaderMaterial_lgb6v")
 custom_minimum_size = Vector2(196, 196)
 custom_maximum_size = Vector2(196, 196)

@@ -1,6 +1,16 @@
 extends Node2D
 
-@export var events : Dictionary[String, PackedScene]
+@export var events : Dictionary[String, PackedScene] = {
+	"food supply low": preload("res://Scenes/starvation_minigame.tscn"),
+	"power supply exhausted": preload("res://Scenes/power_crank_minigame.tscn"),
+	"satellite orbit unstable": preload("res://Scenes/power_crank_minigame.tscn"),
+	"oxygen low": preload("res://Scenes/power_crank_minigame.tscn"),
+	"discontent high": preload("res://Scenes/power_crank_minigame.tscn"),
+	"nefarious cult activity detected": preload("res://Scenes/rhythm_minigame.tscn"),
+	"water low": preload("res://Scenes/WaterFillingMiniGame.tscn"),
+	"next rocket stage imminent": preload("res://Scenes/rocket_draw.tscn") #need to add other 3 lol
+}
+
 @export var event_positions : Dictionary[String, Vector2]
 @export var event_peristence : Array[String]
 
@@ -47,8 +57,8 @@ func _on_rocket_timer_timeout() -> void:
 	var new_event_scene = new_rocket_event.instantiate()
 	new_event_scene.new_scene = rocket_events[rocket_events_completed]
 	add_child(new_event_scene)
-	new_event_scene.position = Vector2(-140, 140)
-	new_event_scene.old_pos = Vector2(-140, 140)
+	new_event_scene.position = Vector2(-123, 89)
+	new_event_scene.old_pos = Vector2(-123, 89)
 	$CanvasLayer/hud.show_warning("ROCKET   STAGE   "+str(rocket_events_completed+1) + "   IS   READY")
 	new_event_scene.connect("done", rocket_done)
 

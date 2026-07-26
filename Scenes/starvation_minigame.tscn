@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3pfxetjghnu" path="res://Scenes/starvation_minigame.gd" id="1_lh5lg"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_v1qvn"]
-[ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="3_6uhjo"]
+[ext_resource type="Texture2D" uid="uid://dhhe1fpitipov" path="res://icon.svg" id="3_6uhjo"]
 [ext_resource type="Texture2D" uid="uid://cw1c1js0hhffl" path="res://Assets/Art/Starvation/starvation_border.png" id="3_vnrf3"]
 [ext_resource type="Texture2D" uid="uid://cjgkrk0ib1a1n" path="res://Assets/Art/Starvation/seedbag new.png" id="5_rtht1"]
 [ext_resource type="Texture2D" uid="uid://dp5gtc0eoieol" path="res://Assets/Art/Starvation/seed.png" id="5_vnrf3"]

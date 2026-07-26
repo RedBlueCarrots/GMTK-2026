@@ -1,6 +1,6 @@
 extends Minigame
 
-@export var sentences = 2
+@export var sentences = 1
 var sentence = ""
 var comp_sentence = ""
 var written = ""
