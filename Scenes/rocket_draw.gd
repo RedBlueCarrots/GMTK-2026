@@ -25,5 +25,6 @@ func get_score():
 			target_count += 1
 		else:
 			score -= 1
-	if score > 1200 and target_count/$Target.get_used_cells().size() > 0.95:
+	printt(score, target_count*1.0/$Target.get_used_cells().size())
+	if score > 200 and target_count*1.0/$Target.get_used_cells().size() > 0.2:
 		finish()

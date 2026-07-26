@@ -13,6 +13,7 @@ func _ready() -> void:
 	#old_pos = position
 	#$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
 	pass
+	$Panel/SubViewportContainer/SubViewport/Timer.start(30)
 
 func create_minigame():
 	var minigame : Minigame = new_scene.instantiate()
@@ -68,3 +69,10 @@ func reset():
 
 func fail_close():
 	close()
+
+# Mutator methods to be called by random events.
+func increase_time():
+	%Timer.wait_time += 10
+
+func decrease_time():
+	%Timer.wait_time -= 10
