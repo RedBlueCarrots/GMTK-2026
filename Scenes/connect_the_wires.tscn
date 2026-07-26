@@ -25,22 +25,7 @@ scale = Vector2(2, 2)
 
 [node name="Background" type="Sprite2D" parent="Offset" unique_id=913562038]
 texture_filter = 1
-scale = Vector2(2, 2)
-texture = ExtResource("3_regfk")
-centered = false
-
-[node name="Background2" type="Sprite2D" parent="Offset" unique_id=794332584]
-z_index = -4
-texture_filter = 1
-position = Vector2(128, 0)
-scale = Vector2(2, 2)
-texture = ExtResource("3_regfk")
-centered = false
-
-[node name="Background3" type="Sprite2D" parent="Offset" unique_id=1644548164]
-z_index = -4
-texture_filter = 1
-position = Vector2(-128, 0.5)
+position = Vector2(-64, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_regfk")
 centered = false
@@ -95,12 +80,12 @@ texture = ExtResource("4_y0x24")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireStarts/RedStart" unique_id=1274118736]
 texture_filter = 1
-position = Vector2(41, 30)
+position = Vector2(39, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("5_vxxwv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireStarts/RedStart" unique_id=192718702]
-position = Vector2(27, 28.5)
+position = Vector2(27, 28)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="BlueStart" type="Area2D" parent="Offset/WireStarts" unique_id=589557028]
@@ -114,12 +99,12 @@ texture = ExtResource("7_ud47j")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireStarts/BlueStart" unique_id=1671416755]
 texture_filter = 1
-position = Vector2(41, 30)
+position = Vector2(39, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("5_vxxwv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireStarts/BlueStart" unique_id=489448083]
-position = Vector2(27, 28.5)
+position = Vector2(27, 28)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="GreenStart" type="Area2D" parent="Offset/WireStarts" unique_id=962468790]
@@ -133,12 +118,12 @@ texture = ExtResource("8_7ethy")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireStarts/GreenStart" unique_id=946161175]
 texture_filter = 1
-position = Vector2(41, 30)
+position = Vector2(40, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("5_vxxwv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireStarts/GreenStart" unique_id=2061701934]
-position = Vector2(27, 28.5)
+position = Vector2(27, 28)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="YellowStart" type="Area2D" parent="Offset/WireStarts" unique_id=311237000]
@@ -152,12 +137,12 @@ texture = ExtResource("9_yfgd1")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireStarts/YellowStart" unique_id=1884480135]
 texture_filter = 1
-position = Vector2(41, 30)
+position = Vector2(39, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("5_vxxwv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireStarts/YellowStart" unique_id=26516588]
-position = Vector2(27, 28.5)
+position = Vector2(27, 28)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="WireEnds" type="Node2D" parent="Offset" unique_id=1539106892]
@@ -173,12 +158,12 @@ texture = ExtResource("4_y0x24")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireEnds/RedEnd" unique_id=1793053077]
 texture_filter = 1
-position = Vector2(151, 29)
+position = Vector2(153, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("6_pk31v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireEnds/RedEnd" unique_id=1394602930]
-position = Vector2(165, 27)
+position = Vector2(165, 28)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="BlueEnd" type="Area2D" parent="Offset/WireEnds" unique_id=2111204617]
@@ -186,18 +171,18 @@ position = Vector2(0, 95)
 
 [node name="Socket" type="Sprite2D" parent="Offset/WireEnds/BlueEnd" unique_id=87545605]
 texture_filter = 1
-position = Vector2(167, 19)
+position = Vector2(167, 20)
 scale = Vector2(2, 2)
 texture = ExtResource("7_ud47j")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireEnds/BlueEnd" unique_id=1440036544]
 texture_filter = 1
-position = Vector2(151, 29)
+position = Vector2(153, 31)
 scale = Vector2(2, 2)
 texture = ExtResource("6_pk31v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireEnds/BlueEnd" unique_id=173003371]
-position = Vector2(165, 27)
+position = Vector2(165, 29)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="GreenEnd" type="Area2D" parent="Offset/WireEnds" unique_id=762739043]
@@ -205,18 +190,18 @@ position = Vector2(0, 47)
 
 [node name="Socket" type="Sprite2D" parent="Offset/WireEnds/GreenEnd" unique_id=277366431]
 texture_filter = 1
-position = Vector2(167, 19)
+position = Vector2(167, 20)
 scale = Vector2(2, 2)
 texture = ExtResource("8_7ethy")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireEnds/GreenEnd" unique_id=11498083]
 texture_filter = 1
-position = Vector2(151, 29)
+position = Vector2(153, 31)
 scale = Vector2(2, 2)
 texture = ExtResource("6_pk31v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireEnds/GreenEnd" unique_id=1789648849]
-position = Vector2(165, 27)
+position = Vector2(165, 29)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [node name="YellowEnd" type="Area2D" parent="Offset/WireEnds" unique_id=1572455927]
@@ -229,12 +214,12 @@ texture = ExtResource("9_yfgd1")
 
 [node name="Wiretip" type="Sprite2D" parent="Offset/WireEnds/YellowEnd" unique_id=1138628310]
 texture_filter = 1
-position = Vector2(151, 29)
+position = Vector2(153, 30)
 scale = Vector2(2, 2)
 texture = ExtResource("6_pk31v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Offset/WireEnds/YellowEnd" unique_id=1182719778]
-position = Vector2(165, 27)
+position = Vector2(165, 28)
 shape = SubResource("RectangleShape2D_cf7c6")
 
 [connection signal="input_event" from="Offset/WireStarts/RedStart" to="." method="_on_red_start_input_event"]
