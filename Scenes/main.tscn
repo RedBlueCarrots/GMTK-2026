@@ -206,6 +206,7 @@ stream = SubResource("AudioStreamSynchronized_6iyac")
 autoplay = true
 script = ExtResource("12_6iyac")
 
+[connection signal="GameOpen" from="." to="MusicPlayer" method="_on_main_game_open"]
 [connection signal="selected" from="CanvasLayer/hud" to="." method="_on_hud_selected"]
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]
