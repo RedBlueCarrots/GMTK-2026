@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://q6mhx5inq53e"]
+
+[ext_resource type="Script" uid="uid://brfhayfj27121" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="1_28flt"]
+[ext_resource type="Shader" uid="uid://bji16ohgcjmlf" path="res://Scripts/Shaders/main_menu.gdshader" id="2_48xlc"]
+
+[sub_resource type="Gradient" id="Gradient_cp0ys"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yhxw7"]
+gradient = SubResource("Gradient_cp0ys")
+width = 320
+height = 180
+
+[sub_resource type="GDScript" id="GDScript_trj04"]
+script/source = "extends Camera2D
+
+@export var sway_amount:float = 10.
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_d1ilt"]
+resource_name = "END"
+
+[sub_resource type="Animation" id="Animation_6iyac"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1dhk"]
+_data = {
+&"END": SubResource("Animation_d1ilt"),
+&"RESET": SubResource("Animation_6iyac")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ahg1b"]
+shader = ExtResource("2_48xlc")
+shader_parameter/blur_amount = 0.70000003325
+
+[node name="Node2D" type="Node2D" unique_id=912397294]
+script = ExtResource("1_1ehe0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2051255135]
+layer = 1279
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=323166847]
+material = ExtResource("1_28flt")
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_yhxw7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=447439972]
+script = SubResource("GDScript_trj04")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1259454724]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_t1dhk")
+
+[node name="Control" type="Control" parent="." unique_id=1971316286]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1094714605]
+material = SubResource("ShaderMaterial_ahg1b")
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -321.0
+offset_top = -179.0
+offset_right = 319.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=1413065146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer" unique_id=1464695926]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer" unique_id=1998082031]
+layout_mode = 2
+text = "Doomsday in Europa"
+
+[node name="Control" type="Control" parent="Control/CenterContainer/VBoxContainer" unique_id=1391060285]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer" unique_id=1027406339]
+layout_mode = 2
+text = "Play"
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
