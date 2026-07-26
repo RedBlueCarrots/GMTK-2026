@@ -10,6 +10,7 @@ var board_range: Array = range(1, board_size.x-1)
 @export var t_juction_spawn_rate: float = 0.25
 
 @onready var board: Node2D = $Board
+var death_message = "Your oxygen depleted..."
 
 # configs
 var cell_size: float = 21.33

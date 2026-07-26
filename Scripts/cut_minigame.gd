@@ -16,6 +16,7 @@ var is_slashing: bool = false
 var game_won: bool = false
 
 
+
 func _ready() -> void:
 	if cutter and minigame_outline:
 		#min_x = cutter.position.x

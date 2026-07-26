@@ -326,3 +326,4 @@ texture = ExtResource("4_pn77i")
 libraries/ = SubResource("AnimationLibrary_pn77i")
 
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]
+[connection signal="timeout" from="Panel/SubViewportContainer/SubViewport/Timer" to="." method="_on_timer_timeout"]

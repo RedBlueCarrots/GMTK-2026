@@ -5,15 +5,18 @@ var old_pos : Vector2
 @export var new_scene : PackedScene
 @export var persistent := false
 var is_open = false
-
-
+var death_message = ""
+signal game_over
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#old_pos = position
 	#$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
 	pass
-	$Panel/SubViewportContainer/SubViewport/Timer.start(60)
+	$Panel/SubViewportContainer/SubViewport/Timer.start(2)
+	create_minigame()
+	death_message = $Panel/SubViewportContainer/SubViewport/SceneSlot.get_child(0).death_message
+	reset()
 
 func create_minigame():
 	var minigame : Minigame = new_scene.instantiate()
@@ -80,3 +83,7 @@ func decrease_time():
 func turn(amount):
 	%Timer.wait_time = clamp(%Timer.time_left + amount/2, 0.1, 99.0)
 	%Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	emit_signal("game_over", death_message)

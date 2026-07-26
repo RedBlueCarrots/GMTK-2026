@@ -8,6 +8,8 @@ var pos = 0
 var space = 0
 var last_index = 0
 
+var death_message = "Your people overthrew you..."
+
 var sentence_list = [
 	"There have been reports of adib staring", 
 	"Hello everyone nice to see you", 

@@ -4,6 +4,8 @@ extends Minigame
 @onready var label: Label = $Percentage
 @onready var crank: Node2D = $Crank
 
+var death_message = "Your power completely ran out..."
+
 func _ready() -> void:
 	progress_bar.value = 0.0
 	label.text = "0.0 %"
