@@ -32,16 +32,13 @@ func _ready() -> void:
 	incorrect.connect(incorrect_keypress)
 
 func _process(delta: float) -> void:
+	super(delta)
 	# Visual indicators
+	seconds_left = get_parent().get_parent().get_node("Timer").time_left
 	var target_position = 59 * (1 - seconds_left/seconds_max)
 	waterlevel.position.y = lerp(waterlevel.position.y, target_position, delta * 10)
-	seconds_left -= delta
 	# Close out if failed/succeeded
-	if seconds_left >= seconds_max:
-		finish()
-	elif seconds_left <= 0:
-		fail()
-		
+	
 func _unhandled_input(event: InputEvent) -> void:
 	# Don't process if key is held down
 	if event.is_echo(): return
@@ -58,8 +55,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func correct_keypress():
 	prepare_next_key()
-	seconds_left = min(seconds_left + SECONDS_PER_CORRECT, seconds_max)
+	turn(SECONDS_PER_CORRECT)
 
 func incorrect_keypress():
 	prepare_next_key()
-	seconds_left -= SECONDS_PER_INCORRECT
+	turn(-SECONDS_PER_CORRECT)
+
+func turn(amount):
+	get_parent().get_parent().get_node("Timer").wait_time = clamp(get_parent().get_parent().get_node("Timer").time_left + amount/2, 0.0, 60.0)
+	get_parent().get_parent().get_node("Timer").start()

@@ -54,7 +54,7 @@ func _process(_delta: float) -> void:
 	if water_filling_mini_game.seconds_left > 99:
 		set_digit(number_1, 9)
 		set_digit(number_2, 9)
-	var stringed_form = \"%3d\" % water_filling_mini_game.seconds_left
+	var stringed_form = \"%3d\" % ceil(water_filling_mini_game.seconds_left)
 	set_digit(number_1, int(stringed_form[1]))
 	set_digit(number_2, int(stringed_form[2]))
 "
@@ -74,7 +74,8 @@ x_key = NodePath("Game/x key")
 waterlevel = NodePath("Game/tank/tank_bg/waterlevel")
 
 [node name="Game" type="Node2D" parent="." unique_id=1759602012]
-position = Vector2(48, 48)
+position = Vector2(96, 96)
+scale = Vector2(2, 2)
 
 [node name="tank" type="Sprite2D" parent="Game" unique_id=2065388118]
 position = Vector2(-23, 0)
