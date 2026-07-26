@@ -6,6 +6,8 @@
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cxvig8wmkgknd" path="res://Scenes/starvation_minigame.tscn" id="3_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://bpqm6ujgnbmqk" path="res://Scenes/power_crank_minigame.tscn" id="4_hptm8"]
+[ext_resource type="PackedScene" uid="uid://rcwuh037ojd6" path="res://Scenes/rocket_event.tscn" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://7g4mxd0p6tcs" path="res://Scenes/rocket_draw.tscn" id="8_ynf5e"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -63,5 +65,9 @@ wait_time = 25.0
 autostart = true
 
 [node name="Events" type="Node2D" parent="." unique_id=404849960]
+
+[node name="RocketEvent" parent="." unique_id=150192178 instance=ExtResource("7_344ge")]
+position = Vector2(-47, 27)
+new_scene = ExtResource("8_ynf5e")
 
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
