@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if score > 12:
+	if score > 4:
 		finish()
 	if !%Conductor.playing:
 		fail()
