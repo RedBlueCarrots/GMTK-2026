@@ -10,6 +10,8 @@ signal game_over
 signal game_played
 signal game_done
 
+const MAX_TIME: float = 120.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#old_pos = position
@@ -65,7 +67,7 @@ func finish_success():
 	if is_open:
 		close()
 	reset()
-	turn(99)
+	turn(MAX_TIME)
 
 func close_remove():
 	if is_open:
@@ -88,7 +90,7 @@ func get_time():
 	return %Timer.wait_time
 
 func turn(amount):
-	%Timer.wait_time = clamp(%Timer.time_left + amount, 0.1, 99.0)
+	%Timer.wait_time = clamp(%Timer.time_left + amount, 0.1, MAX_TIME)
 	%Timer.start()
 
 
