@@ -34,7 +34,7 @@ func _on_input_text_changed(new_text: String) -> void:
 			tries += 1
 			update_errors()
 			if max_tries <= tries:
-				finish()
+				fail()
 			else:
 				reset_code()
 
