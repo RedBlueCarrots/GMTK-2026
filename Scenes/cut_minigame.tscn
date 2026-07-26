@@ -77,7 +77,7 @@ texture = ExtResource("4_wklnc")
 shape = SubResource("RectangleShape2D_3dj8w")
 
 [node name="Cutter" type="Area2D" parent="." unique_id=1146846971]
-position = Vector2(28.76, 96)
+position = Vector2(26, 96)
 
 [node name="CutterHitbox" type="CollisionShape2D" parent="Cutter" unique_id=477147316]
 shape = SubResource("RectangleShape2D_byvyp")
