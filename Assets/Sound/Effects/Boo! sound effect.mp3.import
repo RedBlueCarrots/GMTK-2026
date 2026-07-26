@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://uuvg0nyy67hs"
+path="res://.godot/imported/Boo! sound effect.mp3-fa504ad044b41829fcb4c9823ed640e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound/Effects/Boo! sound effect.mp3"
+dest_files=["res://.godot/imported/Boo! sound effect.mp3-fa504ad044b41829fcb4c9823ed640e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

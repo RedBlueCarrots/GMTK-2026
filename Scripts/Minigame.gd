@@ -8,7 +8,6 @@ signal closed
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 func finish():
 	emit_signal("finished")
 func fail():
