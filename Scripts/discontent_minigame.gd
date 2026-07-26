@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 
 
 func _on_input_text_changed(new_text: String) -> void:
+	$AudioStreamPlayer.play()
 	written = %input.text.to_lower().replace(' ', '')
 	new_text = new_text.replace(' ', '')
 	printt(written, comp_sentence)

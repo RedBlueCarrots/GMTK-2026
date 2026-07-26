@@ -78,6 +78,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func rotate_piece() -> void:
+	get_parent().get_parent().sound()
 	if not rotateable:
 		return
 

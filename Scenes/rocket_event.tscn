@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cdvlyu4ukgx5q" path="res://Assets/Art/big_outline_mask.png" id="4_4lfr1"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_g2o0y"]
 [ext_resource type="Texture2D" uid="uid://bv6yqf4biseea" path="res://Assets/Art/big_outline.png" id="6_0sb3g"]
+[ext_resource type="AudioStream" uid="uid://dpqcvg0uj175a" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/UI/button_press.wav" id="8_8xxx4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("2_4lfr1")
@@ -407,6 +408,9 @@ libraries/ = SubResource("AnimationLibrary_pn77i")
 [node name="Flash" type="AnimationPlayer" parent="." unique_id=2091384321]
 libraries/ = SubResource("AnimationLibrary_pn77i")
 autoplay = &"flash"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=42293314]
+stream = ExtResource("8_8xxx4")
 
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]
 [connection signal="pressed" from="Panel/HBoxContainer/RESET" to="." method="_on_reset_pressed"]

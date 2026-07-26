@@ -15,6 +15,10 @@ func _process(delta: float) -> void:
 			$Draw.set_cell(pos, 0, Vector2i(49, 60))
 			a.queue_free()
 		get_score()
+		if $AudioStreamPlayer.playing == false:
+			$AudioStreamPlayer.play()
+	else:
+		$AudioStreamPlayer.stop()
 
 func get_score():
 	var score = 0

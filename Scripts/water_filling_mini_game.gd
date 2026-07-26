@@ -56,6 +56,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func correct_keypress():
 	prepare_next_key()
 	turn(SECONDS_PER_CORRECT)
+	$AudioStreamPlayer.play()
 
 func incorrect_keypress():
 	prepare_next_key()

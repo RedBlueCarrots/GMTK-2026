@@ -223,3 +223,6 @@ func _lock_all_pipes() -> void:
 	for x in board_range:
 		for y in board_range:
 			grid[x][y].rotateable = false
+
+func sound():
+	$AudioStreamPlayer.play()

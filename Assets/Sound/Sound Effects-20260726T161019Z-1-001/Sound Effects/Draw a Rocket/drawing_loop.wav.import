@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://28dhmwec4cl4"
+path="res://.godot/imported/drawing_loop.wav-2ce80b50d4f3e5569364197000dc037a.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Draw a Rocket/drawing_loop.wav"
+dest_files=["res://.godot/imported/drawing_loop.wav-2ce80b50d4f3e5569364197000dc037a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

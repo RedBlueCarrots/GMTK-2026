@@ -38,14 +38,17 @@ func field_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):
 		if held_item:
 			if held_item.name == "Seeds" and nod.get_child(2).frame == 0:
 				nod.get_child(2).frame = 1
+				$AudioStreamPlayer.play()
 			if held_item.name == "Water" and nod.get_child(0).modulate.a == 0.0:
 				nod.get_child(0).modulate.a = 0.4
+				$AudioStreamPlayer2.play()
 			if nod.get_child(2).frame == 1 and nod.get_child(0).modulate.a != 0.0:
 				if !nod.get_node("Timer").paused:
 					nod.get_node("Timer").start()
 			click_buffer += 1
 	elif !held_item and event is InputEventMouseButton and event.pressed:
 		if nod.get_child(2).frame == 3:
+			$AudioStreamPlayer3.play()
 			nod.queue_free()
 
 func tool_input_event(viewport, event: InputEvent, shape_idx, nod:Area2D):

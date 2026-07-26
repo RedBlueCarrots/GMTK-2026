@@ -44,7 +44,7 @@ func make_new_event():
 		$Events.add_child(new_event_scene)
 		new_event_scene.position = event_positions[new_event_name]
 		all_events.pop_front()
-		$CanvasLayer/hud.show_warning(new_event_name.replace(" ", "   ").to_upper() + ":   DOOMSDAY   IMMINENT")
+		$CanvasLayer/hud.show_warning(new_event_name.replace(" ", " ").to_upper() + ": DOOMSDAY IMMINENT")
 	else:
 		#do random event if no events left
 		var random_key = random_event_dict.keys()[randi() % len(random_event_dict.keys())]
@@ -66,7 +66,7 @@ func _on_rocket_timer_timeout() -> void:
 	add_child(new_event_scene)
 	new_event_scene.position = Vector2(-123, 89)
 	new_event_scene.old_pos = Vector2(-123, 89)
-	$CanvasLayer/hud.show_warning("ROCKET   STAGE   "+str(rocket_events_completed+1) + "   IS   READY")
+	$CanvasLayer/hud.show_warning("ROCKET STAGE "+str(rocket_events_completed+1) + " IS READY")
 	new_event_scene.connect("done", rocket_done)
 
 func rocket_done():
@@ -275,7 +275,7 @@ var random_event_dict = {
 
 
 func death(msg):
-	$CanvasLayer2/ColorRect/VBoxContainer/Label.text = msg.to_upper().replace(" ", "   ")
+	$CanvasLayer2/ColorRect/VBoxContainer/Label.text = msg.to_upper().replace(" ", " ")
 	$AnimationPlayer.play("END")
 	get_tree().paused = true
 	$CanvasLayer2/ColorRect/VBoxContainer/Button.mouse_filter = Control.MOUSE_FILTER_STOP

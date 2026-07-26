@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://c6f1808wcyfv7" path="res://Assets/Art/Starvation/planted.png" id="6_bbf6v"]
 [ext_resource type="Texture2D" uid="uid://cy3uiur5vu1tq" path="res://Assets/Art/Starvation/watering can new.png" id="6_l8m08"]
 [ext_resource type="Texture2D" uid="uid://rtaqpgnsaj6d" path="res://Assets/Art/Starvation/grown.png" id="7_nddca"]
+[ext_resource type="AudioStream" uid="uid://b6awt5cafxtar" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Starvation/plant_seeds.wav" id="10_bbf6v"]
+[ext_resource type="AudioStream" uid="uid://d0mjt7m3tmu7n" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Starvation/water.wav" id="11_nddca"]
+[ext_resource type="AudioStream" uid="uid://dqo48mnmv8kc5" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Starvation/collect_crops.wav" id="12_g86wj"]
 
 [sub_resource type="Gradient" id="Gradient_vnrf3"]
 offsets = PackedFloat32Array(0, 0.06542056)
@@ -164,3 +167,13 @@ texture = ExtResource("6_l8m08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tools/Water" unique_id=846033797]
 shape = SubResource("RectangleShape2D_rtht1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1382125928]
+stream = ExtResource("10_bbf6v")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=967877151]
+stream = ExtResource("11_nddca")
+volume_db = 10.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=538969256]
+stream = ExtResource("12_g86wj")

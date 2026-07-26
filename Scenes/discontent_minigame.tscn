@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://br2k1aouo2x8f" path="res://Scripts/discontent_minigame.gd" id="1_ddr54"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_mjwm3"]
 [ext_resource type="Texture2D" uid="uid://da6n3gnm6ra4p" path="res://Assets/Art/discontent_bg.png" id="3_mjwm3"]
+[ext_resource type="AudioStream" uid="uid://cw7ddx0lid7nc" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Discontent/key_press.wav" id="4_1lt8m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgb6v"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -52,5 +53,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ahg1b")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=537617703]
+stream = ExtResource("4_1lt8m")
 
 [connection signal="text_changed" from="input" to="." method="_on_input_text_changed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0ofpqffvaljv"
+path="res://.godot/imported/press_success.wav-4b812387b4bc899a70f1609ee7ccf33f.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Nuclear Codes/press_success.wav"
+dest_files=["res://.godot/imported/press_success.wav-4b812387b4bc899a70f1609ee7ccf33f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

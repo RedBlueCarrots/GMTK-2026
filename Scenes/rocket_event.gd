@@ -72,9 +72,11 @@ func fail_close():
 
 
 func _on_reset_pressed() -> void:
+	$AudioStreamPlayer.play()
 	reset()
 	create_minigame()
 
 
 func _on_abandon_pressed() -> void:
 	close()
+	$AudioStreamPlayer.play()

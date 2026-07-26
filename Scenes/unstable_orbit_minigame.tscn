@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://7nug4cgihvvl" path="res://Assets/Art/Orbit/Planet.png" id="3_m676f"]
 [ext_resource type="Texture2D" uid="uid://cdplxb8tum8qm" path="res://Assets/Art/Orbit/satellite.png" id="5_s7yq7"]
 [ext_resource type="Texture2D" uid="uid://tl82hr313ubd" path="res://Assets/Art/Orbit/meteorite.png" id="6_s7yq7"]
+[ext_resource type="AudioStream" uid="uid://bskv3cwj23sym" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Orbit/meteor hit.wav" id="7_mcaan"]
 
 [sub_resource type="Gradient" id="Gradient_khoo7"]
 offsets = PackedFloat32Array(0.6, 0.61445785, 0.62616825)
@@ -96,6 +97,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m676f"]
 _data = {
@@ -164,6 +179,9 @@ texture = ExtResource("6_s7yq7")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=608359489]
 libraries/ = SubResource("AnimationLibrary_m676f")
 autoplay = &"start"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1519469014]
+stream = ExtResource("7_mcaan")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

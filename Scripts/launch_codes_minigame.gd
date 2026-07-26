@@ -25,6 +25,7 @@ func _on_input_text_changed(new_text: String) -> void:
 	if len(%input.text) >= code_length:
 		if %input.text == code:
 			codes_remaining -= 1
+			$AudioStreamPlayer.play()
 			update_remaining()
 			if codes_remaining < 1:
 				finish()

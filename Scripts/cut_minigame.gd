@@ -33,6 +33,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("click"):
+		$AudioStreamPlayer.play()
 	if is_slashing or game_won:
 		return
 
@@ -90,10 +92,13 @@ func _on_cutter_slash_animation_animation_finished() -> void:
 
 	if _is_overlapping_cut_zone():
 		_cuts += 1
-
+		potato.texture = preload("res://Assets/Art/Cut/potato-cut.png")
+		await get_tree().create_timer(0.5).timeout
 		if _cuts >= 5:
-			potato.texture = preload("res://Assets/Art/Cut/potato-cut.png")
+
 			cutter_target.visible = false
 
 			game_won = true
 			finish()
+		else:
+			potato.texture = preload("res://Assets/Art/Cut/potato-whole.png")

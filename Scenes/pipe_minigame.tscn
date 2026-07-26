@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bxae58n5pthad" path="res://Scripts/pipe_minigame.gd" id="1_hkjiq"]
 [ext_resource type="Texture2D" uid="uid://cg8cch7aw5pqg" path="res://Assets/Art/Suffocation/pipes background.png" id="2_6ab3l"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_hkjiq"]
+[ext_resource type="AudioStream" uid="uid://42buwxrb3830" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Suffocation/pipe_turn.wav" id="4_6ab3l"]
 
 [node name="PipeMinigame" type="Node2D" unique_id=501969369]
 script = ExtResource("1_hkjiq")
@@ -16,3 +17,6 @@ centered = false
 position = Vector2(10.8, 10.8)
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_hkjiq")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=535588098]
+stream = ExtResource("4_6ab3l")

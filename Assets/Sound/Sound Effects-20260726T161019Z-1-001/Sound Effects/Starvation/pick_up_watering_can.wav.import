@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dleemd03pttbh"
+path="res://.godot/imported/pick_up_watering_can.wav-6abffe65f037794d5a2075980ab2110a.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Starvation/pick_up_watering_can.wav"
+dest_files=["res://.godot/imported/pick_up_watering_can.wav-6abffe65f037794d5a2075980ab2110a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

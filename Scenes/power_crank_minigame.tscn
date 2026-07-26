@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b36i0ukc42x55" path="res://Scenes/crank.tscn" id="3_3yxjv"]
 [ext_resource type="Texture2D" uid="uid://5nenknd7l5j" path="res://Assets/Art/Crank/background.png" id="4_b7tm5"]
 [ext_resource type="Texture2D" uid="uid://ds7f0l3b6x34l" path="res://Assets/Art/Crank/progress_bar.png" id="4_eobqy"]
+[ext_resource type="AudioStream" uid="uid://dt7digbxjpj4l" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Low Power_Crank/crank.wav" id="6_ubxdx"]
 
 [node name="power crank game" type="Node2D" unique_id=1218630896]
 texture_filter = 1
@@ -40,6 +41,9 @@ z_index = -1
 scale = Vector2(2, 2)
 texture = ExtResource("4_b7tm5")
 centered = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1611217553]
+stream = ExtResource("6_ubxdx")
 
 [connection signal="turned" from="Crank" to="." method="turn"]
 [connection signal="value_changed" from="Progress bar" to="." method="_on_progress_bar_value_changed"]

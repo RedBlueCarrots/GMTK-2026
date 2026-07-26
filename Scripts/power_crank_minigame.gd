@@ -24,5 +24,7 @@ func _on_timer_timeout() -> void:
 	fail()
 
 func turn(amount):
+	if amount > 0 and $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
 	get_parent().get_parent().get_node("Timer").wait_time = clamp(get_parent().get_parent().get_node("Timer").time_left + amount/2, 0.0, 60.0)
 	get_parent().get_parent().get_node("Timer").start()

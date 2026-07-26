@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bskv3cwj23sym"
+path="res://.godot/imported/meteor hit.wav-f3a53704bb219ec18d9db3d41c04fe3e.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Orbit/meteor hit.wav"
+dest_files=["res://.godot/imported/meteor hit.wav-f3a53704bb219ec18d9db3d41c04fe3e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

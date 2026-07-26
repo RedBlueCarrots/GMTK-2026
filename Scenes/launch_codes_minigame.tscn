@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ciijuesdpn0ng" path="res://Scripts/launch_codes_minigame.gd" id="1_lpcee"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_yamr6"]
 [ext_resource type="Texture2D" uid="uid://6t33pernhdew" path="res://Assets/Art/background.png" id="3_yamr6"]
+[ext_resource type="AudioStream" uid="uid://0ofpqffvaljv" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Nuclear Codes/press_success.wav" id="4_hfuo2"]
+[ext_resource type="AudioStream" uid="uid://dengeov326y1m" path="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Nuclear Codes/press_failed.wav" id="5_1445h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yamr6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -96,6 +98,12 @@ theme_override_font_sizes/normal_font_size = 12
 unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1356247245]
+stream = ExtResource("4_hfuo2")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1909277187]
+stream = ExtResource("5_1445h")
 
 [connection signal="text_changed" from="Offset/input" to="." method="_on_input_text_changed"]
 [connection signal="timeout" from="Offset/Timer" to="." method="_on_timer_timeout"]

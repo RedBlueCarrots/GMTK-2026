@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6awt5cafxtar"
+path="res://.godot/imported/plant_seeds.wav-a55707fe830494f3a5b82a547a8fcb05.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/Sound Effects-20260726T161019Z-1-001/Sound Effects/Starvation/plant_seeds.wav"
+dest_files=["res://.godot/imported/plant_seeds.wav-a55707fe830494f3a5b82a547a8fcb05.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
