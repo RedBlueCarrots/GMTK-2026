@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://cxvig8wmkgknd" path="res://Scenes/starvation_minigame.tscn" id="3_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://bpqm6ujgnbmqk" path="res://Scenes/power_crank_minigame.tscn" id="4_hptm8"]
+[ext_resource type="PackedScene" uid="uid://d2k2utigdsije" path="res://Scenes/WaterFillingMiniGame.tscn" id="5_6bp64"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -37,12 +38,14 @@ script = ExtResource("1_kry3j")
 events = Dictionary[String, PackedScene]({
 "food supply low": ExtResource("3_ynf5e"),
 "power supply exhausted": ExtResource("4_hptm8"),
-"satellite orbit unstable": ExtResource("2_344ge")
+"satellite orbit unstable": ExtResource("2_344ge"),
+"water supply depleted": ExtResource("5_6bp64")
 })
 event_positions = Dictionary[String, Vector2]({
 "food supply low": Vector2(-136, 74),
 "power supply exhausted": Vector2(117, 118),
-"satellite orbit unstable": Vector2(273, -68)
+"satellite orbit unstable": Vector2(273, -68),
+"water supply depleted": Vector2(0, 0)
 })
 event_peristence = Array[String](["food supply low"])
 

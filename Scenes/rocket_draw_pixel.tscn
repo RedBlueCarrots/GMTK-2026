@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b4jq2i4rsmtns"]
+
+[ext_resource type="Texture2D" uid="uid://dca68y1jkcq76" path="res://icon.svg" id="1_7uet3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmeow"]
+size = Vector2(2, 2)
+
+[node name="RocketDrawPixel" type="Area2D" unique_id=73109181]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1098407395]
+shape = SubResource("RectangleShape2D_rmeow")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=864647078]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_7uet3")
