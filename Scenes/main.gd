@@ -13,6 +13,7 @@ var event_instances = {}
 
 const rocket_events = [preload("res://Scenes/rocket_draw.tscn"), preload("res://Scenes/cut_minigame.tscn"), preload("res://Scenes/connect_the_wires.tscn"), preload("res://Scenes/launch_codes_minigame.tscn")]
 var rocket_events_completed := 0
+var events_spawned := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	all_events = events.keys()
@@ -29,6 +30,7 @@ func _process(delta: float) -> void:
 
 func make_new_event():
 	if all_events:
+		events_spawned += 1
 		var new_event_name: String = all_events[0]
 		var new_event_scene = new_event.instantiate()
 		new_event_scene.connect("game_over", death)
@@ -53,7 +55,8 @@ func make_new_event():
 
 
 func _on_event_timer_timeout() -> void:
-	make_new_event()
+	if events_spawned  < rocket_events_completed*2:
+		make_new_event()
 
 
 
