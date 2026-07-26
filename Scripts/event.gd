@@ -10,7 +10,7 @@ signal game_over
 signal game_played
 signal game_done
 
-const MAX_TIME: float = 100.0
+const MAX_TIME: float = 120.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
