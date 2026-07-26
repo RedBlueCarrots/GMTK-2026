@@ -12,7 +12,7 @@
 shader = ExtResource("1_u37vb")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmeow"]
-radius = 16.0
+radius = 37.01351
 
 [sub_resource type="LabelSettings" id="LabelSettings_rmeow"]
 font = ExtResource("4_txmnl")
@@ -252,18 +252,20 @@ icon = "icon.svg"
 [node name="Icon" type="Area2D" parent="." unique_id=432649802]
 
 [node name="Sprite2D" type="Sprite2D" parent="Icon" unique_id=1625414745]
+visible = false
 material = SubResource("ShaderMaterial_27o3k")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_sg3nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon" unique_id=1462742081]
+position = Vector2(0, 43)
 shape = SubResource("CircleShape2D_rmeow")
 
 [node name="Label" type="Label" parent="Icon" unique_id=136311998]
-offset_left = -19.0
-offset_top = -40.0
-offset_right = 21.0
-offset_bottom = -17.0
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 10.0
 text = "60"
 label_settings = SubResource("LabelSettings_rmeow")
 horizontal_alignment = 1

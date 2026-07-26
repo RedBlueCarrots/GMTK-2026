@@ -10,12 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://d2k2utigdsije" path="res://Scenes/WaterFillingMiniGame.tscn" id="6_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bfmdrqqtob1s4" path="res://Scenes/discontent_minigame.tscn" id="7_6iyac"]
 [ext_resource type="PackedScene" uid="uid://jydvqol52tc1" path="res://Scenes/rhythm_minigame.tscn" id="8_hptm8"]
+[ext_resource type="FontFile" uid="uid://ifneoff2dcbf" path="res://Assets/monogram.ttf" id="11_6iyac"]
 [ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="11_d1ilt"]
 
-[sub_resource type="Gradient" id="Gradient_8gbba"]
+[sub_resource type="Gradient" id="Gradient_fdnlq"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kry3j"]
-gradient = SubResource("Gradient_8gbba")
+gradient = SubResource("Gradient_fdnlq")
 width = 320
 height = 180
 
@@ -38,9 +39,15 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_6iyac"]
-font = ExtResource("11_d1ilt")
+font = ExtResource("11_6iyac")
+font_size = 32
 font_color = Color(1, 0, 0, 1)
 outline_size = 1
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
+font = ExtResource("11_6iyac")
+font_size = 24
 outline_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_d1ilt"]
@@ -186,6 +193,19 @@ layout_mode = 2
 text = "DOOMSDAY IMMINENT: SATELLITE ORBIT UNSTABLE"
 label_settings = SubResource("LabelSettings_6iyac")
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer2/ColorRect/VBoxContainer" unique_id=899396440]
+layout_mode = 2
+text = "ONE OF THE RESOURCES HAVE BEEN FULLY DRAINED. IN A SEQUENCE AKIN TO CASCADING DOMINOES, YOU SEE THE TRAIL OF DESTRUCTION SPREAD ACROSS THE PLANET.
+
+YOU SEE THE COLLAPSE OF THE LAST REMNANTS OF HUMANITY WITH YOUR OWN EYES. 
+
+YOU RECOGNISE ONE THING. 
+
+YOU HAVE FAILED."
+label_settings = SubResource("LabelSettings_d1ilt")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer2/ColorRect/VBoxContainer" unique_id=477427667]
 layout_mode = 2

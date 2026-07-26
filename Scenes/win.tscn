@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="1_3mm25"]
 [ext_resource type="Texture2D" uid="uid://dubgcpxe16fla" path="res://Assets/Art/Rocket/rocket.png" id="2_611cj"]
 [ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="3_611cj"]
+[ext_resource type="FontFile" uid="uid://ifneoff2dcbf" path="res://Assets/monogram.ttf" id="3_g1l0l"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -87,14 +88,14 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmeow"]
-bg_color = Color(0.056291588, 0.05629161, 0.05629155, 1)
+bg_color = Color(0.06, 0.06, 0.06, 0.6745098)
 expand_margin_left = 4.0
 expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_g1l0l"]
-font = ExtResource("3_611cj")
+font = ExtResource("3_g1l0l")
 font_color = Color(1, 0, 0, 1)
 outline_size = 1
 outline_color = Color(1, 0, 0, 1)
@@ -144,9 +145,16 @@ mouse_filter = 2
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1914320299]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_rmeow")
-text = "YOU ESCAPED DOOMSDAY"
+text = "DESPITE ALL OF THE ODDS, YOU HAVE MANAGED TO CONSTRUCT A ROCKET CAPABLE OF TRAVERSING YOU AND THE REMAINING COLONY AWAY FROM THE DYING EUROPA. YOU BREATHE IN DEEP. A SENSE OF BELIEF WASHES OVER YOU AS YOU SEE EUROPA BECOME SMALLER AND SMALLER.
+
+YOU FEEL IT IN YOUR HEART THAT THE REMNANTS OF HUMANITY MAY CONTINUE ON THROUGHOUT THE COLD, HARSH UNIVERSE.
+
+YOU RECOGNISE ONE THING.
+
+YOU HAVE SUCCEEDED."
 label_settings = SubResource("LabelSettings_g1l0l")
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=72140935]
 layout_mode = 2

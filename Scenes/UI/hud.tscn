@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ds3g6g75tbbyi"]
 
 [ext_resource type="Script" uid="uid://cedteji0sg5eg" path="res://Scenes/UI/hud.gd" id="1_ny26j"]
-[ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="1_sprlj"]
+[ext_resource type="FontFile" uid="uid://ifneoff2dcbf" path="res://Assets/monogram.ttf" id="2_ny26j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sprlj"]
 content_margin_left = 0.0
@@ -16,7 +16,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_wkk6c"]
-font = ExtResource("1_sprlj")
+font = ExtResource("2_ny26j")
 font_color = Color(1, 0, 0, 1)
 outline_size = 1
 outline_color = Color(1, 0, 0, 1)

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cvd5y71sf8y4w"]
+
+[ext_resource type="Script" uid="uid://dtj65iydww4pa" path="res://Scenes/cut_scene.gd" id="1_kv5kj"]
+[ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="1_o7xcn"]
+[ext_resource type="LabelSettings" uid="uid://diebtd5dm4kmq" path="res://Scenes/new_label_settings.res" id="2_7nhpa"]
+[ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="3_7nhpa"]
+
+[sub_resource type="Gradient" id="Gradient_d1ilt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0gwxv"]
+gradient = SubResource("Gradient_d1ilt")
+width = 320
+height = 180
+
+[node name="CUT SCENE" type="Control" unique_id=427801825]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kv5kj")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=173274702]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=1929854583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THE YEAR IS 30XX.
+
+THERE IS DISCONTENT IN THE COLONY IN EUROPA. THE ICE CAPS ARE MELTING. RESOURCES ARE BEING DRAINED AND ARE DEPLETING FASTER OVER TIME.
+
+THE ONLY WAY OUT IS TO CONSTRUCT A ROCKET TO ESCAPE THE PLANET. 
+
+YOU ARE LOOKING TO MAINTAIN RESOURCES WHILST CONSTRUCTING A ROCKET TO ESCAPE THE PLANET. MAINTAIN RESOURCES BY CLICKING RELEVANT POINTS OF INTERESTS ON THE PLANET AND COMPLETING THE TASK.
+
+YOU MUST ALSO CONSTRUCT A ROCKET. CLICK ON THE BOTTOM LEFT DOME TO COMPLETE TASKS TO BUILD THE ROCKET."
+label_settings = ExtResource("2_7nhpa")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1978847668]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7882353)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=881198548]
+z_index = -35
+material = ExtResource("1_o7xcn")
+position = Vector2(320, 180)
+scale = Vector2(2, 2)
+texture = SubResource("GradientTexture2D_0gwxv")
+
+[node name="Button" type="Button" parent="." unique_id=1601794024]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_7nhpa")
+text = "GO"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
