@@ -29,6 +29,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$Sprite2D.material.set_shader_parameter("rocketStage", rocket_events_completed)
 	if $CanvasLayer2/ColorRect.modulate.a == 0.0:
 		$CanvasLayer2/ColorRect/VBoxContainer/Button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		$CanvasLayer2/ColorRect/VBoxContainer/Button.visible = false
@@ -283,7 +284,7 @@ func death(msg):
 	
 
 func win():
-	get_tree().paused = true
+	get_tree().change_scene_to_file("res://Scenes/win.tscn")
 
 
 func game_open(nam:String):

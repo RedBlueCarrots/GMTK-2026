@@ -12,7 +12,7 @@
 shader = ExtResource("2_4lfr1")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmeow"]
-radius = 16.0
+radius = 35.057095
 
 [sub_resource type="Shader" id="Shader_8xxx4"]
 code = "shader_type canvas_item;
@@ -325,11 +325,13 @@ script = ExtResource("1_0sb3g")
 [node name="Icon" type="Area2D" parent="." unique_id=432649802]
 
 [node name="Sprite2D" type="Sprite2D" parent="Icon" unique_id=1625414745]
+visible = false
 material = SubResource("ShaderMaterial_27o3k")
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_8xxx4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon" unique_id=1462742081]
+position = Vector2(-1, 41)
 shape = SubResource("CircleShape2D_rmeow")
 
 [node name="Panel" type="Panel" parent="." unique_id=65183625]
