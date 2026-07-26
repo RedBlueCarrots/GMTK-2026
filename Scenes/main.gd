@@ -284,7 +284,7 @@ func death(msg):
 	
 
 func win():
-	get_tree().paused = true
+	get_tree().change_scene_to_file("res://Scenes/win.tscn")
 
 
 func game_open(nam:String):
