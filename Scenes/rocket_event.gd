@@ -6,6 +6,8 @@ var old_pos : Vector2
 @export var persistent := false
 var is_open = false
 
+signal done
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,7 +57,8 @@ func close():
 func finish_success():
 	if is_open:
 		close()
-	reset()
+	emit_signal("done")
+	queue_free()
 
 func close_remove():
 	if is_open:

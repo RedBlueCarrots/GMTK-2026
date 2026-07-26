@@ -228,12 +228,41 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Icon/Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_78kjg"]
+resource_name = "flash"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pn77i"]
 _data = {
 &"FadeIn": SubResource("Animation_27o3k"),
 &"FadeOut": SubResource("Animation_pn77i"),
-&"RESET": SubResource("Animation_u37vb")
+&"RESET": SubResource("Animation_u37vb"),
+&"flash": SubResource("Animation_78kjg")
 }
 
 [node name="RocketEvent" type="Node2D" unique_id=150192178]
@@ -287,5 +316,9 @@ material = SubResource("ShaderMaterial_efmpf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=898213863]
 libraries/ = SubResource("AnimationLibrary_pn77i")
+
+[node name="Flash" type="AnimationPlayer" parent="." unique_id=2091384321]
+libraries/ = SubResource("AnimationLibrary_pn77i")
+autoplay = &"flash"
 
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]

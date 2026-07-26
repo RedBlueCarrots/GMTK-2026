@@ -58,6 +58,7 @@ animations = [{
 
 [node name="CutMinigame" type="Node2D" unique_id=578192638]
 script = ExtResource("1_gr65p")
+speed = 200.0
 
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yal4m")]
 
