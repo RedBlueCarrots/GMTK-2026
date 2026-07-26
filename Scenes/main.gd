@@ -280,14 +280,15 @@ func death(msg):
 	get_tree().paused = true
 	$CanvasLayer2/ColorRect/VBoxContainer/Button.mouse_filter = Control.MOUSE_FILTER_STOP
 	$CanvasLayer2/ColorRect/VBoxContainer/Button.visible = true
-	
+
+signal GameOpen(nam)
 
 func win():
 	get_tree().paused = true
 
-
 func game_open(nam:String):
-	pass
+	print('opened_game')
+	emit_signal("GameOpen", nam)
 
 func game_exit():
-	pass
+	print("game_exited")

@@ -12,15 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://jydvqol52tc1" path="res://Scenes/rhythm_minigame.tscn" id="8_hptm8"]
 [ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://ck5r8hgllhwqd" path="res://Scripts/music_player.gd" id="12_6iyac"]
-[ext_resource type="AudioStream" uid="uid://bqjr0r7c0m2uw" path="res://Assets/Sound/Music/Ambience.wav" id="12_jkdf5"]
-[ext_resource type="AudioStream" uid="uid://certgowjsgj6q" path="res://Assets/Sound/Music/Original.wav" id="13_wsu2k"]
-[ext_resource type="AudioStream" uid="uid://b6ckw048kj0yh" path="res://Assets/Sound/Music/Music Box.wav" id="14_hibaj"]
-[ext_resource type="AudioStream" uid="uid://64pvn1er40y1" path="res://Assets/Sound/Music/Plucked.wav" id="15_pdsj5"]
-[ext_resource type="AudioStream" uid="uid://d1lcui5i26fyu" path="res://Assets/Sound/Music/Electric Guitar.wav" id="16_ee4r6"]
-[ext_resource type="AudioStream" uid="uid://b8rr66rtxif5o" path="res://Assets/Sound/Music/Bells.wav" id="17_gt3je"]
-[ext_resource type="AudioStream" uid="uid://d1hr76orl5woe" path="res://Assets/Sound/Music/Woodwinds.wav" id="18_3pmx8"]
-[ext_resource type="AudioStream" uid="uid://yw1yd6uijog8" path="res://Assets/Sound/Music/Clavinet.wav" id="19_u50mg"]
-[ext_resource type="AudioStream" uid="uid://din38melqyod" path="res://Assets/Sound/Music/PANIC.wav" id="20_pdsj5"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -112,27 +103,6 @@ _data = {
 &"END": SubResource("Animation_d1ilt"),
 &"RESET": SubResource("Animation_6iyac")
 }
-
-[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_6iyac"]
-stream_count = 9
-stream_0/stream = ExtResource("12_jkdf5")
-stream_0/volume = 0.0
-stream_1/stream = ExtResource("13_wsu2k")
-stream_1/volume = 0.0
-stream_2/stream = ExtResource("14_hibaj")
-stream_2/volume = 0.0
-stream_3/stream = ExtResource("15_pdsj5")
-stream_3/volume = 0.0
-stream_4/stream = ExtResource("16_ee4r6")
-stream_4/volume = 0.0
-stream_5/stream = ExtResource("17_gt3je")
-stream_5/volume = 0.0
-stream_6/stream = ExtResource("18_3pmx8")
-stream_6/volume = 0.0
-stream_7/stream = ExtResource("19_u50mg")
-stream_7/volume = 0.0
-stream_8/stream = ExtResource("20_pdsj5")
-stream_8/volume = 0.0
 
 [node name="Main" type="Node2D" unique_id=1071888399]
 script = ExtResource("1_kry3j")
@@ -229,11 +199,8 @@ libraries/ = SubResource("AnimationLibrary_fdnlq")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=192937622]
 unique_name_in_owner = true
-stream = SubResource("AudioStreamSynchronized_6iyac")
-autoplay = true
 script = ExtResource("12_6iyac")
 
-[connection signal="GameOpen" from="." to="MusicPlayer" method="_on_main_game_open"]
 [connection signal="selected" from="CanvasLayer/hud" to="." method="_on_hud_selected"]
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]
