@@ -18,5 +18,6 @@ func _process(delta: float) -> void:
 	if get_tree().current_scene != self:
 		if Input.is_action_just_pressed("click") and get_parent().get_parent().get_parent().get_parent().offset_transform_scale.x > 0.5:
 			var pos  := get_local_mouse_position()
+			print(pos)
 			if pos.x < 0 or pos.x > 192 or pos.y < 0 or pos.y > 192:
 				emit_signal("closed")
