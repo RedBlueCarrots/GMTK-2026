@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://jydvqol52tc1"]
+
+[ext_resource type="Script" uid="uid://1tyrlx1q4m0u" path="res://Scripts/rhythm_minigame.gd" id="1_ptmy4"]
+[ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_udv50"]
+[ext_resource type="AudioStream" uid="uid://dsfmmatj64vs1" path="res://Assets/Sound/Music/rave_temporary.mp3" id="3_jdapn"]
+[ext_resource type="AudioStream" uid="uid://rmcbitl6r5en" path="res://Assets/Sound/Music/85897__sandyrb__huh-01.wav" id="3_pvfjl"]
+[ext_resource type="Script" uid="uid://c2e2aulu316m5" path="res://Scripts/conductor.gd" id="3_udv50"]
+[ext_resource type="Texture2D" uid="uid://b5ptnepiawocx" path="res://Assets/Art/temporary_circle.png" id="5_8exvy"]
+[ext_resource type="Script" uid="uid://ddgq2cbybosg" path="res://Scripts/note_manager.gd" id="6_8d7gx"]
+[ext_resource type="Script" uid="uid://j7pigvubpnp" path="res://Scripts/circle_note.gd" id="8_xnal7"]
+
+[node name="rhythm_minigame" type="Node2D" unique_id=1488141885]
+script = ExtResource("1_ptmy4")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2120354096]
+offset_right = 191.0
+offset_bottom = 27.0
+show_percentage = false
+
+[node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_udv50")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MinigameOutline" unique_id=683588739]
+stream = ExtResource("3_pvfjl")
+
+[node name="Conductor" type="AudioStreamPlayer" parent="MinigameOutline" unique_id=1249316023]
+unique_name_in_owner = true
+stream = ExtResource("3_jdapn")
+parameters/looping = true
+script = ExtResource("3_udv50")
+bpm = 137
+
+[node name="Circle" type="Sprite2D" parent="MinigameOutline" unique_id=995183360]
+position = Vector2(97, 93.00001)
+scale = Vector2(0.41093746, 0.41093746)
+texture = ExtResource("5_8exvy")
+script = ExtResource("8_xnal7")
+
+[node name="NoteManager" type="Node" parent="MinigameOutline" unique_id=1995397805]
+script = ExtResource("6_8d7gx")
+
+[node name="Button" type="Button" parent="." unique_id=168726107]
+offset_left = 67.0
+offset_top = 66.0
+offset_right = 125.0
+offset_bottom = 124.0
+
+[connection signal="Beat" from="MinigameOutline/Conductor" to="." method="_on_conductor_beat"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

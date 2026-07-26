@@ -5,6 +5,7 @@ const SPAWN_Y = 700
 const TARGET_SIZE = 1
 
 var conductor
+var manager
 @export var beat: float
 var buffer = 3.0
 var start_scale = 3.0
@@ -17,8 +18,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if conductor.get_beat() > beat + 0.3:
-		get_parent().active_notes.pop_front()
-		get_parent().play_miss_sound()
+		manager.active_notes.pop_front()
+		manager.play_miss_sound()
 		queue_free()
 		
 	var current_beat = conductor.get_beat()

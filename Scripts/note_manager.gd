@@ -24,10 +24,10 @@ const pattern2: Array[Array] = [
 	[0,0, 0,0, 0,0, 1,0]
 	]
 const pattern3: Array[Array] = [
+	[0,0, 0,0, 0,0, 1,0],
 	[0,0, 0,0, 0,0, 1,1],
 	[0,0, 0,0, 0,0, 1,0],
-	[0,0, 0,0, 0,0, 1,0],
-	[0,0, 0,0, 1,0, 1,0]
+	[0,0, 0,0, 0,0, 1,1]
 	]
 
 # Called when the node enters the scene tree for the first time.
@@ -87,9 +87,10 @@ func spawn_note(beat):
 	print("spawned note")
 	var note = note_scene.instantiate()
 	note.conductor = %Conductor
+	note.manager = self
 	note.beat = beat
 	active_notes.append(note)
-	add_child(note)
+	get_parent().add_child(note)
 		
 func _on_conductor_beat(Pos: Variant) -> void:
 	if %Conductor.get_beat_int() % 4 == 0: #add next sequence to chart
