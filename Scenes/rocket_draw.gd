@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,17 +12,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("click"):
 		for a in $mouse.get_overlapping_areas():
 			var pos = $Draw.local_to_map(a.position)
-			$Draw.set_cell(pos, 0, Vector2i(15, 5))
+			$Draw.set_cell(pos, 0, Vector2i(49, 60))
 			a.queue_free()
 		get_score()
 
 func get_score():
 	var score = 0
+	var target_count = 0
 	for a in $Draw.get_used_cells_by_id(0):
-		if $Target.get_cell_atlas_coords(a) == Vector2i(14, 9):
+		if $Target.get_cell_atlas_coords(a) == Vector2i(49, 60):
 			score += 5
+			target_count += 1
 		else:
 			score -= 1
-	if score > 400:
-		print("done")
-	print(score)
+	if score > 1200 and target_count/$Target.get_used_cells().size() > 0.95:
+		finish()
