@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dubgcpxe16fla" path="res://Assets/Art/Rocket/rocket.png" id="2_611cj"]
 [ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="3_611cj"]
 [ext_resource type="FontFile" uid="uid://ifneoff2dcbf" path="res://Assets/monogram.ttf" id="3_g1l0l"]
+[ext_resource type="AudioStream" uid="uid://bh51ndjhwdc07" path="res://Assets/Sound/Effects/Rocket Taking Off.wav" id="6_ru4ub"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -163,5 +164,8 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("3_611cj")
 text = "BACK HOME"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1500866411]
+stream = ExtResource("6_ru4ub")
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]
