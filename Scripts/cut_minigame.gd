@@ -63,7 +63,7 @@ func _start_slash() -> void:
 	cutter_slash_animation.visible = true
 	cutter_slash_animation.play("slash")
 
-	if not cutter.has_overlapping_areas() or not _is_overlapping_cut_zone():
+	if not _is_overlapping_cut_zone():
 		cutter_miss_sprite.visible = true
 
 
