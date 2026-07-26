@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dbp41mbnedygk" path="res://Scenes/rocket_event.gd" id="1_0sb3g"]
 [ext_resource type="Shader" uid="uid://mf7y06ytbp50" path="res://Scripts/Shaders/circle.gdshader" id="2_4lfr1"]
-[ext_resource type="Texture2D" uid="uid://yotc5uueyat4" path="res://Assets/Art/Icons/starvation.png" id="3_8xxx4"]
 [ext_resource type="Shader" uid="uid://bvetwepbd13i6" path="res://Scripts/Shaders/eventborder.gdshader" id="4_3m00q"]
 [ext_resource type="Texture2D" uid="uid://cdvlyu4ukgx5q" path="res://Assets/Art/big_outline_mask.png" id="4_4lfr1"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_g2o0y"]
@@ -11,6 +10,14 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("2_4lfr1")
+
+[sub_resource type="Gradient" id="Gradient_4lfr1"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ee4r6"]
+gradient = SubResource("Gradient_4lfr1")
+width = 24
+height = 24
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rmeow"]
 radius = 35.057095
@@ -308,7 +315,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 0.3254902), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pn77i"]
@@ -326,10 +333,10 @@ script = ExtResource("1_0sb3g")
 [node name="Icon" type="Area2D" parent="." unique_id=432649802]
 
 [node name="Sprite2D" type="Sprite2D" parent="Icon" unique_id=1625414745]
-visible = false
 material = SubResource("ShaderMaterial_27o3k")
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_8xxx4")
+position = Vector2(-1, 41)
+scale = Vector2(3, 3)
+texture = SubResource("GradientTexture2D_ee4r6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icon" unique_id=1462742081]
 position = Vector2(-1, 41)

@@ -11,6 +11,8 @@ var all_events = []
 var last_event
 var event_instances = {}
 
+signal GameOpen(nam)
+
 const rocket_events = [preload("res://Scenes/rocket_draw.tscn"), preload("res://Scenes/cut_minigame.tscn"), preload("res://Scenes/connect_the_wires.tscn"), preload("res://Scenes/launch_codes_minigame.tscn")]
 var rocket_events_completed := 0
 var events_spawned := 0
@@ -55,7 +57,7 @@ func make_new_event():
 
 
 func _on_event_timer_timeout() -> void:
-	if events_spawned  < rocket_events_completed*2:
+	if events_spawned  < rocket_events_completed*2+2:
 		make_new_event()
 
 
@@ -288,10 +290,8 @@ func death(msg):
 func win():
 	get_tree().change_scene_to_file("res://Scenes/win.tscn")
 
-
 func game_open(nam:String):
-	pass
-
+	emit_signal("GameOpen", nam)
 func game_exit():
 	pass
 
@@ -316,3 +316,7 @@ func _on_hud_selected(option: int) -> void:
 		else:
 			var key = event_map[resource]
 			event_instances[key].decrease_time()
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

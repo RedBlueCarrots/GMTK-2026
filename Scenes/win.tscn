@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxn5owpho57nl"]
 
 [ext_resource type="Material" uid="uid://de5eaaaicogyf" path="res://Scripts/Shaders/background.tres" id="1_3mm25"]
+[ext_resource type="Script" uid="uid://coe5mixylcq0r" path="res://Scenes/win.gd" id="1_3xxyo"]
 [ext_resource type="Texture2D" uid="uid://dubgcpxe16fla" path="res://Assets/Art/Rocket/rocket.png" id="2_611cj"]
 [ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="3_611cj"]
 [ext_resource type="FontFile" uid="uid://ifneoff2dcbf" path="res://Assets/monogram.ttf" id="3_g1l0l"]
@@ -101,6 +102,7 @@ outline_size = 1
 outline_color = Color(1, 0, 0, 1)
 
 [node name="Win" type="Node2D" unique_id=2136782478]
+script = ExtResource("1_3xxyo")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=897466454]
 material = ExtResource("1_3mm25")
@@ -161,3 +163,5 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/font = ExtResource("3_611cj")
 text = "BACK HOME"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]

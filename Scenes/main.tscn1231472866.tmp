@@ -10,30 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://d2k2utigdsije" path="res://Scenes/WaterFillingMiniGame.tscn" id="6_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bfmdrqqtob1s4" path="res://Scenes/discontent_minigame.tscn" id="7_6iyac"]
 [ext_resource type="PackedScene" uid="uid://jydvqol52tc1" path="res://Scenes/rhythm_minigame.tscn" id="8_hptm8"]
-[ext_resource type="FontFile" uid="uid://ifneoff2dcbf" path="res://Assets/monogram.ttf" id="11_6iyac"]
 [ext_resource type="FontFile" uid="uid://b1gj5f3wco724" path="res://Assets/DSEG14Modern-Bold.ttf" id="11_d1ilt"]
 [ext_resource type="Script" uid="uid://ck5r8hgllhwqd" path="res://Scripts/music_player.gd" id="12_6iyac"]
-[ext_resource type="AudioStream" uid="uid://bqjr0r7c0m2uw" path="res://Assets/Sound/Music/Ambience.wav" id="12_jkdf5"]
-[ext_resource type="AudioStream" uid="uid://certgowjsgj6q" path="res://Assets/Sound/Music/Original.wav" id="13_wsu2k"]
-[ext_resource type="AudioStream" uid="uid://b6ckw048kj0yh" path="res://Assets/Sound/Music/Music Box.wav" id="14_hibaj"]
-[ext_resource type="AudioStream" uid="uid://64pvn1er40y1" path="res://Assets/Sound/Music/Plucked.wav" id="15_pdsj5"]
-[ext_resource type="AudioStream" uid="uid://d1lcui5i26fyu" path="res://Assets/Sound/Music/Electric Guitar.wav" id="16_ee4r6"]
-[ext_resource type="AudioStream" uid="uid://b8rr66rtxif5o" path="res://Assets/Sound/Music/Bells.wav" id="17_gt3je"]
-[ext_resource type="AudioStream" uid="uid://d1hr76orl5woe" path="res://Assets/Sound/Music/Woodwinds.wav" id="18_3pmx8"]
-[ext_resource type="AudioStream" uid="uid://yw1yd6uijog8" path="res://Assets/Sound/Music/Clavinet.wav" id="19_u50mg"]
-[ext_resource type="AudioStream" uid="uid://din38melqyod" path="res://Assets/Sound/Music/PANIC.wav" id="20_pdsj5"]
 
-[sub_resource type="Gradient" id="Gradient_6iyac"]
+[sub_resource type="Gradient" id="Gradient_8gbba"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kry3j"]
-gradient = SubResource("Gradient_6iyac")
+gradient = SubResource("Gradient_8gbba")
 width = 320
 height = 180
 
 [sub_resource type="GDScript" id="GDScript_sprlj"]
 script/source = "extends Camera2D
 
-@export var sway_amount:float = 1.
+@export var sway_amount:float = 10.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,53 +35,74 @@ func _process(delta: float) -> void:
 	var target = get_viewport().get_mouse_position() / get_viewport_rect().size
 	target -= Vector2.ONE * 0.5 # above calculates from 0 to 1
 	target *= 2 # renormalize to -1 to 1
-	position.y = lerp(position.y, target.y, delta * 12)
+	position = lerp(position, target, delta * 12)
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_6iyac"]
-font = ExtResource("11_6iyac")
-font_size = 32
+font = ExtResource("11_d1ilt")
 font_color = Color(1, 0, 0, 1)
 outline_size = 1
 outline_color = Color(1, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_d1ilt"]
-font = ExtResource("11_6iyac")
-font_size = 24
-outline_color = Color(1, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_d1ilt"]
 resource_name = "END"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer2/ColorRect:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1000, 0), Vector2(1000, 0), Vector2(1000, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6iyac"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer2/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer2/ColorRect:offset_transform_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fdnlq"]
 _data = {
 &"END": SubResource("Animation_d1ilt"),
 &"RESET": SubResource("Animation_6iyac")
 }
-
-[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_6iyac"]
-stream_count = 9
-stream_0/stream = ExtResource("12_jkdf5")
-stream_0/volume = 0.0
-stream_1/stream = ExtResource("13_wsu2k")
-stream_1/volume = 0.0
-stream_2/stream = ExtResource("14_hibaj")
-stream_2/volume = 0.0
-stream_3/stream = ExtResource("15_pdsj5")
-stream_3/volume = 0.0
-stream_4/stream = ExtResource("16_ee4r6")
-stream_4/volume = 0.0
-stream_5/stream = ExtResource("17_gt3je")
-stream_5/volume = 0.0
-stream_6/stream = ExtResource("18_3pmx8")
-stream_6/volume = 0.0
-stream_7/stream = ExtResource("19_u50mg")
-stream_7/volume = 0.0
-stream_8/stream = ExtResource("20_pdsj5")
-stream_8/volume = 0.0
 
 [node name="Main" type="Node2D" unique_id=1071888399]
 script = ExtResource("1_kry3j")
@@ -135,12 +146,11 @@ autostart = true
 [node name="Events" type="Node2D" parent="." unique_id=404849960]
 
 [node name="RocketTimer" type="Timer" parent="." unique_id=2093610037]
-wait_time = 40.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1372535408]
-process_mode = 3
 layer = 2951
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1779124344]
@@ -177,19 +187,6 @@ text = "DOOMSDAY IMMINENT: SATELLITE ORBIT UNSTABLE"
 label_settings = SubResource("LabelSettings_6iyac")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer2/ColorRect/VBoxContainer" unique_id=899396440]
-layout_mode = 2
-text = "ONE OF THE RESOURCES HAVE BEEN FULLY DRAINED. IN A SEQUENCE AKIN TO CASCADING DOMINOES, YOU SEE THE TRAIL OF DESTRUCTION SPREAD ACROSS THE PLANET.
-
-YOU SEE THE COLLAPSE OF THE LAST REMNANTS OF HUMANITY WITH YOUR OWN EYES. 
-
-YOU RECOGNISE ONE THING. 
-
-YOU HAVE FAILED."
-label_settings = SubResource("LabelSettings_d1ilt")
-horizontal_alignment = 1
-autowrap_mode = 3
-
 [node name="Button" type="Button" parent="CanvasLayer2/ColorRect/VBoxContainer" unique_id=477427667]
 layout_mode = 2
 mouse_filter = 2
@@ -202,11 +199,8 @@ libraries/ = SubResource("AnimationLibrary_fdnlq")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=192937622]
 unique_name_in_owner = true
-stream = SubResource("AudioStreamSynchronized_6iyac")
-autoplay = true
 script = ExtResource("12_6iyac")
 
 [connection signal="selected" from="CanvasLayer/hud" to="." method="_on_hud_selected"]
 [connection signal="timeout" from="EventTimer" to="." method="_on_event_timer_timeout"]
 [connection signal="timeout" from="RocketTimer" to="." method="_on_rocket_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer2/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -9,6 +9,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func finish():
+	await get_tree().create_timer(0.8).timeout
 	emit_signal("finished")
 func fail():
 	emit_signal("failed")

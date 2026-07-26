@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ctbyfv4h8filk" path="res://Assets/Art/popup_outline.png" id="4_pn77i"]
 [ext_resource type="FontFile" uid="uid://bjbrkkto2bvnk" path="res://Assets/DSEG7Modern-Bold.ttf" id="4_txmnl"]
 [ext_resource type="Texture2D" uid="uid://dy0qk7kbsc4am" path="res://Assets/Art/popup_outline_mask.png" id="5_sg3nx"]
+[ext_resource type="Script" uid="uid://dgyvyv501e2md" path="res://Scripts/audio_stream_player.gd" id="8_v0b6g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27o3k"]
 shader = ExtResource("1_u37vb")
@@ -327,5 +328,9 @@ texture = ExtResource("4_pn77i")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=898213863]
 libraries/ = SubResource("AnimationLibrary_pn77i")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=421909116]
+script = ExtResource("8_v0b6g")
+
+[connection signal="game_played" from="." to="AudioStreamPlayer" method="_on_event_game_played"]
 [connection signal="input_event" from="Icon" to="." method="_on_icon_input_event"]
 [connection signal="timeout" from="Panel/SubViewportContainer/SubViewport/Timer" to="." method="_on_timer_timeout"]
