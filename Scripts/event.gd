@@ -58,7 +58,7 @@ func finish_success():
 	if is_open:
 		close()
 	reset()
-	$Panel/SubViewportContainer/SubViewport/Timer.start(0)
+	turn(60)
 
 func close_remove():
 	if is_open:
@@ -72,7 +72,11 @@ func fail_close():
 
 # Mutator methods to be called by random events.
 func increase_time():
-	%Timer.wait_time += 10
+	turn(10)
 
 func decrease_time():
-	%Timer.wait_time -= 10
+	turn(-10)
+
+func turn(amount):
+	%Timer.wait_time = clamp(%Timer.time_left + amount/2, 0.1, 60.0)
+	%Timer.start()

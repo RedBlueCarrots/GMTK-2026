@@ -47,8 +47,8 @@ func _on_rocket_timer_timeout() -> void:
 	var new_event_scene = new_rocket_event.instantiate()
 	new_event_scene.new_scene = rocket_events[rocket_events_completed]
 	add_child(new_event_scene)
-	new_event_scene.position = Vector2(-140, 140)
-	new_event_scene.old_pos = Vector2(-140, 140)
+	new_event_scene.position = Vector2(-123, 89)
+	new_event_scene.old_pos = Vector2(-123, 89)
 	$CanvasLayer/hud.show_warning("ROCKET   STAGE   "+str(rocket_events_completed+1) + "   IS   READY")
 	new_event_scene.connect("done", rocket_done)
 

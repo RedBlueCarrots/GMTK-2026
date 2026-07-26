@@ -69,3 +69,12 @@ func reset():
 
 func fail_close():
 	close()
+
+
+func _on_reset_pressed() -> void:
+	reset()
+	create_minigame()
+
+
+func _on_abandon_pressed() -> void:
+	close()

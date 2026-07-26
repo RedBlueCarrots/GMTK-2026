@@ -18,6 +18,8 @@ corner_detail = 5
 [sub_resource type="LabelSettings" id="LabelSettings_wkk6c"]
 font = ExtResource("1_sprlj")
 font_color = Color(1, 0, 0, 1)
+outline_size = 1
+outline_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4dyq"]
 bg_color = Color(0, 0, 0, 0.15686275)
