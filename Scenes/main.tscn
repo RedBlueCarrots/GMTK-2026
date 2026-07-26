@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8knkgioqs51c" path="res://Scenes/pipe_minigame.tscn" id="5_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://d2k2utigdsije" path="res://Scenes/WaterFillingMiniGame.tscn" id="6_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bfmdrqqtob1s4" path="res://Scenes/discontent_minigame.tscn" id="7_6iyac"]
+[ext_resource type="PackedScene" uid="uid://jydvqol52tc1" path="res://Scenes/rhythm_minigame.tscn" id="8_hptm8"]
 
 [sub_resource type="Gradient" id="Gradient_8gbba"]
 
@@ -39,6 +40,7 @@ func _process(delta: float) -> void:
 script = ExtResource("1_kry3j")
 events = Dictionary[String, PackedScene]({
 "civilians uprising": ExtResource("7_6iyac"),
+"cultists overthrow": ExtResource("8_hptm8"),
 "food supply low": ExtResource("3_ynf5e"),
 "oxygen supply critical": ExtResource("5_ynf5e"),
 "power supply exhausted": ExtResource("4_hptm8"),
@@ -47,6 +49,7 @@ events = Dictionary[String, PackedScene]({
 })
 event_positions = Dictionary[String, Vector2]({
 "civilians uprising": Vector2(0, -28),
+"cultists overthrow": Vector2(162, 103),
 "food supply low": Vector2(-191, 13),
 "oxygen supply critical": Vector2(92, 13),
 "power supply exhausted": Vector2(-80, -29),
@@ -56,6 +59,7 @@ event_positions = Dictionary[String, Vector2]({
 event_peristence = Array[String](["food supply low"])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=317580437]
+layer = 1279
 
 [node name="hud" parent="CanvasLayer" unique_id=2138066974 instance=ExtResource("2_8gbba")]
 
@@ -74,6 +78,7 @@ autostart = true
 [node name="Events" type="Node2D" parent="." unique_id=404849960]
 
 [node name="RocketTimer" type="Timer" parent="." unique_id=2093610037]
+wait_time = 15.0
 one_shot = true
 autostart = true
 
