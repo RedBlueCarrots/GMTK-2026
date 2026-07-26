@@ -25,7 +25,6 @@ func create_minigame():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	persistent = true
-	$Icon/Label.text = str(int(ceil($Panel/SubViewportContainer/SubViewport/Timer.time_left)))
 
 
 func _on_icon_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -38,10 +37,10 @@ func open():
 		create_minigame()
 	is_open = true
 	$AnimationPlayer.play("FadeIn")
-	var tx = clamp(position.x, -320+96, 320-96)
-	var ty = clamp(position.y, -180+96, 180-96)
+	var tx = 0
+	var ty = 0
 	var tw = get_tree().create_tween()
-	tw.tween_property(self, "position", Vector2(tx, ty), 0.3)
+	tw.tween_property(self, "global_position", Vector2(tx, ty), 0.3)
 	tw.play()
 
 func close():
@@ -57,7 +56,6 @@ func finish_success():
 	if is_open:
 		close()
 	reset()
-	$Panel/SubViewportContainer/SubViewport/Timer.start(0)
 
 func close_remove():
 	if is_open:

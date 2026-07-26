@@ -21,8 +21,9 @@ offset_top = 20.0
 offset_right = 312.937
 offset_bottom = 100.0
 scale = Vector2(2, 2)
+max_value = 60.0
 step = 0.01
-value = 100.0
+value = 60.0
 fill_mode = 3
 texture_progress = ExtResource("4_eobqy")
 
@@ -34,14 +35,11 @@ offset_right = 188.0
 offset_bottom = 31.0
 text = "0.0 %"
 
-[node name="Timer" type="Timer" parent="." unique_id=2092748897]
-wait_time = 10.0
-
 [node name="Background" type="Sprite2D" parent="." unique_id=415666324]
 z_index = -1
 scale = Vector2(2, 2)
 texture = ExtResource("4_b7tm5")
 centered = false
 
+[connection signal="turned" from="Crank" to="." method="turn"]
 [connection signal="value_changed" from="Progress bar" to="." method="_on_progress_bar_value_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
