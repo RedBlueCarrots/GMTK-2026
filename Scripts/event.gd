@@ -69,3 +69,10 @@ func reset():
 
 func fail_close():
 	close()
+
+# Mutator methods to be called by random events.
+func increase_time():
+	%Timer.wait_time += 10
+
+func decrease_time():
+	%Timer.wait_time -= 10

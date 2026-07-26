@@ -19,6 +19,33 @@ corner_detail = 5
 font = ExtResource("1_sprlj")
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4dyq"]
+bg_color = Color(0, 0, 0, 0.15686275)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahg1b"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.29411766)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="HUD" type="Control" unique_id=2138066974]
 layout_mode = 3
 anchors_preset = 15
@@ -44,3 +71,60 @@ offset_right = 513.0
 offset_bottom = 23.0
 text = "DOOMSDAY IMMINENT: SATELLITE ORBIT UNSTABLE"
 label_settings = SubResource("LabelSettings_wkk6c")
+
+[node name="RandomEvent" type="CenterContainer" parent="." unique_id=79570071]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="RandomEvent" unique_id=455984725]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c4dyq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RandomEvent/PanelContainer" unique_id=1109740986]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="RandomEvent/PanelContainer/VBoxContainer" unique_id=1940119528]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ahg1b")
+
+[node name="eventText" type="RichTextLabel" parent="RandomEvent/PanelContainer/VBoxContainer/PanelContainer" unique_id=1596550650]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 13
+text = "Colonists are striking demanding better pay and less working hours. What should we do?
+"
+
+[node name="Control" type="Control" parent="RandomEvent/PanelContainer/VBoxContainer" unique_id=2016092117]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Option1" type="Button" parent="RandomEvent/PanelContainer/VBoxContainer" unique_id=323609234]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Option 1"
+
+[node name="Option2" type="Button" parent="RandomEvent/PanelContainer/VBoxContainer" unique_id=1913739421]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Option 2"
+
+[node name="Option3" type="Button" parent="RandomEvent/PanelContainer/VBoxContainer" unique_id=72340533]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "Option 3"
+
+[connection signal="pressed" from="RandomEvent/PanelContainer/VBoxContainer/Option1" to="." method="_on_option_1_pressed"]
+[connection signal="pressed" from="RandomEvent/PanelContainer/VBoxContainer/Option2" to="." method="_on_option_2_pressed"]
+[connection signal="pressed" from="RandomEvent/PanelContainer/VBoxContainer/Option3" to="." method="_on_option_3_pressed"]
