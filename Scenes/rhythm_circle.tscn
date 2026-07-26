@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlc17tdd8m4dv"]
+
+[ext_resource type="Script" uid="uid://j7pigvubpnp" path="res://Scripts/circle_note.gd" id="1_6rixg"]
+[ext_resource type="Texture2D" uid="uid://wrqrsg0ry8ya" path="res://Assets/Art/Disco/circleOSU2.png" id="2_6qh42"]
+
+[node name="rhythm_circle" type="Node2D" unique_id=307518478]
+script = ExtResource("1_6rixg")
+
+[node name="Timer" type="Timer" parent="." unique_id=129487191]
+wait_time = 3.56
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1551494097]
+modulate = Color(1, 1, 1, 0.627451)
+texture = ExtResource("2_6qh42")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
