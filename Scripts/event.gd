@@ -77,6 +77,9 @@ func increase_time():
 func decrease_time():
 	turn(-10)
 
+func get_time():
+	return %Timer.wait_time
+
 func turn(amount):
-	%Timer.wait_time = clamp(%Timer.time_left + amount/2, 0.1, 99.0)
+	%Timer.wait_time = clamp(%Timer.time_left + amount, 0.1, 99.0)
 	%Timer.start()

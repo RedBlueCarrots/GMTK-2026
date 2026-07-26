@@ -1,15 +1,6 @@
 extends Node2D
 
-@export var events : Dictionary[String, PackedScene] = {
-	"food supply low": preload("res://Scenes/starvation_minigame.tscn"),
-	"power supply exhausted": preload("res://Scenes/power_crank_minigame.tscn"),
-	"satellite orbit unstable": preload("res://Scenes/power_crank_minigame.tscn"),
-	"oxygen low": preload("res://Scenes/power_crank_minigame.tscn"),
-	"discontent high": preload("res://Scenes/power_crank_minigame.tscn"),
-	"nefarious cult activity detected": preload("res://Scenes/rhythm_minigame.tscn"),
-	"water low": preload("res://Scenes/WaterFillingMiniGame.tscn"),
-	"next rocket stage imminent": preload("res://Scenes/rocket_draw.tscn") #need to add other 3 lol
-}
+@export var events : Dictionary[String, PackedScene]
 
 @export var event_positions : Dictionary[String, Vector2]
 @export var event_peristence : Array[String]
@@ -17,6 +8,8 @@ extends Node2D
 const new_event = preload("res://Scenes/event.tscn")
 const new_rocket_event = preload("res://Scenes/rocket_event.tscn")
 var all_events = []
+var last_event
+var event_instances = {}
 
 const rocket_events = [preload("res://Scenes/rocket_draw.tscn"), preload("res://Scenes/cut_minigame.tscn"), preload("res://Scenes/connect_the_wires.tscn"), preload("res://Scenes/launch_codes_minigame.tscn")]
 var rocket_events_completed := 0
@@ -35,6 +28,10 @@ func make_new_event():
 	if all_events:
 		var new_event_name: String = all_events[0]
 		var new_event_scene = new_event.instantiate()
+		
+		# add instance here lol
+		event_instances[new_event_name] = new_event_scene
+		
 		new_event_scene.new_scene = events[new_event_name]
 		new_event_scene.persistent = new_event_name in event_peristence
 		new_event_scene.old_pos = event_positions[new_event_name]
@@ -45,6 +42,7 @@ func make_new_event():
 	else:
 		#do random event if no events left
 		var random_key = random_event_dict.keys()[randi() % len(random_event_dict.keys())]
+		last_event = random_key
 		$CanvasLayer/hud.show_event(random_event_dict[random_key])
 
 
@@ -56,6 +54,9 @@ func _on_event_timer_timeout() -> void:
 func _on_rocket_timer_timeout() -> void:
 	var new_event_scene = new_rocket_event.instantiate()
 	new_event_scene.new_scene = rocket_events[rocket_events_completed]
+	
+	event_instances["next rocket stage imminent"] = new_event_scene
+	
 	add_child(new_event_scene)
 	new_event_scene.position = Vector2(-123, 89)
 	new_event_scene.old_pos = Vector2(-123, 89)
@@ -73,10 +74,10 @@ var event_map = {
 	"starvation": "food supply low",
 	"power": "power supply exhausted",
 	"orbit": "satellite orbit unstable",
-	"suffocation": "oxygen low",
-	"discontent": "discontent high",
-	"cult": "nefarious cult activity detected",
-	"dehydration": "water low",
+	"suffocation": "oxygen supply critical",
+	"discontent": "civilians uprising",
+	"cult": "cultists overthrow",
+	"dehydration": "water depleted",
 	"rocket": "next rocket stage imminent",
 }
 
@@ -264,6 +265,23 @@ var random_event_dict = {
 	},
 }
 
-
+# when button from random event is selected
 func _on_hud_selected(option: int) -> void:
-	print("Option selected:" + str(option))
+	# increase all resources associated with option
+	for resource in random_event_dict[last_event][option]["increase"]:
+		if resource == "rocket":
+			$RocketTimer.wait_time += 10
+		else:
+			var key = event_map[resource]
+			event_instances[key].increase_time()
+	
+	# decrease all resources associated with option
+	for resource in random_event_dict[last_event][option]["decrease"]:
+		if  resource == "rocket":
+			if $RocketTimer.wait_time >11:
+				$RocketTimer.wait_time -= 10
+			else:
+				$RocketTimer.wait_time = 1
+		else:
+			var key = event_map[resource]
+			event_instances[key].decrease_time()
