@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2bpt7wumgwlq"
-path="res://.godot/imported/background.png-538d2c38279bad24d1e39eca087fd0df.ctex"
+uid="uid://ca772cq8kj3fh"
+path="res://.godot/imported/potato-whole.png-4e9e7ff6ee1b7ef450dedcd289dbb21d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Cut/background.png"
-dest_files=["res://.godot/imported/background.png-538d2c38279bad24d1e39eca087fd0df.ctex"]
+source_file="res://Assets/Art/Cut/potato-whole.png"
+dest_files=["res://.godot/imported/potato-whole.png-4e9e7ff6ee1b7ef450dedcd289dbb21d.ctex"]
 
 [params]
 

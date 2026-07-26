@@ -1,10 +1,11 @@
 extends Minigame
 
-
+var type = "starvation"
 var held_item : Area2D = null
 var held_old_pos : Vector2
 var free_pass := false
 var click_buffer := 0
+var death_message = "You all staved to death..."
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for a in $Fields.get_children():

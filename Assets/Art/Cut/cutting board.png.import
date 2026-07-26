@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5pteo00yte3m"
-path="res://.godot/imported/lights_interior.png-ea1542fc126d187117eb00f25129ca55.ctex"
+uid="uid://bxfrl64m4idx8"
+path="res://.godot/imported/cutting board.png-61786ffd0c51393f23fdf12e78249f47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/lights_interior.png"
-dest_files=["res://.godot/imported/lights_interior.png-ea1542fc126d187117eb00f25129ca55.ctex"]
+source_file="res://Assets/Art/Cut/cutting board.png"
+dest_files=["res://.godot/imported/cutting board.png-61786ffd0c51393f23fdf12e78249f47.ctex"]
 
 [params]
 

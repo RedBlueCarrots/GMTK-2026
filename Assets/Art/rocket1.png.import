@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qndw7y51sdwx"
-path="res://.godot/imported/cut_zone.png-0130d084c952475fc217a421e7daef3a.ctex"
+uid="uid://tu4p3m4yk5p2"
+path="res://.godot/imported/rocket1.png-3998fcd312d8539d70f46927ba597548.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Cut/cut_zone.png"
-dest_files=["res://.godot/imported/cut_zone.png-0130d084c952475fc217a421e7daef3a.ctex"]
+source_file="res://Assets/Art/rocket1.png"
+dest_files=["res://.godot/imported/rocket1.png-3998fcd312d8539d70f46927ba597548.ctex"]
 
 [params]
 

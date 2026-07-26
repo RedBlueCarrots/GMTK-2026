@@ -2,6 +2,9 @@ extends Minigame
 
 var angle = 0.0
 var speed = 50
+var type = "orbit"
+
+var death_message = "Your satellites crashed into your base..."
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$HSlider.value = 0.0

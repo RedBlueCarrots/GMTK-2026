@@ -3,6 +3,8 @@ extends Minigame
 @onready var progress_bar: TextureProgressBar = $"Progress bar"
 @onready var label: Label = $Percentage
 @onready var crank: Node2D = $Crank
+var type = "power"
+var death_message = "Your power completely ran out..."
 
 func _ready() -> void:
 	progress_bar.value = 0.0

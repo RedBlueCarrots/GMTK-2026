@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2bpt7wumgwlq"
-path="res://.godot/imported/background.png-538d2c38279bad24d1e39eca087fd0df.ctex"
+uid="uid://cow3v34qudlhx"
+path="res://.godot/imported/rocket4.png-10912df17a45eb62c341112dc5c34ca1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Cut/background.png"
-dest_files=["res://.godot/imported/background.png-538d2c38279bad24d1e39eca087fd0df.ctex"]
+source_file="res://Assets/Art/rocket4.png"
+dest_files=["res://.godot/imported/rocket4.png-10912df17a45eb62c341112dc5c34ca1.ctex"]
 
 [params]
 

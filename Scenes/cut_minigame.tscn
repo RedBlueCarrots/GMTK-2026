@@ -2,16 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c4kii64isenjy" path="res://Scripts/cut_minigame.gd" id="1_gr65p"]
 [ext_resource type="PackedScene" uid="uid://cbkyray7c10o" path="res://Scenes/minigame_outline.tscn" id="2_yal4m"]
-[ext_resource type="Texture2D" uid="uid://45r2xx48vbpi" path="res://Assets/Art/Cut/background.png" id="3_ea4qv"]
-[ext_resource type="Texture2D" uid="uid://qndw7y51sdwx" path="res://Assets/Art/Cut/cut_zone.png" id="4_wklnc"]
+[ext_resource type="Texture2D" uid="uid://b2bpt7wumgwlq" path="res://Assets/Art/Cut/background.png" id="3_ea4qv"]
 [ext_resource type="Texture2D" uid="uid://fqv61h1sa8en" path="res://Assets/Art/Cut/cutter-miss.png" id="5_ig6o0"]
+[ext_resource type="Texture2D" uid="uid://ca772cq8kj3fh" path="res://Assets/Art/Cut/potato-whole.png" id="5_yal4m"]
 [ext_resource type="Texture2D" uid="uid://cblo7xy4ds3aj" path="res://Assets/Art/Cut/cutter-slash.png" id="6_fbyt1"]
-[ext_resource type="Texture2D" uid="uid://ctkhxiyqquxhs" path="res://Assets/Art/Cut/cutter-crosshair.png" id="7_d5te4"]
+[ext_resource type="Texture2D" uid="uid://brva8jycjjjnb" path="res://Assets/Art/Cut/cutter-crosshair.png" id="7_d5te4"]
+[ext_resource type="Texture2D" uid="uid://bxfrl64m4idx8" path="res://Assets/Art/Cut/cutting board.png" id="8_yal4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dj8w"]
-size = Vector2(5, 20)
+size = Vector2(18.58, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byvyp"]
+size = Vector2(6.08, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14cm1"]
 atlas = ExtResource("6_fbyt1")
@@ -63,31 +65,63 @@ speed = 200.0
 [node name="MinigameOutline" parent="." unique_id=959946983 instance=ExtResource("2_yal4m")]
 visible = false
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1879380471]
+[node name="Background" type="Node2D" parent="." unique_id=1603272173]
 position = Vector2(128, 0)
-scale = Vector2(0.188, 0.188)
+
+[node name="TableSprite" type="Sprite2D" parent="Background" unique_id=1879380471]
+scale = Vector2(4, 4)
 texture = ExtResource("3_ea4qv")
 centered = false
 
-[node name="Background2" type="Sprite2D" parent="." unique_id=673282950]
-position = Vector2(511.00003, 0)
-scale = Vector2(0.188, 0.188)
+[node name="CuttingBoardSprite" type="Sprite2D" parent="Background" unique_id=218951185]
+position = Vector2(223.445, 192)
+scale = Vector2(3.385, 3.385)
+texture = ExtResource("8_yal4m")
+
+[node name="PotatoSprite" type="Sprite2D" parent="Background" unique_id=2117415750]
+position = Vector2(205.185, 191.66)
+scale = Vector2(1.694, 1.682)
+texture = ExtResource("5_yal4m")
+
+[node name="Background2" type="Node2D" parent="." unique_id=1329438563]
+position = Vector2(-256, 0)
+
+[node name="TableSprite" type="Sprite2D" parent="Background2" unique_id=1590857261]
+scale = Vector2(4, 4)
 texture = ExtResource("3_ea4qv")
 centered = false
 
-[node name="Background3" type="Sprite2D" parent="." unique_id=179064024]
-position = Vector2(-257.00015, 0)
-scale = Vector2(0.188, 0.188)
+[node name="CuttingBoardSprite" type="Sprite2D" parent="Background2" unique_id=311635183]
+position = Vector2(223.445, 192)
+scale = Vector2(3.385, 3.385)
+texture = ExtResource("8_yal4m")
+
+[node name="PotatoSprite" type="Sprite2D" parent="Background2" unique_id=1247022486]
+position = Vector2(205.185, 191.66)
+scale = Vector2(1.694, 1.682)
+texture = ExtResource("5_yal4m")
+
+[node name="Background3" type="Node2D" parent="." unique_id=1999129584]
+position = Vector2(512, 0)
+
+[node name="TableSprite" type="Sprite2D" parent="Background3" unique_id=415966414]
+scale = Vector2(4, 4)
 texture = ExtResource("3_ea4qv")
 centered = false
+
+[node name="CuttingBoardSprite" type="Sprite2D" parent="Background3" unique_id=1902419969]
+position = Vector2(223.445, 192)
+scale = Vector2(3.385, 3.385)
+texture = ExtResource("8_yal4m")
+
+[node name="PotatoSprite" type="Sprite2D" parent="Background3" unique_id=1082815619]
+position = Vector2(205.185, 191.66)
+scale = Vector2(1.694, 1.682)
+texture = ExtResource("5_yal4m")
 
 [node name="CutZone" type="Area2D" parent="." unique_id=1346018250]
 position = Vector2(320, 192)
 scale = Vector2(2, 2)
-
-[node name="CutZoneSprite" type="Sprite2D" parent="CutZone" unique_id=1861165832]
-scale = Vector2(0.24, 0.24)
-texture = ExtResource("4_wklnc")
 
 [node name="CutZoneHurtbox" type="CollisionShape2D" parent="CutZone" unique_id=1974487756]
 shape = SubResource("RectangleShape2D_3dj8w")
@@ -112,7 +146,7 @@ frame = 3
 frame_progress = 0.36353695
 
 [node name="CutterTarget" type="Sprite2D" parent="Cutter" unique_id=1347799743]
-scale = Vector2(0.03, 0.03)
+scale = Vector2(1.06, 1.06)
 texture = ExtResource("7_d5te4")
 
 [connection signal="animation_finished" from="Cutter/CutterSlashAnimation" to="." method="_on_cutter_slash_animation_animation_finished"]

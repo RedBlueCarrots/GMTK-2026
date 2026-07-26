@@ -1,10 +1,10 @@
 extends Minigame
-
+var type = "water"
 # Nodes to call in the script
 @export var z_key: Node2D
 @export var x_key: Node2D
 @export var waterlevel: Sprite2D
-
+var death_message = "Your water completely ran out..."
 ## @DESIGNERS SEE THESE
 const SECONDS_PER_CORRECT: float = 5 ## Seconds of water added per correct key pressed
 const SECONDS_PER_INCORRECT: float = 0 ## Seconds of water deducted per incorrect (but possible) key pressed

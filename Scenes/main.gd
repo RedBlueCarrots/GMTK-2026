@@ -29,12 +29,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if $CanvasLayer2/ColorRect.modulate.a == 0.0:
+		$CanvasLayer2/ColorRect/VBoxContainer/Button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		$CanvasLayer2/ColorRect/VBoxContainer/Button.visible = false
 
 func make_new_event():
 	if all_events:
 		var new_event_name: String = all_events[0]
 		var new_event_scene = new_event.instantiate()
+		new_event_scene.connect("game_over", death)
+		new_event_scene.connect("game_played", game_open)
+		new_event_scene.connect("game_done", game_exit)
 		new_event_scene.new_scene = events[new_event_name]
 		new_event_scene.persistent = new_event_name in event_peristence
 		new_event_scene.old_pos = event_positions[new_event_name]
@@ -66,7 +71,7 @@ func rocket_done():
 	rocket_events_completed += 1
 	$RocketTimer.start()
 	if rocket_events_completed == 4:
-		print("game finish")
+		win()
 
 #Event reference
 var event_map = {
@@ -267,3 +272,22 @@ var random_event_dict = {
 
 func _on_hud_selected(option: int) -> void:
 	print("Option selected:" + str(option))
+
+
+func death(msg):
+	$CanvasLayer2/ColorRect/VBoxContainer/Label.text = msg.to_upper().replace(" ", "   ")
+	$AnimationPlayer.play("END")
+	get_tree().paused = true
+	$CanvasLayer2/ColorRect/VBoxContainer/Button.mouse_filter = Control.MOUSE_FILTER_STOP
+	$CanvasLayer2/ColorRect/VBoxContainer/Button.visible = true
+	
+
+func win():
+	get_tree().paused = true
+
+
+func game_open(nam:String):
+	pass
+
+func game_exit():
+	pass
