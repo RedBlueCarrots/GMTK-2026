@@ -14,6 +14,7 @@ extends Minigame
 
 var direction: float = 1.0
 var is_slashing: bool = false
+var _cuts = 0
 var game_won: bool = false
 
 
@@ -81,11 +82,17 @@ func _is_overlapping_cut_zone() -> bool:
 func _on_cutter_slash_animation_animation_finished() -> void:
 	cutter_slash_animation.visible = false
 	cutter_slash_animation.stop()
+
+	cutter_miss_sprite.visible = false
+	cutter_target.visible = true
+	is_slashing = false
+
 	if _is_overlapping_cut_zone():
-		potato.texture = preload("res://Assets/Art/Cut/potato-cut.png")
-		game_won = true
-		finish()
-	else:
-		cutter_miss_sprite.visible = false
-		cutter_target.visible = true
-		is_slashing = false
+		_cuts += 1
+
+		if _cuts >= 5:
+			potato.texture = preload("res://Assets/Art/Cut/potato-cut.png")
+			cutter_target.visible = false
+
+			game_won = true
+			finish()
