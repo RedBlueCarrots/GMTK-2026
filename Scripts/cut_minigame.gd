@@ -6,6 +6,7 @@ extends Minigame
 @onready var cutter_slash_animation: AnimatedSprite2D = $Cutter/CutterSlashAnimation
 @onready var cutter_miss_sprite: Sprite2D = $Cutter/CutterMissSprite
 @onready var minigame_outline: Sprite2D = $MinigameOutline
+@onready var potato: Sprite2D = $Background/PotatoSprite
 
 @export var speed: float = 80.0
 @export var min_x: float = 180
@@ -25,6 +26,8 @@ func _ready() -> void:
 	cutter_slash_animation.visible = false
 	cutter_miss_sprite.visible = false
 	cutter_slash_animation.stop()
+
+	potato.texture = preload("res://Assets/Art/Cut/potato-whole.png")
 
 
 func _process(delta: float) -> void:
@@ -79,6 +82,7 @@ func _on_cutter_slash_animation_animation_finished() -> void:
 	cutter_slash_animation.visible = false
 	cutter_slash_animation.stop()
 	if _is_overlapping_cut_zone():
+		potato.texture = preload("res://Assets/Art/Cut/potato-cut.png")
 		game_won = true
 		finish()
 	else:
