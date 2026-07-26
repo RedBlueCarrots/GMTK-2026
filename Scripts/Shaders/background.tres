@@ -34,5 +34,5 @@ shader_parameter/ROCKET3 = ExtResource("8_5vt7e")
 shader_parameter/ROCKET4 = ExtResource("9_xfaxc")
 shader_parameter/windSpeed = 0.2
 shader_parameter/rpm = 1.0
-shader_parameter/rocketStage = 4
+shader_parameter/rocketStage = 0
 shader_parameter/resolution = Vector2(320, 180)

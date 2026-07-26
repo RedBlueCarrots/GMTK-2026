@@ -1,6 +1,7 @@
 extends Minigame
 var death_message = "The space cult overthrew you..."
 var score = 0
+var type = "cult"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#load chart

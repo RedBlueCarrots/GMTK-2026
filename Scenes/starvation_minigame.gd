@@ -1,6 +1,6 @@
 extends Minigame
 
-
+var type = "starvation"
 var held_item : Area2D = null
 var held_old_pos : Vector2
 var free_pass := false

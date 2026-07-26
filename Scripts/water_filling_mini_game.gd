@@ -1,5 +1,5 @@
 extends Minigame
-
+var type = "water"
 # Nodes to call in the script
 @export var z_key: Node2D
 @export var x_key: Node2D

@@ -7,13 +7,15 @@ var old_pos : Vector2
 var is_open = false
 var death_message = ""
 signal game_over
+signal game_played
+signal game_done
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#old_pos = position
 	#$Icon/Sprite2D.texture = load("res://Assets/Art/Icons/" + icon)
 	pass
-	$Panel/SubViewportContainer/SubViewport/Timer.start(2)
+	$Panel/SubViewportContainer/SubViewport/Timer.start(60)
 	create_minigame()
 	death_message = $Panel/SubViewportContainer/SubViewport/SceneSlot.get_child(0).death_message
 	reset()
@@ -21,6 +23,7 @@ func _ready() -> void:
 func create_minigame():
 	var minigame : Minigame = new_scene.instantiate()
 	$Panel/SubViewportContainer/SubViewport/SceneSlot.add_child(minigame)
+	emit_signal("game_played", minigame.type)
 	minigame.connect("finished", finish_success)
 	minigame.connect("failed", close_remove)
 	minigame.connect("closed", close)
@@ -49,6 +52,7 @@ func open():
 	tw.play()
 
 func close():
+	emit_signal("game_closed")
 	is_open = false
 	$AnimationPlayer.play("FadeOut")
 	var tw = get_tree().create_tween()

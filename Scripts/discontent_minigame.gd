@@ -7,7 +7,7 @@ var written = ""
 var pos = 0
 var space = 0
 var last_index = 0
-
+var type = "discontent"
 var death_message = "Your people overthrew you..."
 
 var sentence_list = [
