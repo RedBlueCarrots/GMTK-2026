@@ -73,6 +73,8 @@ func _start_slash() -> void:
 
 	if not _is_overlapping_cut_zone():
 		cutter_miss_sprite.visible = true
+	else:
+		potato.texture = preload("res://Assets/Art/Cut/potato-cut.png")
 
 
 func _is_overlapping_cut_zone() -> bool:
@@ -89,6 +91,8 @@ func _on_cutter_slash_animation_animation_finished() -> void:
 	cutter_miss_sprite.visible = false
 	cutter_target.visible = true
 	is_slashing = false
+
+	potato.texture = preload("res://Assets/Art/Cut/potato-whole.png")
 
 	if _is_overlapping_cut_zone():
 		_cuts += 1
